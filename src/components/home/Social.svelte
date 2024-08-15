@@ -1,0 +1,42 @@
+<div class="home__social">
+	<a
+		href="https://www.instagram.com/"
+		class="home__social-icon"
+		target="_blank"
+	>
+		<i class="uil uil-instagram"></i>
+	</a>
+
+	<a
+		href="https://dribbble.com/"
+		class="home__social-icon"
+		target="_blank"
+	>
+		<i class="uil uil-dribbble"></i>
+	</a>
+
+	<a
+		href="https://github.com/"
+		class="home__social-icon"
+		target="_blank"
+	>
+		<i class="uil uil-github-alt"></i>
+	</a>
+</div>
+
+<style>
+    .home__social {
+        display: grid;
+        grid-template-columns: max-content;
+        row-gap: 1rem;
+    }
+
+    .home__social-icon {
+        font-size: 1.25rem;
+        color: var(--title-color);
+    }
+
+    .home__social-icon:hover {
+        color: var(--title-color-dark);
+    }
+</style>

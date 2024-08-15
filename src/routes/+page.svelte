@@ -1,0 +1,25 @@
+<script>
+	import Social from '../components/home/Social.svelte';
+	import Header from '../components/header/Header.svelte';
+	import Footer from '../components/footer/Footer.svelte';
+	import ScrollUp from '../components/scrollUp/ScrollUp.svelte';
+	import About from '../components/about/About.svelte';
+	import Skills from '../components/skills/Skills.svelte';
+	import Services from '../components/services/Services.svelte';
+</script>
+
+<svelte:head>
+	<title>Cristian Sierra | Software Engineer</title>
+</svelte:head>
+
+<Header />
+
+<main class="main">
+	<Social />
+	<About />
+	<Skills />
+	<Services />
+</main>
+
+<Footer />
+<ScrollUp />
