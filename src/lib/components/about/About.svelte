@@ -13,9 +13,8 @@
 			<Info />
 
 			<p class="about__description">
-				Frontend developer, I create web pages with UI / UX user interface,
-				I have years of experience and many clients are happy with the
-				projects carried out.
+				Frontend developer, I create web pages with UI / UX user interface, I have years of
+				experience and many clients are happy with the projects carried out.
 			</p>
 
 			<a download="" href={'/assets/John-Cv.pdf'} class="button button--flex">
@@ -51,50 +50,49 @@
 </section>
 
 <style>
-    .about__container {
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-        column-gap: 4rem;
-    }
+	.about__container {
+		grid-template-columns: repeat(2, 1fr);
+		align-items: center;
+		column-gap: 4rem;
+	}
 
-    .about__img {
-        width: 350px;
-        border-radius: 1.5rem;
-        justify-self: center;
-    }
+	.about__img {
+		width: 350px;
+		border-radius: 1.5rem;
+		justify-self: center;
+	}
 
-    .about__description {
-        padding: 0 4rem 0 0;
-        margin-bottom: var(--mb-2-5);
-    }
+	.about__description {
+		padding: 0 4rem 0 0;
+		margin-bottom: var(--mb-2-5);
+	}
 
-    /*=============== BREAKPOINTS ===============*/
-    /* For large devices */
-    @media screen and (max-width: 992px) {
-        .about__container {
-            grid-template-columns: 1fr;
-            row-gap: 2.5rem;
-        }
+	/*=============== BREAKPOINTS ===============*/
+	/* For large devices */
+	@media screen and (max-width: 992px) {
+		.about__container {
+			grid-template-columns: 1fr;
+			row-gap: 2.5rem;
+		}
 
-        .about__img {
-            width: 220px;
-        }
+		.about__img {
+			width: 220px;
+		}
 
-        .about__data {
-            text-align: center;
-        }
+		.about__data {
+			text-align: center;
+		}
 
-        .about__description {
-            padding: 0 5rem;
-            margin-bottom: 2rem;
-        }
-    }
+		.about__description {
+			padding: 0 5rem;
+			margin-bottom: 2rem;
+		}
+	}
 
-    /* For medium devices */
-    @media screen and (max-width: 576px) {
-        .about__description {
-            padding: 0;
-        }
-    }
-
+	/* For medium devices */
+	@media screen and (max-width: 576px) {
+		.about__description {
+			padding: 0;
+		}
+	}
 </style>

@@ -14,30 +14,30 @@
 </section>
 
 <style>
-    .skills__container {
-        grid-template-columns: repeat(2, 350px);
-        column-gap: 3rem;
-        justify-content: center;
-    }
+	.skills__container {
+		grid-template-columns: repeat(2, 350px);
+		column-gap: 3rem;
+		justify-content: center;
+	}
 
-    .skills .bx-badge-check {
-        font-size: 1rem;
-        color: var(--title-color);
-    }
+	.skills .bx-badge-check {
+		font-size: 1rem;
+		color: var(--title-color);
+	}
 
-    /*=============== BREAKPOINTS ===============*/
-    /* For large devices */
-    @media screen and (max-width: 992px) {
-        .skills__container {
-            grid-template-columns: max-content;
-            row-gap: 2rem;
-        }
-    }
+	/*=============== BREAKPOINTS ===============*/
+	/* For large devices */
+	@media screen and (max-width: 992px) {
+		.skills__container {
+			grid-template-columns: max-content;
+			row-gap: 2rem;
+		}
+	}
 
-    /* For medium devices */
-    @media screen and (max-width: 576px) {
-        .skills__container {
-            grid-template-columns: 1fr;
-        }
-    }
+	/* For medium devices */
+	@media screen and (max-width: 576px) {
+		.skills__container {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>

@@ -2,11 +2,9 @@
 	import Social from './Social.svelte';
 	import Data from './Data.svelte';
 	import ScrollDown from './ScrollDown.svelte';
-
-	let homeId = 'home';
 </script>
 
-<section class="home section" id={homeId}>
+<section class="home section" id="home">
 	<div class="home__container container grid">
 		<div class="home__content grid">
 			<Social />

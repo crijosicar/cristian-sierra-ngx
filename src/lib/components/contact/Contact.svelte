@@ -32,11 +32,8 @@
 					<h3 class="contact__card-title">Email</h3>
 					<span class="contact__card-data">user@gmail.com</span>
 
-					<a
-						href="mailto:examplemail@gmail.com.com"
-						class="contact__button"
-					>
-						Write me{" "}
+					<a href="mailto:examplemail@gmail.com.com" class="contact__button">
+						Write me{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
 					</a>
 				</div>
@@ -51,7 +48,7 @@
 						href="https://api.whatsapp.com/send?phone=62214408789&text=Hello, more information!"
 						class="contact__button"
 					>
-						Write me{" "}
+						Write me{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
 					</a>
 				</div>
@@ -63,7 +60,7 @@
 					<span class="contact__card-data">user.fb123</span>
 
 					<a href="https://m.me/crypticalcoder" class="contact__button">
-						Write me{" "}
+						Write me{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
 					</a>
 				</div>
@@ -130,152 +127,151 @@
 	</div>
 </section>
 
-
 <style>
-    .contact__container {
-        grid-template-columns: repeat(2, max-content);
-        justify-content: center;
-        column-gap: 6rem;
-        padding-bottom: 3rem;
-    }
+	.contact__container {
+		grid-template-columns: repeat(2, max-content);
+		justify-content: center;
+		column-gap: 6rem;
+		padding-bottom: 3rem;
+	}
 
-    .contact__title {
-        text-align: center;
-        font-size: var(--h3-font-size);
-        font-weight: var(--font-medium);
-        margin-bottom: var(--mb-1-5);
-    }
+	.contact__title {
+		text-align: center;
+		font-size: var(--h3-font-size);
+		font-weight: var(--font-medium);
+		margin-bottom: var(--mb-1-5);
+	}
 
-    .contact__info {
-        display: grid;
-        row-gap: 1rem;
-        grid-template-columns: 300px;
-    }
+	.contact__info {
+		display: grid;
+		row-gap: 1rem;
+		grid-template-columns: 300px;
+	}
 
-    .contact__card {
-        background-color: var(--container-color);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        border-radius: 0.75rem;
-        text-align: center;
-    }
+	.contact__card {
+		background-color: var(--container-color);
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		padding: 1rem;
+		border-radius: 0.75rem;
+		text-align: center;
+	}
 
-    .contact__card-icon {
-        font-size: 2rem;
-        color: var(--title-color);
-        margin-bottom: var(--mb-0-25);
-    }
+	.contact__card-icon {
+		font-size: 2rem;
+		color: var(--title-color);
+		margin-bottom: var(--mb-0-25);
+	}
 
-    .contact__card-title,
-    .contact__card-data {
-        font-size: var(--small-font-size);
-    }
+	.contact__card-title,
+	.contact__card-data {
+		font-size: var(--small-font-size);
+	}
 
-    .contact__card-title {
-        font-weight: var(--font-medium);
-    }
+	.contact__card-title {
+		font-weight: var(--font-medium);
+	}
 
-    .contact__card-data {
-        display: block;
-        margin-bottom: var(--mb-0-75);
-    }
+	.contact__card-data {
+		display: block;
+		margin-bottom: var(--mb-0-75);
+	}
 
-    .contact__button {
-        color: var(--text-color);
-        font-size: var(--small-font-size);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        column-gap: 0.25rem;
-    }
+	.contact__button {
+		color: var(--text-color);
+		font-size: var(--small-font-size);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		column-gap: 0.25rem;
+	}
 
-    .contact__button-icon {
-        font-size: 1rem;
-        transition: 0.3s;
-    }
+	.contact__button-icon {
+		font-size: 1rem;
+		transition: 0.3s;
+	}
 
-    .contact__button:hover .contact__button-icon {
-        transform: translate(0.25rem);
-    }
+	.contact__button:hover .contact__button-icon {
+		transform: translate(0.25rem);
+	}
 
-    .contact__form {
-        width: 360px;
-    }
+	.contact__form {
+		width: 360px;
+	}
 
-    .contact__form-div {
-        position: relative;
-        margin-bottom: var(--mb-2);
-        height: 4rem;
-    }
+	.contact__form-div {
+		position: relative;
+		margin-bottom: var(--mb-2);
+		height: 4rem;
+	}
 
-    .contact__form-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 2px solid rgba(0, 0, 0, 0.3);
-        background: none;
-        color: var(--text-color);
-        outline: none;
-        border-radius: 0.75rem;
-        padding: 1.5rem;
-        z-index: 1;
-    }
+	.contact__form-input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 2px solid rgba(0, 0, 0, 0.3);
+		background: none;
+		color: var(--text-color);
+		outline: none;
+		border-radius: 0.75rem;
+		padding: 1.5rem;
+		z-index: 1;
+	}
 
-    .contact__form-tag {
-        position: absolute;
-        top: -0.75rem;
-        left: 1.25rem;
-        font-size: var(--smaller-font-size);
-        padding: 0.25rem;
-        background-color: var(--body-color);
-        z-index: 10;
-    }
+	.contact__form-tag {
+		position: absolute;
+		top: -0.75rem;
+		left: 1.25rem;
+		font-size: var(--smaller-font-size);
+		padding: 0.25rem;
+		background-color: var(--body-color);
+		z-index: 10;
+	}
 
-    .contact__form-area {
-        height: 11rem;
-    }
+	.contact__form-area {
+		height: 11rem;
+	}
 
-    .contact__form-area textarea {
-        resize: none;
-    }
+	.contact__form-area textarea {
+		resize: none;
+	}
 
-    /*=============== BREAKPOINTS ===============*/
-    /* For large devices */
-    @media screen and (max-width: 992px) {
-        .contact__container {
-            column-gap: 3rem;
-        }
-    }
+	/*=============== BREAKPOINTS ===============*/
+	/* For large devices */
+	@media screen and (max-width: 992px) {
+		.contact__container {
+			column-gap: 3rem;
+		}
+	}
 
-    /* For medium devices */
-    @media screen and (max-width: 768px) {
-        .contact__container {
-            grid-template-columns: 1fr;
-            row-gap: 3rem;
-        }
+	/* For medium devices */
+	@media screen and (max-width: 768px) {
+		.contact__container {
+			grid-template-columns: 1fr;
+			row-gap: 3rem;
+		}
 
-        .contact__info {
-            justify-content: center;
-        }
+		.contact__info {
+			justify-content: center;
+		}
 
-        .contact__form {
-            margin: 0 auto;
-        }
-    }
+		.contact__form {
+			margin: 0 auto;
+		}
+	}
 
-    @media screen and (max-width: 576px) {
-        .contact__info {
-            grid-template-columns: 1fr;
-        }
+	@media screen and (max-width: 576px) {
+		.contact__info {
+			grid-template-columns: 1fr;
+		}
 
-        .contact__form {
-            width: 100%;
-        }
-    }
+		.contact__form {
+			width: 100%;
+		}
+	}
 
-    /* For small devices */
-    @media screen and (max-width: 350px) {
-    }
+	/* For small devices */
+	@media screen and (max-width: 350px) {
+	}
 </style>
