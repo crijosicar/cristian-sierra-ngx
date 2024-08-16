@@ -1,6 +1,6 @@
 <div class="home__social">
 	<a
-		href="https://www.instagram.com/"
+		href="https://www.instagram.com/crijosicar"
 		class="home__social-icon"
 		target="_blank"
 	>
@@ -8,15 +8,15 @@
 	</a>
 
 	<a
-		href="https://dribbble.com/"
+		href="https://twitter.com/crijosicar"
 		class="home__social-icon"
 		target="_blank"
 	>
-		<i class="uil uil-dribbble"></i>
+		<i class="uil uil-twitter"></i>
 	</a>
 
 	<a
-		href="https://github.com/"
+		href="https://github.com/crijosicar"
 		class="home__social-icon"
 		target="_blank"
 	>

@@ -10,7 +10,7 @@
 <div class="work__card">
 	<img src={item.image} alt="" class="work__img" />
 	<h3 class="work__title">{item.title}</h3>
-	<a href="/" class="work__button" on:click={() => dispatch('demoClick')}>
+	<a href="/static" class="work__button" on:click={() => dispatch('demoClick')}>
 		Demo
 		<i class="bx bx-right-arrow-alt work__button-icon"></i>
 	</a>

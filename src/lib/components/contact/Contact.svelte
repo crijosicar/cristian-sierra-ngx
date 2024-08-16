@@ -3,14 +3,14 @@
 
 	const sendEmail = (e: Event) => {
 		emailjs
-			.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, {
+			.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e?.target, {
 				publicKey: 'YOUR_PUBLIC_KEY'
 			})
 			.then(
 				() => {
 					console.log('SUCCESS!');
 				},
-				(error: Error) => {
+				(error: unknown) => {
 					console.log('FAILED...', error.text);
 				}
 			);

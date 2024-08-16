@@ -27,7 +27,7 @@
 
 <header class="header">
 	<nav class="nav container">
-		<a href="/" class="nav__logo">Smith</a>
+		<a href="/" class="nav__logo">Sierra</a>
 		<div class={toggle ? "nav__menu show-menu" : "nav__menu"}>
 			<ul class="nav__list grid">
 				<li class="nav__item">
