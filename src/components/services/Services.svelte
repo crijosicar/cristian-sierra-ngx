@@ -20,18 +20,9 @@
 				<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
-			<div
-				class={
-              activeTab === 1
-                ? "services__modal active-modal"
-                : "services__modal"
-            }
-			>
+			<div class={activeTab === 1 ? "services__modal active-modal" : "services__modal" }>
 				<div class="services__modal-content">
-					<i
-						on:click={() => (activeTab = 0)}
-						class="uil uil-times services__modal-close"
-					></i>
+					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
 
 					<h3 class="services__modal-title">Product Designer</h3>
 					<p class="services__modal-description">
@@ -90,18 +81,9 @@
 					<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
-			<div
-				class={
-              activeTab === 2
-                ? "services__modal active-modal"
-                : "services__modal"
-            }
-			>
+			<div class={ activeTab === 2 ? "services__modal active-modal" : "services__modal"}>
 				<div class="services__modal-content">
-					<i
-						on:click={() => (activeTab = 0)}
-						class="uil uil-times services__modal-close"
-					></i>
+					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
 
 					<h3 class="services__modal-title">Ui/Ux Designer</h3>
 					<p class="services__modal-description">
@@ -160,18 +142,9 @@
 				<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
-			<div
-				class={
-              activeTab === 3
-                ? "services__modal active-modal"
-                : "services__modal"
-            }
-			>
+			<div class={ activeTab === 3 ? "services__modal active-modal" : "services__modal"}>
 				<div class="services__modal-content">
-					<i
-						on:click={() => (activeTab = 0)}
-						class="uil uil-times services__modal-close"
-					></i>
+					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
 
 					<h3 class="services__modal-title">Visual Designer</h3>
 					<p class="services__modal-description">

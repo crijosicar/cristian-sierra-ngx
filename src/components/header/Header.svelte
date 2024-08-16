@@ -33,45 +33,44 @@
 				<li class="nav__item">
 					<a href="#home" on:click={() => (activeNav = "#home")}
 						 class={activeNav === "#home" ? "nav__link active-link" : "nav__link"}>
-						<i class="uil uil-estate nav__icon" aria-label="uil uil-message nav__icon"></i> Home
+						<i class="uil uil-estate nav__icon"></i> Home
 					</a>
 				</li>
 				<li class="nav__item">
 					<a href="#about" on:click={() => (activeNav = "#about")}
 						 class={activeNav === "#about" ? "nav__link active-link" : "nav__link"}>
-						<i class="uil uil-user nav__icon" aria-label="uil uil-message nav__icon"></i> About
+						<i class="uil uil-user nav__icon"></i> About
 					</a>
 				</li>
 				<li class="nav__item">
 					<a href="#skills" on:click={() => (activeNav = "#skills")}
 						 class={activeNav === "#skills" ? "nav__link active-link" : "nav__link"}>
-						<i class="uil uil-file-alt nav__icon" aria-label="uil uil-message nav__icon"></i> Skills
+						<i class="uil uil-file-alt nav__icon"></i> Skills
 					</a>
 				</li>
 				<li class="nav__item">
 					<a href="#services" on:click={() => (activeNav = "#services")}
 						 class={activeNav === "#services" ? "nav__link active-link" : "nav__link"}>
-						<i class="uil uil-briefcase-alt nav__icon" aria-label="uil uil-message nav__icon"></i> Services
+						<i class="uil uil-briefcase-alt nav__icon"></i> Services
 					</a>
 				</li>
 				<li class="nav__item">
 					<a href="#portfolio" on:click={() => (activeNav = "#portfolio")}
 						 class={activeNav === "#portfolio" ? "nav__link active-link" : "nav__link"}>
-						<i class="uil uil-scenery nav__icon" aria-label="uil uil-message nav__icon"></i> Portfolio
+						<i class="uil uil-scenery nav__icon"></i> Portfolio
 					</a>
 				</li>
 				<li class="nav__item">
 					<a href="#contact" on:click={() => (activeNav = "#contact")}
 						 class={activeNav === "#contact" ? "nav__link active-link" : "nav__link"}>
-						<i class="uil uil-message nav__icon" aria-label="uil uil-message nav__icon"></i> Contact
+						<i class="uil uil-message nav__icon"></i> Contact
 					</a>
 				</li>
 			</ul>
-			<i class="uil uil-times nav__close" on:click={showMenu} on:keyup={showMenu}
-				 aria-label="uil uil-times nav__close"></i>
+			<i class="uil uil-times nav__close" on:click={showMenu} on:keyup={showMenu}></i>
 		</div>
 		<div class="nav__toggle" on:click={showMenu} on:keyup={showMenu}>
-			<i class="uil uil-apps" aria-label="uil uil-apps"></i>
+			<i class="uil uil-apps"></i>
 		</div>
 	</nav>
 </header>

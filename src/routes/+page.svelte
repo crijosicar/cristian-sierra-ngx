@@ -6,6 +6,10 @@
 	import About from '../components/about/About.svelte';
 	import Skills from '../components/skills/Skills.svelte';
 	import Services from '../components/services/Services.svelte';
+	import Qualification from '../components/qualification/Qualification.svelte';
+	import Work from '../components/work/Work.svelte';
+	import Testimonials from '../components/testimonials/Testimonials.svelte';
+	import Contact from '../components/contact/Contact.svelte';
 </script>
 
 <svelte:head>
@@ -19,6 +23,10 @@
 	<About />
 	<Skills />
 	<Services />
+	<Qualification />
+	<Work />
+	<Testimonials />
+	<Contact />
 </main>
 
 <Footer />
