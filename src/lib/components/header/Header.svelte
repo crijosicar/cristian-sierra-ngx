@@ -67,9 +67,9 @@
 					</a>
 				</li>
 			</ul>
-			<i class="uil uil-times nav__close" on:click={showMenu} on:keyup={showMenu}></i>
+			<i class="uil uil-times nav__close" on:click={showMenu}></i>
 		</div>
-		<div class="nav__toggle" on:click={showMenu} on:keyup={showMenu}>
+		<div class="nav__toggle" on:click={showMenu}>
 			<i class="uil uil-apps"></i>
 		</div>
 	</nav>
