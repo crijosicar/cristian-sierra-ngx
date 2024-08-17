@@ -24,7 +24,7 @@
 				<div class="services__modal-content">
 					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
 
-					<h3 class="services__modal-title">Product Designer</h3>
+					<h3 class="services__modal-title">Software Engineering</h3>
 					<p class="services__modal-description">
 						Service with more than 3 years of experience.Providing quality work to clients and
 						companies.
@@ -77,7 +77,7 @@
 				<div class="services__modal-content">
 					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
 
-					<h3 class="services__modal-title">Ui/Ux Designer</h3>
+					<h3 class="services__modal-title">Web Development</h3>
 					<p class="services__modal-description">
 						Service with more than 3 years of experience.Providing quality work to clients and
 						companies.
@@ -130,7 +130,7 @@
 				<div class="services__modal-content">
 					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
 
-					<h3 class="services__modal-title">Visual Designer</h3>
+					<h3 class="services__modal-title">Wordpress Development</h3>
 					<p class="services__modal-description">
 						Service with more than 3 years of experience.Providing quality work to clients and
 						companies.

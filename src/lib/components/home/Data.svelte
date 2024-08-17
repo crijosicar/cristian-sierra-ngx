@@ -53,7 +53,7 @@
 	</h1>
 	<h3 class="home__subtitle">Software Engineer</h3>
 	<p class="home__description">
-		I'm creative designer based in New York, and I'm very passionate and dedicated to my work.
+		I'm software engineer based in Kitchener, crafting solutions to help businesses to success.
 	</p>
 
 	<a href="#contact" class="button button--flex">
