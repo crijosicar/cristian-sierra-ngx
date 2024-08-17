@@ -30,9 +30,9 @@
 					<i class="bx bx-mail-send contact__card-icon"></i>
 
 					<h3 class="contact__card-title">Email</h3>
-					<span class="contact__card-data">user@gmail.com</span>
+					<span class="contact__card-data">csierrac09@gmail.com</span>
 
-					<a href="mailto:examplemail@gmail.com.com" class="contact__button">
+					<a href="mailto:csierrac09@gmail.com" class="contact__button">
 						Write me{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
 					</a>
@@ -42,10 +42,10 @@
 					<i class="bx bxl-whatsapp contact__card-icon"></i>
 
 					<h3 class="contact__card-title">Whatsapp</h3>
-					<span class="contact__card-data">999-888-777</span>
+					<span class="contact__card-data">548-255-1056</span>
 
 					<a
-						href="https://api.whatsapp.com/send?phone=62214408789&text=Hello, more information!"
+						href="https://api.whatsapp.com/send?phone=+15482551056&text=Hello, more information!"
 						class="contact__button"
 					>
 						Write me{' '}
