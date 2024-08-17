@@ -13,35 +13,32 @@
 </div>
 
 <style>
-	.home__social {
-		display: grid;
-		grid-template-columns: max-content;
-		row-gap: 1rem;
-		position: fixed;
-		top: 45%;
-		left: 20px;
-	}
+    .home__social {
+        display: grid;
+        grid-template-columns: max-content;
+        row-gap: 1rem;
+    }
 
-	.home__social-icon {
-		font-size: 1.25rem;
-		color: var(--title-color);
-	}
+    .home__social-icon {
+        font-size: 1.25rem;
+        color: var(--title-color);
+    }
 
-	.home__social-icon:hover {
-		color: var(--title-color-dark);
-	}
+    .home__social-icon:hover {
+        color: var(--title-color-dark);
+    }
 
-	/* For medium devices */
-	@media screen and (max-width: 768px) {
-		.home__social {
-			display: none;
-		}
-	}
+    /* For medium devices */
+    @media screen and (max-width: 768px) {
+        .home__social {
+            display: none;
+        }
+    }
 
-	/* For small devices */
-	@media screen and (max-width: 350px) {
-		.home__social {
-			display: none;
-		}
-	}
+    /* For small devices */
+    @media screen and (max-width: 350px) {
+        .home__social {
+            display: none;
+        }
+    }
 </style>

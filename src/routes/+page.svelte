@@ -1,5 +1,4 @@
 <script>
-	import Social from '$lib/components/home/Social.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import ScrollUp from '$lib/components/scrollUp/ScrollUp.svelte';
@@ -10,6 +9,7 @@
 	import Work from '$lib/components/work/Work.svelte';
 	import Testimonials from '$lib/components/testimonials/Testimonials.svelte';
 	import Contact from '$lib/components/contact/Contact.svelte';
+	import Home from '$lib/components/home/Home.svelte';
 </script>
 
 <svelte:head>
@@ -19,7 +19,7 @@
 <Header />
 
 <main class="main">
-	<Social />
+	<Home />
 	<About />
 	<Skills />
 	<Services />

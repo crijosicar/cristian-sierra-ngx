@@ -37,10 +37,10 @@
 			>
 				<div class="qualification__data">
 					<div>
-						<h3 class="qualification__title">Golang</h3>
-						<span class="qualification__subtitle"> Spain - Institute </span>
+						<h3 class="qualification__title">Golang Development</h3>
+						<span class="qualification__subtitle"> Canada - ComIT </span>
 						<div class="qualification__calender">
-							<i class="uil uil-calendar-alt"></i> 2021 - Present
+							<i class="uil uil-calendar-alt"></i> 2024 - 2024
 						</div>
 					</div>
 
@@ -60,9 +60,9 @@
 
 					<div>
 						<h3 class="qualification__title">Web Development</h3>
-						<span class="qualification__subtitle"> Spain - Institute </span>
+						<span class="qualification__subtitle"> Canada - Conestoga College </span>
 						<div class="qualification__calender">
-							<i class="uil uil-calendar-alt"></i> 2020 - 2021
+							<i class="uil uil-calendar-alt"></i> 2022 - 2023
 						</div>
 					</div>
 				</div>
@@ -70,9 +70,9 @@
 				<div class="qualification__data">
 					<div>
 						<h3 class="qualification__title">Software Engineering</h3>
-						<span class="qualification__subtitle"> Spain - Institute </span>
+						<span class="qualification__subtitle"> Colombia - Universidad Distrital Francisco Jose de Caldas </span>
 						<div class="qualification__calender">
-							<i class="uil uil-calendar-alt"></i> 2018 - 2020
+							<i class="uil uil-calendar-alt"></i> 2017 - 2018
 						</div>
 					</div>
 
@@ -91,9 +91,9 @@
 
 					<div>
 						<h3 class="qualification__title">Systems Engineer</h3>
-						<span class="qualification__subtitle"> Spain - Institute </span>
+						<span class="qualification__subtitle"> Colombia - Corporacion Universitaria Rafael Nuñez </span>
 						<div class="qualification__calender">
-							<i class="uil uil-calendar-alt"></i> 2017 - 2018
+							<i class="uil uil-calendar-alt"></i> 2011 - 2015
 						</div>
 					</div>
 				</div>
@@ -106,10 +106,10 @@
 			>
 				<div class="qualification__data">
 					<div>
-						<h3 class="qualification__title">Product Designer</h3>
-						<span class="qualification__subtitle"> Microsoft - Spain </span>
+						<h3 class="qualification__title">Software Engineer</h3>
+						<span class="qualification__subtitle"> MCAP - Canada </span>
 						<div class="qualification__calender">
-							<i class="uil uil-calendar-alt"></i> 2021 - Present
+							<i class="uil uil-calendar-alt"></i> 2024 - Present
 						</div>
 					</div>
 
@@ -128,23 +128,54 @@
 					</div>
 
 					<div>
-						<h3 class="qualification__title">UX Designer</h3>
-						<span class="qualification__subtitle"> Apple Inc - Spain </span>
+						<h3 class="qualification__title">Software Engineer</h3>
+						<span class="qualification__subtitle"> Dualboot Partners - USA </span>
 						<div class="qualification__calender">
-							<i class="uil uil-calendar-alt"></i> 2020 - 2021
+							<i class="uil uil-calendar-alt"></i> 2022 - 2024
 						</div>
 					</div>
 				</div>
 
 				<div class="qualification__data">
 					<div>
-						<h3 class="qualification__title">Web Designer</h3>
-						<span class="qualification__subtitle">Figma - Spain</span>
+						<h3 class="qualification__title">Ssr Node.js Developer</h3>
+						<span class="qualification__subtitle">Globant - Colombia</span>
 						<div class="qualification__calender">
-							<i class="uil uil-calendar-alt"></i> 2018 - 2020
+							<i class="uil uil-calendar-alt"></i> 2019 - 2021
 						</div>
 					</div>
 
+					<div>
+						<span class="qualification__rounder"></span>
+						<span class="qualification__line"></span>
+					</div>
+				</div>
+
+				<div class="qualification__data">
+					<div></div>
+
+					<div>
+						<span class="qualification__rounder"></span>
+						<span class="qualification__line"></span>
+					</div>
+
+					<div>
+						<h3 class="qualification__title">Software Engineer</h3>
+						<span class="qualification__subtitle"> Banco Davivienda - Colombia </span>
+						<div class="qualification__calender">
+							<i class="uil uil-calendar-alt"></i> 2019 - 2019
+						</div>
+					</div>
+				</div>
+
+				<div class="qualification__data">
+					<div>
+						<h3 class="qualification__title">Software Developer</h3>
+						<span class="qualification__subtitle">MDS - Colombia</span>
+						<div class="qualification__calender">
+							<i class="uil uil-calendar-alt"></i> 2016 - 2018
+						</div>
+					</div>
 					<div>
 						<span class="qualification__rounder"></span>
 					</div>
