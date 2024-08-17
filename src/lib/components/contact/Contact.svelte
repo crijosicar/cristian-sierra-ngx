@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } from '$env/static/private';
 	import emailjs from '@emailjs/browser';
 
-	const sendEmail = (e: Event) => {
+	const sendEmail = (e: SubmitEvent) => {
+		console.log(e);
 		emailjs
-			.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e?.target, {
-				publicKey: 'YOUR_PUBLIC_KEY'
+			.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, e?.target, {
+				publicKey: EMAILJS_PUBLIC_KEY
 			})
 			.then(
 				() => {
@@ -60,8 +62,9 @@
 
 			<form on:submit|preventDefault={sendEmail} class="contact__form">
 				<div class="contact__form-div">
-					<label class="contact__form-tag">Name</label>
+					<label class="contact__form-tag" for="name">Name</label>
 					<input
+						id="name"
 						type="text"
 						name="name"
 						class="contact__form-input"
@@ -70,8 +73,9 @@
 				</div>
 
 				<div class="contact__form-div">
-					<label class="contact__form-tag">Mail</label>
+					<label class="contact__form-tag" for="email">Mail</label>
 					<input
+						id="email"
 						type="email"
 						name="email"
 						class="contact__form-input"
@@ -80,8 +84,9 @@
 				</div>
 
 				<div class="contact__form-div contact__form-area">
-					<label class="contact__form-tag">Project</label>
+					<label class="contact__form-tag" for="project">Project</label>
 					<textarea
+						id="project"
 						name="project"
 						cols="30"
 						rows="10"
