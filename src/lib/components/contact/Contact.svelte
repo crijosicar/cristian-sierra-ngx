@@ -1,22 +1,25 @@
 <script lang="ts">
-	import { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } from '$env/static/private';
-	import emailjs from '@emailjs/browser';
+	import { superForm } from 'sveltekit-superforms';
+	import { toast } from '@zerodevx/svelte-toast';
 
-	const sendEmail = (e: SubmitEvent) => {
-		console.log(e);
-		emailjs
-			.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, e?.target, {
-				publicKey: EMAILJS_PUBLIC_KEY
-			})
-			.then(
-				() => {
-					console.log('SUCCESS!');
-				},
-				(error: unknown) => {
-					console.log('FAILED...', error.text);
-				}
-			);
-	};
+	export let data;
+	
+	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
+		validationMethod: 'onblur',
+		onResult({ result }) {
+			if (result.type === 'success' && result.status === 200) {
+				toast.push('Thanks for getting in touch, I\'ll be contacting you soon!', {
+					reversed: true,
+					intro: { y: 192 },
+					theme: {
+						'--toastColor': 'mintcream',
+						'--toastBackground': 'rgba(72,187,120,0.9)',
+						'--toastBarBackground': '#2F855A'
+					}
+				});
+			}
+		}
+	});
 </script>
 
 <section class="contact section" id="contact">
@@ -59,8 +62,7 @@
 
 		<div class="contact__content">
 			<h3 class="contact__title">Write me your project</h3>
-
-			<form on:submit|preventDefault={sendEmail} class="contact__form">
+			<form method="POST" action="?/create" class="contact__form" use:enhance>
 				<div class="contact__form-div">
 					<label class="contact__form-tag" for="name">Name</label>
 					<input
@@ -69,18 +71,23 @@
 						name="name"
 						class="contact__form-input"
 						placeholder="Insert your name"
+						bind:value={$form.name}
+						{...$constraints.name}
 					/>
+					{#if $errors.name}<span class="invalid">{$errors.name}</span>{/if}
 				</div>
 
 				<div class="contact__form-div">
 					<label class="contact__form-tag" for="email">Mail</label>
 					<input
 						id="email"
-						type="email"
+						type="text"
 						name="email"
 						class="contact__form-input"
 						placeholder="Insert your email"
+						bind:value={$form.email}
 					/>
+					{#if $errors.email}<span class="invalid">{$errors.email}</span>{/if}
 				</div>
 
 				<div class="contact__form-div contact__form-area">
@@ -92,10 +99,12 @@
 						rows="10"
 						class="contact__form-input"
 						placeholder="Write your project"
+						bind:value={$form.project}
 					></textarea>
+					{#if $errors.project}<span class="invalid">{$errors.project}</span>{/if}
 				</div>
 
-				<button class="button button--flex">
+				<button class="button button--flex" type="submit">
 					Send Message
 					<svg
 						class="button__icon"
@@ -121,6 +130,13 @@
 </section>
 
 <style>
+    :root {
+        --toastContainerTop: auto;
+        --toastContainerRight: auto;
+        --toastContainerBottom: 8rem;
+        --toastContainerLeft: calc(50vw - 8rem);
+    }
+
     .contact__container {
         grid-template-columns: repeat(2, max-content);
         justify-content: center;
@@ -193,7 +209,7 @@
 
     .contact__form-div {
         position: relative;
-        margin-bottom: var(--mb-2);
+        margin-bottom: var(--mb-3);
         height: 4rem;
     }
 
@@ -230,6 +246,12 @@
         resize: none;
     }
 
+    .invalid {
+        color: red;
+        position: absolute;
+        top: 100%;
+    }
+
     /*=============== BREAKPOINTS ===============*/
     /* For large devices */
     @media screen and (max-width: 992px) {
@@ -262,9 +284,5 @@
         .contact__form {
             width: 100%;
         }
-    }
-
-    /* For small devices */
-    @media screen and (max-width: 350px) {
     }
 </style>
