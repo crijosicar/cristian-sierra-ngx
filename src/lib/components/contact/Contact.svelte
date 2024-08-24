@@ -2,8 +2,8 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { toast } from '@zerodevx/svelte-toast';
 
-	export let data;
-	
+	export let data = {};
+
 	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
 		validationMethod: 'onblur',
 		onResult({ result }) {
