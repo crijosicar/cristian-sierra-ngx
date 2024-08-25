@@ -3,6 +3,7 @@ export type Project = {
 	image: string;
 	title: string;
 	category: string;
+	description: string;
 };
 
 export type Testimonial = Omit<Project, 'category'> & { description: string };

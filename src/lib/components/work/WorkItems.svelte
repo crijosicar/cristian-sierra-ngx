@@ -10,8 +10,8 @@
 <div class="work__card">
 	<img src={project.image} alt="" class="work__img" />
 	<h3 class="work__title">{project.title}</h3>
-	<a href="/#" class="work__button" on:click={() => dispatch('message', project)}>
-		Demo
+	<a href="javascript:void(0)" class="work__button" on:click={() => dispatch('message', project)}>
+		View More
 		<i class="bx bx-right-arrow-alt work__button-icon"></i>
 	</a>
 </div>
