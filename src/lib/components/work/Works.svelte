@@ -4,6 +4,8 @@
 	import { projectsData, ProjectsNav } from '$lib/worksData';
 	import type { Project } from '$lib/constants';
 
+	const navItems = Object.values(ProjectsNav);
+
 	let item = { name: ProjectsNav.ALL };
 	let projects: Project[] = [];
 	let active = 0;
@@ -12,24 +14,22 @@
 		updateProjects();
 	});
 
-	function updateProjects() {
-		if (item.name === ProjectsNav.ALL) {
-			projects = projectsData;
-		} else {
-			projects = projectsData.filter((project) => project.category.toLowerCase() === item.name);
-		}
-	}
+	const updateProjects = () => {
+		projects = item.name === ProjectsNav.ALL
+			? projectsData
+			: projectsData.filter(({ category }) => category.toLowerCase() === item.name);
+	};
 
-	function handleClick(e: unknown, index: number) {
+	const handleClick = (e: unknown, index: number) => {
 		item = { name: e?.target?.innerHTML.trim().toLowerCase() };
 		active = index;
 		updateProjects();
-	}
+	};
 </script>
 
 <div>
 	<div class="work__filters">
-		{#each Object.values(ProjectsNav) as navItem, index}
+		{#each navItems as navItem, index}
 			<span
 				on:click={(e) => handleClick(e, index)}
 				class:active-work={active === index}

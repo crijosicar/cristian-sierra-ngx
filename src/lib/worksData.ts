@@ -3,40 +3,40 @@ import type { Project } from '$lib/constants';
 // projects
 export enum ProjectsNav {
 	ALL = 'all',
-	WEB = 'web',
-	APP = 'app',
-	DESIGN = 'design'
+	SOFTWARE_ENGINEERING = 'Software Engineering',
+	WEB_DEVELOPMENT = 'Web Development',
+	WORDPRESS = 'Wordpress'
 }
 
 export const projectsData: Project[] = [
 	{
 		id: 1,
 		image: '/assets/work1.jpg',
-		title: 'Web design',
-		category: ProjectsNav.WEB
+		title: 'Application Development',
+		category: ProjectsNav.SOFTWARE_ENGINEERING
 	},
 	{
 		id: 2,
 		image: '/assets/work2.jpg',
-		title: 'App movil',
-		category: ProjectsNav.APP
+		title: 'Web Development',
+		category: ProjectsNav.WEB_DEVELOPMENT
 	},
 	{
 		id: 3,
 		image: '/assets/work3.jpg',
-		title: 'Brand design',
-		category: ProjectsNav.DESIGN
+		title: 'Wordpress Development',
+		category: ProjectsNav.WORDPRESS
 	},
 	{
 		id: 4,
 		image: '/assets/work4.jpg',
-		title: 'App movil',
-		category: ProjectsNav.APP
+		title: 'Application Development',
+		category: ProjectsNav.SOFTWARE_ENGINEERING
 	},
 	{
 		id: 5,
 		image: '/assets/work5.jpg',
-		title: 'Web design',
-		category: ProjectsNav.WEB
+		title: 'Web Development',
+		category: ProjectsNav.WEB_DEVELOPMENT
 	}
 ];
