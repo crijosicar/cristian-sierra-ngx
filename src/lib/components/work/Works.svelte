@@ -25,6 +25,10 @@
 		active = index;
 		updateProjects();
 	};
+
+	const handleMessage = (e: CustomEvent) => {
+		console.log(e.detail);
+	};
 </script>
 
 <div>
@@ -42,7 +46,7 @@
 
 	<div class="work__container container grid">
 		{#each projects as project (project.id)}
-			<WorkItems {project} />
+			<WorkItems {project} on:message={handleMessage} />
 		{/each}
 	</div>
 </div>

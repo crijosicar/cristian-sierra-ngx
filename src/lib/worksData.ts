@@ -11,32 +11,20 @@ export enum ProjectsNav {
 export const projectsData: Project[] = [
 	{
 		id: 1,
-		image: '/assets/work1.jpg',
-		title: 'Application Development',
+		image: '/assets/GranRetoma_LatOneGroup_1.png',
+		title: 'La Gran Retoma Intel - LatOne Group',
 		category: ProjectsNav.SOFTWARE_ENGINEERING
 	},
 	{
 		id: 2,
-		image: '/assets/work2.jpg',
-		title: 'Web Development',
-		category: ProjectsNav.WEB_DEVELOPMENT
-	},
-	{
-		id: 3,
-		image: '/assets/work3.jpg',
-		title: 'Wordpress Development',
+		image: '/assets/Plastilene_Solum_Digital_1.png',
+		title: 'Grupo Plastilene - Solum Digital',
 		category: ProjectsNav.WORDPRESS
 	},
 	{
-		id: 4,
-		image: '/assets/work4.jpg',
-		title: 'Application Development',
-		category: ProjectsNav.SOFTWARE_ENGINEERING
-	},
-	{
-		id: 5,
-		image: '/assets/work5.jpg',
-		title: 'Web Development',
+		id: 3,
+		image: '/assets/Site_Migration_LabOneGroup_1.png',
+		title: 'LatOne Group - Site Migration',
 		category: ProjectsNav.WEB_DEVELOPMENT
 	}
 ];

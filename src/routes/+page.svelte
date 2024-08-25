@@ -14,6 +14,9 @@
 
 <svelte:head>
 	<title>Cristian Sierra | Software Engineer</title>
+	<meta name="description" content="Cristian Sierra | Software Engineer" />
+	<meta name="keywords" content="Cristian Sierra | Software Engineer" />
+	<meta name="author" content="Cristian Sierra" />
 </svelte:head>
 
 <Header />
