@@ -1,29 +1,43 @@
 {
   "name": "cristian-sierra",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "classnames": "2.5.1",
-    "eslint": "8.57.0",
-    "next": "14.2.5",
-    "react": "18",
-    "react-dom": "18"
+    "dev": "DEBUG='vite-plugin-svelte:stats' vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "4.3.0",
-    "@types/node": "20",
-    "@types/react": "18",
-    "@types/react-dom": "18",
-    "eslint": "8",
-    "eslint-config-next": "14.2.5",
-    "eslint-config-prettier": "9.1.0",
-    "prettier": "3.3.2",
-    "typescript": "5"
+    "@sveltejs/adapter-auto": "^3.0.0",
+    "@sveltejs/adapter-node": "^5.2.2",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@types/eslint": "^9.6.0",
+    "@types/node": "^22.5.0",
+    "@zerodevx/svelte-toast": "^0.9.5",
+    "eslint": "^9.7.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-svelte": "^2.36.0",
+    "globals": "^15.0.0",
+    "prettier": "^3.3.2",
+    "prettier-plugin-svelte": "^3.2.5",
+    "svelte": "^4.2.7",
+    "svelte-check": "^3.6.0",
+    "sveltekit-superforms": "^2.17.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^5.0.3"
+  },
+  "type": "module",
+  "dependencies": {
+    "bullmq": "^5.12.9",
+    "dotenv": "^16.4.5",
+    "emailjs": "^4.0.3",
+    "ioredis": "^5.4.1",
+    "swiper": "^8.2.4"
   }
 }
