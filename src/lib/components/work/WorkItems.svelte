@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import type { Project } from '$lib/constants';
+	import type { Project } from '$lib/shared/constants';
 
 	export let project: Project;
 

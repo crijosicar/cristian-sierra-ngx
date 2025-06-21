@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import WorkItems from './WorkItems.svelte';
-	import { projectsData, ProjectsNav } from '$lib/worksData';
-	import type { Project } from '$lib/constants';
+	import { projectsData, ProjectsNav } from '$lib/data/worksData';
+	import type { Project } from '$lib/shared/constants';
 
 	const navItems = Object.values(ProjectsNav);
 

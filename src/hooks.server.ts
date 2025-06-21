@@ -1,6 +1,6 @@
-import { mailerWorker } from '$lib/contactWorker';
+import { contactWorker } from '$lib/workers/contactWorker';
 
 process.on('exit', () => {
 	console.log('Exiting process...');
-	mailerWorker.close();
+	contactWorker.close();
 });

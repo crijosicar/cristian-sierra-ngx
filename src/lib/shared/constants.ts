@@ -8,6 +8,4 @@ export type Project = {
 
 export type Testimonial = Omit<Project, 'category'> & { description: string };
 
-export const CONTACT_EMAIL_QUEUE_NAME = 'CONTACT_EMAIL_QUEUE_NAME';
-
-export const CONTACT_EMAIL_QUEUE_SIZE = 99;
+export const CONTACT_EMAIL_QUEUE_NAME = 'GET_IN_TOUCH_QUEUE';

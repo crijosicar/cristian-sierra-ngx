@@ -52,12 +52,10 @@
 
 				<div class="qualification__data">
 					<div></div>
-
 					<div>
 						<span class="qualification__rounder"></span>
 						<span class="qualification__line"></span>
 					</div>
-
 					<div>
 						<h3 class="qualification__title">Web Development</h3>
 						<span class="qualification__subtitle"> Canada - Conestoga College </span>
@@ -70,12 +68,13 @@
 				<div class="qualification__data">
 					<div>
 						<h3 class="qualification__title">Software Engineering</h3>
-						<span class="qualification__subtitle"> Colombia - Universidad Distrital Francisco Jose de Caldas </span>
+						<span class="qualification__subtitle">
+							Colombia - Universidad Distrital Francisco Jose de Caldas
+						</span>
 						<div class="qualification__calender">
 							<i class="uil uil-calendar-alt"></i> 2017 - 2018
 						</div>
 					</div>
-
 					<div>
 						<span class="qualification__rounder"></span>
 						<span class="qualification__line"></span>
@@ -91,7 +90,9 @@
 
 					<div>
 						<h3 class="qualification__title">Systems Engineer</h3>
-						<span class="qualification__subtitle"> Colombia - Corporacion Universitaria Rafael Nuñez </span>
+						<span class="qualification__subtitle">
+							Colombia - Corporacion Universitaria Rafael Nuñez
+						</span>
 						<div class="qualification__calender">
 							<i class="uil uil-calendar-alt"></i> 2011 - 2015
 						</div>
@@ -186,119 +187,119 @@
 </section>
 
 <style>
-    .qualification__container {
-        max-width: 768px;
-    }
+	.qualification__container {
+		max-width: 768px;
+	}
 
-    .qualification__tabs {
-        display: flex;
-        justify-content: center;
-        margin-bottom: var(--mb-2);
-    }
+	.qualification__tabs {
+		display: flex;
+		justify-content: center;
+		margin-bottom: var(--mb-2);
+	}
 
-    .qualification__button {
-        font-size: var(--h3-font-size);
-        font-weight: var(--font-medium);
-        color: var(--title-color);
-        margin: 0 var(--mb-1);
-        cursor: pointer;
-    }
+	.qualification__button {
+		font-size: var(--h3-font-size);
+		font-weight: var(--font-medium);
+		color: var(--title-color);
+		margin: 0 var(--mb-1);
+		cursor: pointer;
+	}
 
-    .qualification__button:hover {
-        color: var(--title-color-dark);
-    }
+	.qualification__button:hover {
+		color: var(--title-color-dark);
+	}
 
-    .qualification__icon {
-        font-size: 1.8rem;
-        margin-right: var(--mb-0-25);
-    }
+	.qualification__icon {
+		font-size: 1.8rem;
+		margin-right: var(--mb-0-25);
+	}
 
-    .qualification__active {
-        color: var(--title-color-dark);
-    }
+	.qualification__active {
+		color: var(--title-color-dark);
+	}
 
-    .qualification__sections {
-        display: grid;
-        grid-template-columns: 0.5fr;
-        justify-content: center;
-    }
+	.qualification__sections {
+		display: grid;
+		grid-template-columns: 0.5fr;
+		justify-content: center;
+	}
 
-    .qualification__content {
-        display: none;
-    }
+	.qualification__content {
+		display: none;
+	}
 
-    .qualification__content-active {
-        display: block;
-    }
+	.qualification__content-active {
+		display: block;
+	}
 
-    .qualification__data {
-        display: grid;
-        grid-template-columns: 1fr max-content 1fr;
-        column-gap: 1.5rem;
-    }
+	.qualification__data {
+		display: grid;
+		grid-template-columns: 1fr max-content 1fr;
+		column-gap: 1.5rem;
+	}
 
-    .qualification__title {
-        font-size: var(--normal-font-size);
-        font-weight: var(--font-medium);
-    }
+	.qualification__title {
+		font-size: var(--normal-font-size);
+		font-weight: var(--font-medium);
+	}
 
-    .qualification__subtitle {
-        display: inline-block;
-        font-size: var(--small-font-size);
-        margin-bottom: var(--mb-1);
-    }
+	.qualification__subtitle {
+		display: inline-block;
+		font-size: var(--small-font-size);
+		margin-bottom: var(--mb-1);
+	}
 
-    .qualification__calender {
-        font-size: var(--small-font-size);
-    }
+	.qualification__calender {
+		font-size: var(--small-font-size);
+	}
 
-    .qualification__rounder {
-        display: inline-block;
-        width: 13px;
-        height: 13px;
-        background-color: var(--text-color);
-        border-radius: 50%;
-    }
+	.qualification__rounder {
+		display: inline-block;
+		width: 13px;
+		height: 13px;
+		background-color: var(--text-color);
+		border-radius: 50%;
+	}
 
-    .qualification__line {
-        display: block;
-        width: 1px;
-        height: 100%;
-        background-color: var(--text-color);
-        transform: translate(6px, -7px);
-    }
+	.qualification__line {
+		display: block;
+		width: 1px;
+		height: 100%;
+		background-color: var(--text-color);
+		transform: translate(6px, -7px);
+	}
 
-    /*=============== BREAKPOINTS ===============*/
-    /* For large devices */
-    @media screen and (max-width: 992px) {
-        .qualification__container {
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
+	/*=============== BREAKPOINTS ===============*/
+	/* For large devices */
+	@media screen and (max-width: 992px) {
+		.qualification__container {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
 
-    /* For medium devices */
-    @media screen and (max-width: 768px) {
-        .qualification__container {
-            margin-left: var(--mb-1-5);
-            margin-right: var(--mb-1-5);
-        }
-    }
+	/* For medium devices */
+	@media screen and (max-width: 768px) {
+		.qualification__container {
+			margin-left: var(--mb-1-5);
+			margin-right: var(--mb-1-5);
+		}
+	}
 
-    @media screen and (max-width: 576px) {
-        .qualification__sections {
-            grid-template-columns: initial;
-        }
+	@media screen and (max-width: 576px) {
+		.qualification__sections {
+			grid-template-columns: initial;
+		}
 
-        .qualification__button {
-            margin: 0 var(--mb-0-75);
-        }
-    }
+		.qualification__button {
+			margin: 0 var(--mb-0-75);
+		}
+	}
 
-    /* For small devices */
-    @media screen and (max-width: 350px) {
-        .qualification__data {
-            gap: 0.5rem;
-        }
-    }
+	/* For small devices */
+	@media screen and (max-width: 350px) {
+		.qualification__data {
+			gap: 0.5rem;
+		}
+	}
 </style>

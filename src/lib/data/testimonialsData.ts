@@ -1,4 +1,4 @@
-import type { Testimonial } from '$lib/constants';
+import type { Testimonial } from '$lib/shared/constants';
 
 export const testimonialsData: Testimonial[] = [
 	{

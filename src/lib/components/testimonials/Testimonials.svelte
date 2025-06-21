@@ -2,7 +2,7 @@
 	// Import Swiper Svelte components
 	import { Swiper, SwiperSlide } from 'swiper/svelte';
 	import { Pagination } from 'swiper';
-	import { testimonialsData } from '$lib/testimonialsData';
+	import { testimonialsData } from '$lib/data/testimonialsData';
 
 	// Import Swiper styles
 	import 'swiper/css';

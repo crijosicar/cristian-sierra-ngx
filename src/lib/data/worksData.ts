@@ -1,4 +1,4 @@
-import type { Project } from '$lib/constants';
+import type { Project } from '$lib/shared/constants';
 
 // projects
 export enum ProjectsNav {
