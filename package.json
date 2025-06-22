@@ -1,7 +1,7 @@
 {
   "name": "cristian-sierra",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "DEBUG='vite-plugin-svelte:stats' vite dev",
     "build": "svelte-kit sync && vite build",
