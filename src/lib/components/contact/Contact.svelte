@@ -50,7 +50,7 @@
 					<span class="contact__card-data">548-255-1056</span>
 
 					<a
-						href="https://api.whatsapp.com/send?phone=+15482551056&text=Hello, more information!"
+						href="https://api.whatsapp.com/send?phone=+15482551056&text=Hello, I want to know more about your services!"
 						class="contact__button"
 					>
 						Text me{' '}

@@ -7,6 +7,8 @@ import { CONTACT_EMAIL_QUEUE_NAME } from '$lib/shared/constants';
 import { EMAILJS_QUEUE_SIZE } from '$env/static/private';
 import type { Job } from 'bullmq';
 
+export const prerender = false;
+
 export const load = async () => {
 	const form = await superValidate(zodAdapter(createContactValidationSchema));
 
