@@ -50,6 +50,8 @@
 					<span class="contact__card-data">548-255-1056</span>
 
 					<a
+						target="_blank"
+						rel="noopener noreferrer"
 						href="https://api.whatsapp.com/send?phone=+15482551056&text=Hello, I want to know more about your services!"
 						class="contact__button"
 					>
