@@ -11,8 +11,6 @@
 		reversed: false, // insert new toast to bottom of stack
 		intro: { x: 256 } // toast intro fly animation settings
 	};
-
-	export const trailingSlash = 'always';
 </script>
 
 <slot />
