@@ -25,7 +25,6 @@ jobs:
 
       - name: Build app
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
           EMAILJS_URL_API: ${{ vars.EMAILJS_URL_API }}
           EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
           EMAILJS_PRIVATE_KEY: ${{ secrets.EMAILJS_PRIVATE_KEY }}More actions
