@@ -24,7 +24,19 @@ jobs:
         run: npm ci
 
       - name: Build app
-        run: npm run build
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
+          EMAILJS_URL_API: ${{ vars.EMAILJS_URL_API }}
+          EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          EMAILJS_PRIVATE_KEY: ${{ secrets.EMAILJS_PRIVATE_KEY }}More actions
+          EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          EMAILJS_QUEUE_SIZE: ${{ vars.EMAILJS_QUEUE_SIZE }}
+          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          REDIS_PORT: ${{ vars.REDIS_PORT }}
+          API_TOKEN: ${{ secrets.API_TOKEN }}
+        run: |
+          npm run build
 
       - name: Upload Artifacts
         uses: appleboy/scp-action@v0.1.7
