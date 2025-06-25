@@ -1,12 +1,15 @@
-name: Deploy to GitHub Pages
+name: Deploy to OVHcloud
 
 on:
   push:
-    branches: 'main'
+    branches:
+      - main
 
 jobs:
-  build_site:
+  deploy:
+    name: Build and Deploy to OVHcloud
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,9 +21,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: build
+      - name: Build app
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
           EMAILJS_URL_API: ${{ vars.EMAILJS_URL_API }}
@@ -36,23 +39,24 @@ jobs:
           npm run build
 
       - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
+        uses: appleboy/scp-action@v0.1.7
         with:
-          path: 'build/'
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          source: |
+            build/
+            package.json
+            package-lock.json
+          target: /home/ubuntu/cristian-sierra-ngx
 
-  deploy:
-    needs: build_site
-    runs-on: ubuntu-latest
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Restart
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            cd /home/ubuntu/cristian-sierra-ngx
+            npm ci --omit=dev
+            pm2 restart cristian-sierra-ngx || pm2 start build/index.js --name cristian-sierra-ngx
