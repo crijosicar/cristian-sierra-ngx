@@ -30,7 +30,7 @@ jobs:
           EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
           EMAILJS_QUEUE_SIZE: ${{ vars.EMAILJS_QUEUE_SIZE }}
           REDIS_HOST: ${{ secrets.REDIS_HOST }}
-          REDIS_PORT: ${{ secrets.REDIS_PORT }}
+          REDIS_PORT: ${{ vars.REDIS_PORT }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
         run: |
           npm run build
