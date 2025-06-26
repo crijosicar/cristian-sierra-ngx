@@ -43,6 +43,9 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.SSHKEY }}
 
+      - name: Show files after build
+        run: ls -al
+
       - name: Upload Artifacts
         uses: appleboy/scp-action@v0.1.7
         with:
