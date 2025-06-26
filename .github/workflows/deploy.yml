@@ -9,7 +9,6 @@ jobs:
   deploy:
     name: Build and Deploy to OVHcloud
     runs-on: ubuntu-latest
-    environment: OVHCloud
 
     steps:
       - name: Checkout
