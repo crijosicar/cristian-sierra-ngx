@@ -13,6 +13,9 @@ Thumbs.db
 # Env
 .env
 
+# Workflow
+.secrets
+
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*

@@ -9,6 +9,7 @@ jobs:
   deploy:
     name: Build and Deploy to OVHcloud
     runs-on: ubuntu-latest
+    environment: OVHCloud
 
     steps:
       - name: Checkout
@@ -36,6 +37,12 @@ jobs:
           API_TOKEN: ${{ secrets.API_TOKEN }}
         run: |
           npm run build
+
+      - name: Debug SSH Key
+        run: |
+          echo "SSH key length: ${#SSHKEY}"
+        env:
+          SSH_KEY: ${{ secrets.SSHKEY }}
 
       - name: Upload Artifacts
         uses: appleboy/scp-action@v0.1.7
