@@ -39,7 +39,7 @@ jobs:
 
       - name: Debug SSH Key
         run: |
-          echo "SSH key length: ${#SSHKEY}"
+          echo "SSH key length: ${#SSH_KEY}"
         env:
           SSH_KEY: ${{ secrets.SSHKEY }}
 
