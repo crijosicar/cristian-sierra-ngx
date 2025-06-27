@@ -56,9 +56,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           script: |
+            source ~/.nvm/nvm.sh
             cd /home/ubuntu/cristian-sierra-ngx
             tar xzf deploy.tar.gz
             rm deploy.tar.gz
             npm ci --omit=dev
-            pm2_path=$(which pm2)
-            $pm2_path restart cristian-sierra-ngx || $pm2_path start build/index.js --name cristian-sierra-ngx
+            pm2 restart cristian-sierra-ngx || pm2 start build/index.js --name cristian-sierra-ngx
