@@ -53,7 +53,7 @@
 	</h1>
 	<h3 class="home__subtitle">Software Engineer</h3>
 	<p class="home__description">
-		I'm software engineer based in Kitchener, crafting solutions to help businesses to success.
+		I’m a fullstack developer with 8+ years of experience, passionate about building scalable web applications and crafting solutions that help businesses grow.
 	</p>
 
 	<a href="#contact" class="button button--flex">
