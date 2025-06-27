@@ -37,24 +37,8 @@ jobs:
         run: |
           npm run build
 
-      - name: Debug SSH Key
-        run: |
-          echo "SSH key length: ${#SSH_KEY}"
-        env:
-          SSH_KEY: ${{ secrets.SSHKEY }}
-
-      - name: Show files after build
-        run: |
-          ls -al
-          ls -al build/
-
       - name: Create archive for deployment
         run: tar czf deploy.tar.gz build package.json package-lock.json
-
-      - name: Start ssh-agent and add key
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.SSHKEY }}
 
       - name: Upload Artifacts
         uses: appleboy/scp-action@v0.1.7
@@ -76,4 +60,5 @@ jobs:
             tar xzf deploy.tar.gz
             rm deploy.tar.gz
             npm ci --omit=dev
-            pm2 restart cristian-sierra-ngx || pm2 start build/index.js --name cristian-sierra-ngx
+            pm2_path=$(which pm2)
+            $pm2_path restart cristian-sierra-ngx || $pm2_path start build/index.js --name cristian-sierra-ngx
