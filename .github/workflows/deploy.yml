@@ -61,6 +61,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
           source: deploy.tar.gz
           target: /home/ubuntu/cristian-sierra-ngx
 
@@ -69,6 +70,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSHKEY }}
           script: |
             cd /home/ubuntu/cristian-sierra-ngx
             tar xzf deploy.tar.gz
