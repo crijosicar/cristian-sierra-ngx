@@ -17,7 +17,7 @@
 				eager for new challenges.
 			</p>
 
-			<a download="" href={'/assets/John-Cv.pdf'} class="button button--flex">
+			<a download="" href={'/assets/CristianSierra.pdf'} class="button button--flex">
 				Download CV
 				<svg
 					class="button__icon"
