@@ -12,7 +12,7 @@ import {
 export const contactWorker = new Worker(
 	CONTACT_EMAIL_QUEUE_NAME,
 	async (job: Job) => {
-		const data: string = JSON.stringify({
+		const body: string = JSON.stringify({
 			service_id: EMAILJS_SERVICE_ID,
 			template_id: EMAILJS_TEMPLATE_ID,
 			user_id: EMAILJS_PUBLIC_KEY,
@@ -25,6 +25,9 @@ export const contactWorker = new Worker(
 				request_date: new Date(job.data.requestDate).toLocaleString()
 			}
 		});
+
+		console.log(`[WORKER] contactWorker Job with ID "${job.id}" data: ${body}`);
+
 		const headers: HeadersInit = {
 			'Content-Type': 'application/json'
 		};
@@ -33,7 +36,7 @@ export const contactWorker = new Worker(
 			const response = await fetch(`${EMAILJS_URL_API}/email/send`, {
 				method: 'POST',
 				headers,
-				body: data
+				body
 			});
 
 			if (!response.ok) {
