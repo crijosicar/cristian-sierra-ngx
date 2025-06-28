@@ -26,34 +26,44 @@
 
 					<h3 class="services__modal-title">Software Engineering</h3>
 					<p class="services__modal-description">
-						Service with more than 3 years of experience.Providing quality work to clients and
-						companies.
+						Delivering scalable and maintainable solutions with over 3 years of hands-on experience
+						in fullstack development.
 					</p>
 
 					<ul class="services__modal-services grid">
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I develop the user interface.</p>
+							<p class="services__modal-info">
+								Design and implementation of RESTful APIs and GraphQL endpoints
+							</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Web page development.</p>
+							<p class="services__modal-info">
+								Microservices architecture using Node.js, Express, or NestJS
+							</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I create ux element interactions.</p>
+							<p class="services__modal-info">
+								Authentication & Authorization (OAuth2, JWT, Role-based access control)
+							</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I position your company brand.</p>
+							<p class="services__modal-info">
+								Integration with SQL and NoSQL databases (PostgreSQL, MongoDB, Redis)
+							</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Design and mockups of products for companies.</p>
+							<p class="services__modal-info">
+								Message queues and event-driven systems with BullMQ, RabbitMQ, or Kafka .
+							</p>
 						</li>
 					</ul>
 				</div>
@@ -79,34 +89,45 @@
 
 					<h3 class="services__modal-title">Web Development</h3>
 					<p class="services__modal-description">
-						Service with more than 3 years of experience.Providing quality work to clients and
-						companies.
+						Crafting fast, accessible, and scalable websites that elevate your brand and drive
+						results.
 					</p>
 
 					<ul class="services__modal-services grid">
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I develop the user interface.</p>
+							<p class="services__modal-info">
+								Building responsive UIs with HTML5, CSS3, and JavaScript (ES6+)
+							</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Web page development.</p>
+							<p class="services__modal-info">Modern frameworks: React, SvelteKit, Vue.js</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I create ux element interactions.</p>
+							<p class="services__modal-info">Styling with Tailwind CSS, SCSS, and CSS Modules</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I position your company brand.</p>
+							<p class="services__modal-info">
+								SEO-friendly development with proper meta tags and accessibility
+							</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Design and mockups of products for companies.</p>
+							<p class="services__modal-info">
+								Dynamic, data-driven SPAs and SSR apps using Next.js or SvelteKit
+							</p>
+						</li>
+
+						<li class="services__modal-service">
+							<i class="uil uil-check-circle services__modal-icon"></i>
+							<p class="services__modal-info">Admin panels, dashboards, and internal tools</p>
 						</li>
 					</ul>
 				</div>
@@ -132,34 +153,35 @@
 
 					<h3 class="services__modal-title">Wordpress Development</h3>
 					<p class="services__modal-description">
-						Service with more than 3 years of experience.Providing quality work to clients and
-						companies.
+						Custom, fast, and scalable WordPress solutions tailored to grow your online presence.
 					</p>
 
 					<ul class="services__modal-services grid">
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I develop the user interface.</p>
+							<p class="services__modal-info">Custom Theme Development</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Web page development.</p>
+							<p class="services__modal-info">Plugin Development & Customization.</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I create ux element interactions.</p>
+							<p class="services__modal-info">
+								Page speed optimization using caching, image compression, and lazy loading .
+							</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">I position your company brand.</p>
+							<p class="services__modal-info">WooCommerce Development.</p>
 						</li>
 
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Design and mockups of products for companies.</p>
+							<p class="services__modal-info">Multilingual & SEO Ready.</p>
 						</li>
 					</ul>
 				</div>
