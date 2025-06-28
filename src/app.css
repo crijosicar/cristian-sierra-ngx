@@ -49,6 +49,11 @@
 	--z-tooltip: 10;
 	--z-fixed: 100;
 	--z-modal: 1000;
+
+	/*========== Scroll behavior ==========*/
+	/* Smooth scrolling for the entire document */
+	--scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 /* Responsive typography */

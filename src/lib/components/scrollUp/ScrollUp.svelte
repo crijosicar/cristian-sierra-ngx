@@ -34,7 +34,7 @@
 		padding: 0.3rem 0.5rem;
 		border-radius: 0.4rem;
 		z-index: var(--z-tooltip);
-		transition: 0.4s;
+		transition: 1s ease;
 	}
 
 	.scrollup__icon {
