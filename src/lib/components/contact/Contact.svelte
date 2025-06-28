@@ -7,16 +7,10 @@
 	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
 		validationMethod: 'onblur',
 		onResult({ result }) {
-			if (result.type === 'success' && result.status === 200) {
-				toast.push("Thanks for getting in touch, I'll be contacting you soon!", {
-					reversed: true,
-					intro: { y: 192 },
-					theme: {
-						'--toastColor': 'mintcream',
-						'--toastBackground': 'rgba(72,187,120,0.9)',
-						'--toastBarBackground': '#2F855A'
-					}
-				});
+			const successfulSubmission = result.type === 'success' && result.status === 200;
+
+			if (successfulSubmission) {
+				toast.push("Thanks for getting in touch, I'll be contacting you soon!");
 			}
 		}
 	});
@@ -80,7 +74,7 @@
 				</div>
 
 				<div class="contact__form-div">
-					<label class="contact__form-tag" for="email">e-Mail</label>
+					<label class="contact__form-tag" for="email">Email</label>
 					<input
 						id="email"
 						type="text"
@@ -222,7 +216,7 @@
 		width: 100%;
 		height: 100%;
 		border: 2px solid rgba(0, 0, 0, 0.3);
-		background: none;
+		background-color: var(--container-color);
 		color: var(--text-color);
 		outline: none;
 		border-radius: 0.75rem;
@@ -252,6 +246,8 @@
 		color: red;
 		position: absolute;
 		top: 100%;
+		margin-left: 0.5rem;
+		font-size: var(--smaller-font-size);
 	}
 
 	/*=============== BREAKPOINTS ===============*/
