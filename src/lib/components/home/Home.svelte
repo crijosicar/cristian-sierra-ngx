@@ -35,7 +35,7 @@
 		justify-self: center;
 		width: 300px;
 		height: 300px;
-		animation: profile__animate 8s ease-in-out infinite 1s;
+		animation: profile__animate 8s ease-in-out infinite;
 	}
 
 	@keyframes profile__animate {
