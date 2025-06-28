@@ -10,8 +10,8 @@
 </script>
 
 <section class="testimonial container section" id="testimonials">
-	<h2 class="section__title">My clients say</h2>
-	<span class="section__subtitle">Testimonials</span>
+	<h2 class="section__title">Testimonials</h2>
+	<span class="section__subtitle">My clients say</span>
 
 	<Swiper
 		loop={true}
