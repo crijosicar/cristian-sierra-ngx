@@ -68,11 +68,11 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="#portfolio"
-						on:click={() => (activeNav = '#portfolio')}
-						class={activeNav === '#portfolio' ? 'nav__link active-link' : 'nav__link'}
+						href="#projects"
+						on:click={() => (activeNav = '#projects')}
+						class={activeNav === '#projects' ? 'nav__link active-link' : 'nav__link'}
 					>
-						<i class="uil uil-scenery nav__icon"></i> Portfolio
+						<i class="uil uil-scenery nav__icon"></i> Projects
 					</a>
 				</li>
 				<li class="nav__item">

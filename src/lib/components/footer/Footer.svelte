@@ -12,7 +12,7 @@
 			</li>
 
 			<li>
-				<a href="#portfolio" class="footer__link"> Projects </a>
+				<a href="#projects" class="footer__link"> Projects </a>
 			</li>
 
 			<li>
