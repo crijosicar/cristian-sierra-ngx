@@ -126,13 +126,6 @@
 </section>
 
 <style>
-	:root {
-		--toastContainerTop: auto;
-		--toastContainerRight: auto;
-		--toastContainerBottom: 8rem;
-		--toastContainerLeft: calc(50vw - 8rem);
-	}
-
 	.contact__container {
 		grid-template-columns: repeat(2, max-content);
 		justify-content: center;

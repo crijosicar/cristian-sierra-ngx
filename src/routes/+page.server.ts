@@ -4,7 +4,7 @@ import { createContactValidationSchema } from '$lib/shared/createContactValidati
 import { fail } from '@sveltejs/kit';
 import { mailerQueue } from '$lib/queues/mailerQueue';
 import { CONTACT_EMAIL_QUEUE_NAME } from '$lib/shared/constants';
-import { EMAILJS_QUEUE_SIZE } from '$env/static/private';
+import { EMAILJS_QUEUE_SIZE, NODE_ENV } from '$env/static/private';
 import type { Job } from 'bullmq';
 
 export const prerender = false;
@@ -67,6 +67,11 @@ export const actions = {
 
 		if (!form.valid) {
 			return fail(400, { form });
+		}
+
+		if(NODE_ENV === 'development') {
+			// In development, do not sent the email, just return a success message
+			return message(form, 'Your message has been sent successfully! (Development mode)');
 		}
 
 		const runDate = await getJobDelayByAvailability();

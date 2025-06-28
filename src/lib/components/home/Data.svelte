@@ -53,8 +53,7 @@
 	</h1>
 	<h3 class="home__subtitle">Software Engineer</h3>
 	<p class="home__description">
-		I’m a fullstack developer with 8+ years of experience, passionate about building scalable web
-		applications.
+		I’m a fullstack developer with 8+ years of experience, passionate about building scalable web applications.
 	</p>
 
 	<a href="#contact" class="button button--flex">
