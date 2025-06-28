@@ -6,7 +6,7 @@ import {
 	EMAILJS_PRIVATE_KEY,
 	EMAILJS_SERVICE_ID,
 	EMAILJS_TEMPLATE_ID,
-	EMAILJS_URL_API,
+	EMAILJS_URL_API
 } from '$env/static/private';
 
 export const contactWorker = new Worker(
@@ -29,7 +29,7 @@ export const contactWorker = new Worker(
 			'Content-Type': 'application/json'
 		};
 
-		try{
+		try {
 			const response = await fetch(`${EMAILJS_URL_API}/email/send`, {
 				method: 'POST',
 				headers,
@@ -37,16 +37,22 @@ export const contactWorker = new Worker(
 			});
 
 			if (!response.ok) {
-				throw new Error(`[WORKER] contactWorker Job with ID "${job.id}" failed with reason: ${await response.text()}`);
+				throw new Error(
+					`[WORKER] contactWorker Job with ID "${job.id}" failed with reason: ${await response.text()}`
+				);
 			}
 
-			console.log(`[WORKER] contactWorker Job with ID "${job.id}" completed on ${new Date().toLocaleString()}`);
-		} catch(error) {
-			console.error(`[WORKER] contactWorker Job with ID "${job.id}" failed with reason: ${JSON.stringify(error, Object.getOwnPropertyNames(error))}`);
+			console.log(
+				`[WORKER] contactWorker Job with ID "${job.id}" completed on ${new Date().toLocaleString()}`
+			);
+		} catch (error) {
+			console.error(
+				`[WORKER] contactWorker Job with ID "${job.id}" failed with reason: ${JSON.stringify(error, Object.getOwnPropertyNames(error))}`
+			);
 		}
 	},
 	{
 		connection: redisConnection,
-		concurrency: 1,
+		concurrency: 1
 	}
 );

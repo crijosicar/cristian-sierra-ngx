@@ -53,7 +53,8 @@
 	</h1>
 	<h3 class="home__subtitle">Software Engineer</h3>
 	<p class="home__description">
-		I’m a fullstack developer with 8+ years of experience, passionate about building scalable web applications.
+		I’m a fullstack developer with 8+ years of experience, passionate about building scalable web
+		applications.
 	</p>
 
 	<a href="#contact" class="button button--flex">
@@ -79,76 +80,76 @@
 </div>
 
 <style>
-    .home__title {
-        font-size: var(--big-font-size);
-        margin-bottom: var(--mb-0-25);
-    }
+	.home__title {
+		font-size: var(--big-font-size);
+		margin-bottom: var(--mb-0-25);
+	}
 
-    .home__hand {
-        width: 38px;
-        height: 38px;
-        margin-left: 0.4rem;
-    }
+	.home__hand {
+		width: 38px;
+		height: 38px;
+		margin-left: 0.4rem;
+	}
 
-    .home__subtitle {
-        position: relative;
-        font-size: var(--h3-font-size);
-        padding-left: 5.4rem;
-        font-weight: var(--font-normal);
-        margin-bottom: var(--mb-1);
-    }
+	.home__subtitle {
+		position: relative;
+		font-size: var(--h3-font-size);
+		padding-left: 5.4rem;
+		font-weight: var(--font-normal);
+		margin-bottom: var(--mb-1);
+	}
 
-    .home__subtitle::before {
-        content: '';
-        position: absolute;
-        width: 70px;
-        height: 1px;
-        background-color: var(--text-color);
-        left: 0;
-        top: 1rem;
-    }
+	.home__subtitle::before {
+		content: '';
+		position: absolute;
+		width: 70px;
+		height: 1px;
+		background-color: var(--text-color);
+		left: 0;
+		top: 1rem;
+	}
 
-    .home__description {
-        max-width: 400px;
-        margin-bottom: var(--mb-3);
-    }
+	.home__description {
+		max-width: 400px;
+		margin-bottom: var(--mb-3);
+	}
 
-    /*=============== BREAKPOINTS ===============*/
-    /* For large devices */
-    @media screen and (max-width: 992px) {
-        .home__hand {
-            width: 26px;
-            height: 26px;
-        }
+	/*=============== BREAKPOINTS ===============*/
+	/* For large devices */
+	@media screen and (max-width: 992px) {
+		.home__hand {
+			width: 26px;
+			height: 26px;
+		}
 
-        .home__subtitle {
-            padding-left: 3.75rem;
-            margin-bottom: var(--mb-1);
-        }
+		.home__subtitle {
+			padding-left: 3.75rem;
+			margin-bottom: var(--mb-1);
+		}
 
-        .home__subtitle::before {
-            width: 42px;
-            top: 0.8rem;
-        }
+		.home__subtitle::before {
+			width: 42px;
+			top: 0.8rem;
+		}
 
-        .home__description {
-            max-width: initial;
-            margin-bottom: var(--mb-2-5);
-        }
-    }
+		.home__description {
+			max-width: initial;
+			margin-bottom: var(--mb-2-5);
+		}
+	}
 
-    /* For medium devices */
-    @media screen and (max-width: 768px) {
-        .home__data {
-            grid-column: 1/3;
-        }
-    }
+	/* For medium devices */
+	@media screen and (max-width: 768px) {
+		.home__data {
+			grid-column: 1/3;
+		}
+	}
 
-    /* For small devices */
-    @media screen and (max-width: 350px) {
-        .home__hand {
-            width: 22px;
-            height: 22px;
-        }
-    }
+	/* For small devices */
+	@media screen and (max-width: 350px) {
+		.home__hand {
+			width: 22px;
+			height: 22px;
+		}
+	}
 </style>

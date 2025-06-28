@@ -11,25 +11,15 @@
 
 <section class="testimonial container section" id="testimonials">
 	<h2 class="section__title">My clients say</h2>
-	<span class="section__subtitle">Testimonial</span>
+	<span class="section__subtitle">Testimonials</span>
 
 	<Swiper
 		loop={true}
 		grabCursor={true}
 		spaceBetween={24}
 		slidesPerView={3}
-		pagination={{
-			clickable: true
-		}}
-		breakpoints={{
-			576: {
-				slidesPerView: 2
-			},
-			768: {
-				slidesPerView: 2,
-				spaceBetween: 48
-			}
-		}}
+		pagination={{ clickable: true }}
+		breakpoints={{ 576: { slidesPerView: 2 }, 768: { slidesPerView: 2, spaceBetween: 48 } }}
 		mousewheel={true}
 		modules={[Pagination]}
 	>

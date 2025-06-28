@@ -5,7 +5,7 @@
 
 <section class="skills section" id="skills">
 	<h2 class="section__title">Skills</h2>
-	<span class="section__subtitle">My technical level</span>
+	<span class="section__subtitle">My expertise</span>
 
 	<div class="skills__container container grid">
 		<Frontend />

@@ -19,7 +19,12 @@ export async function GET({ url }) {
 		types: []
 	};
 
-	const currentJobs = await mailerQueue.getJobs(options.types, options.start, options.end, options.asc);
+	const currentJobs = await mailerQueue.getJobs(
+		options.types,
+		options.start,
+		options.end,
+		options.asc
+	);
 
 	return json({ currentJobs });
 }
@@ -32,9 +37,9 @@ export async function DELETE({ url }) {
 		return text('Not found', { status: 404 });
 	}
 
-	await mailerQueue.obliterate({force: true});
+	await mailerQueue.obliterate({ force: true });
 
-	return json({ message: "All jobs have been deleted successfully!" });
+	return json({ message: 'All jobs have been deleted successfully!' });
 }
 
 // This handler will respond to PUT, PATCH, DELETE, etc.

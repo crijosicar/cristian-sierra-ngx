@@ -28,16 +28,16 @@
 
 	<div class="contact__container container grid">
 		<div class="contact__content">
-			<h3 class="contact__title">Talk to me</h3>
+			<h3 class="contact__title">Say Hello!</h3>
 
 			<div class="contact__info">
 				<div class="contact__card">
 					<i class="bx bx-mail-send contact__card-icon"></i>
 
 					<h3 class="contact__card-title">Email</h3>
-					<span class="contact__card-data">hello@cristiansierra.com</span>
+					<span class="contact__card-data">hello@cristiansierra.dev</span>
 
-					<a href="mailto:hello@cristiansierra.com" class="contact__button">
+					<a href="mailto:hello@cristiansierra.dev" class="contact__button">
 						Email me{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
 					</a>
@@ -47,7 +47,7 @@
 					<i class="bx bxl-whatsapp contact__card-icon"></i>
 
 					<h3 class="contact__card-title">Whatsapp</h3>
-					<span class="contact__card-data">548-255-1056</span>
+					<span class="contact__card-data">+1 548-255-1056</span>
 
 					<a
 						target="_blank"
@@ -63,7 +63,7 @@
 		</div>
 
 		<div class="contact__content">
-			<h3 class="contact__title">Write me your project</h3>
+			<h3 class="contact__title">What is your project about?</h3>
 			<form method="POST" action="?/create" class="contact__form" use:enhance>
 				<div class="contact__form-div">
 					<label class="contact__form-tag" for="name">Name</label>
@@ -80,7 +80,7 @@
 				</div>
 
 				<div class="contact__form-div">
-					<label class="contact__form-tag" for="email">Mail</label>
+					<label class="contact__form-tag" for="email">e-Mail</label>
 					<input
 						id="email"
 						type="text"

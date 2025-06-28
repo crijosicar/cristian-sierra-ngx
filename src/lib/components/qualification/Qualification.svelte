@@ -3,8 +3,8 @@
 </script>
 
 <section class="qualification section">
-	<h2 class="section__title">Qualification</h2>
-	<span class="section__subtitle">My personel journey</span>
+	<h2 class="section__title">Qualifications</h2>
+	<span class="section__subtitle">My journey</span>
 
 	<div class="qualification__container container">
 		<div class="qualification__tabs">
@@ -200,7 +200,6 @@
 	.qualification__button {
 		font-size: var(--h3-font-size);
 		font-weight: var(--font-medium);
-		color: var(--title-color);
 		margin: 0 var(--mb-1);
 		cursor: pointer;
 	}

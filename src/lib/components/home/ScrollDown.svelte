@@ -34,48 +34,45 @@
 </div>
 
 <style>
-    .home__scroll {
-        margin-left: 9.25rem;
-    }
+	.home__scroll {
+		margin: 2rem auto 0 auto; /* top margin optional */
+		width: fit-content;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
-    .wheel {
-        animation: scroll 2s ease infinite;
-    }
+	.wheel {
+		animation: scroll 2s ease infinite;
+	}
 
-    @keyframes scroll {
-        0% {
-            transform: translateY(0);
-        }
+	@keyframes scroll {
+		0% {
+			transform: translateY(0);
+		}
 
-        30% {
-            transform: translateY(3.75rem);
-        }
-    }
+		30% {
+			transform: translateY(3.75rem);
+		}
+	}
 
-    .home__scroll-name {
-        color: var(--title-color);
-        font-weight: var(--font-medium);
-        margin-right: var(--mb-0-25);
-        margin-left: 2px;
-    }
+	.home__scroll-name {
+		color: var(--title-color);
+		font-weight: var(--font-medium);
+		margin-right: var(--mb-0-25);
+		margin-left: 2px;
+	}
 
-    .home__scroll-arrow {
-        font-size: 1.25rem;
-        color: var(--title-color);
-    }
+	.home__scroll-arrow {
+		font-size: 1.25rem;
+		color: var(--title-color);
+	}
 
-    /*=============== BREAKPOINTS ===============*/
-    /* For large devices */
-    @media screen and (max-width: 992px) {
-        .home__scroll {
-            margin-left: 7.5rem;
-        }
-    }
-
-    /* For medium devices */
-    @media screen and (max-width: 768px) {
-        .home__scroll {
-            display: none;
-        }
-    }
+	/*=============== BREAKPOINTS ===============*/
+	/* For medium devices */
+	@media screen and (max-width: 768px) {
+		.home__scroll {
+			display: none;
+		}
+	}
 </style>

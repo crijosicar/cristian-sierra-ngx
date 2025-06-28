@@ -3,21 +3,21 @@
 		<i class="bx bx-award about__icon"></i>
 
 		<h3 class="about__title">Experience</h3>
-		<span class="about__subtitle">7+ Years Working</span>
+		<span class="about__subtitle">8+ Years</span>
 	</div>
 
 	<div class="about__box">
 		<i class="bx bx-briefcase-alt about__icon"></i>
 
 		<h3 class="about__title">Completed</h3>
-		<span class="about__subtitle">5 + Projects</span>
+		<span class="about__subtitle">3+ Projects</span>
 	</div>
 
 	<div class="about__box">
 		<i class="bx bx-support about__icon"></i>
 
 		<h3 class="about__title">Available</h3>
-		<span class="about__subtitle">Ready to rock</span>
+		<span class="about__subtitle">Ready to talk</span>
 	</div>
 </div>
 

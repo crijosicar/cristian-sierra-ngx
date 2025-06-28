@@ -71,7 +71,11 @@ export const actions = {
 
 		const runDate = await getJobDelayByAvailability();
 
-		await mailerQueue.add(CONTACT_EMAIL_QUEUE_NAME, { ...form.data, runDate, requestDate: new Date() }, { delay: runDate - Date.now() });
+		await mailerQueue.add(
+			CONTACT_EMAIL_QUEUE_NAME,
+			{ ...form.data, runDate, requestDate: new Date() },
+			{ delay: runDate - Date.now() }
+		);
 
 		// Display a success status message
 		return message(form, 'Your message has been sent successfully!');
