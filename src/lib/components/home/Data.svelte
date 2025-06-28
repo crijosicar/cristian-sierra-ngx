@@ -142,6 +142,28 @@
 		.home__data {
 			grid-column: 1/3;
 		}
+
+		.home__subtitle {
+			position: relative;
+			display: inline-block;
+			font-size: var(--h3-font-size);
+			font-weight: var(--font-normal);
+			margin-bottom: var(--mb-1);
+			text-align: center;
+			padding-left: 2rem;
+		}
+
+		.home__subtitle::before {
+			content: '';
+			position: absolute;
+			width: 40px; /* Adjust as needed */
+			height: 1px;
+			background-color: var(--text-color);
+			top: 50%;
+			transform: translateY(-50%);
+			left: -16px; /* Adjust based on desired spacing */
+		}
+
 	}
 
 	/* For small devices */

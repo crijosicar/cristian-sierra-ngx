@@ -8,6 +8,7 @@
 	<div class="home__container container grid">
 		<div class="home__content grid">
 			<Social />
+			<!-- Animated Image  -->
 			<div class="home__img"></div>
 			<Data />
 		</div>
@@ -70,19 +71,25 @@
 	/* For medium devices */
 	@media screen and (max-width: 768px) {
 		.home__content {
-			grid-template-columns: 0.5fr 3fr;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			row-gap: 2rem; /* Optional spacing */
 			padding-top: 3.5rem;
 		}
 
 		.home__img {
-			order: initial;
-			justify-self: initial;
-		}
-
-		.home__img {
+			order: 0;
+			justify-self: center;
 			box-shadow: inset 0 0 0 6px rgb(255 255 255 / 30%);
 			width: 200px;
 			height: 200px;
+		}
+
+		.home__container {
+			justify-content: center;
+			align-items: center;
 		}
 	}
 
