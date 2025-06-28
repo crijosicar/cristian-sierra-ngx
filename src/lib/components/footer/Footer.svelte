@@ -25,8 +25,8 @@
 				<i class="bx bxl-github"></i>
 			</a>
 
-			<a href="https://www.instagram.com/crijosicar/" class="footer__social-link" target="_blank">
-				<i class="bx bxl-instagram"></i>
+			<a href="https://www.linkedin.com/in/crijosicar" class="footer__social-link" target="_blank">
+				<i class="bx bxl-linkedin"></i>
 			</a>
 
 			<a href="https://x.com/crijosicar" class="footer__social-link" target="_blank">

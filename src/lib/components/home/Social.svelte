@@ -3,12 +3,12 @@
 		<i class="uil uil-github-alt"></i>
 	</a>
 
-	<a href="https://www.instagram.com/crijosicar" class="home__social-icon" target="_blank">
-		<i class="uil uil-instagram"></i>
+	<a href="https://www.linkedin.com/in/crijosicar" class="home__social-icon" target="_blank">
+		<i class="uil uil-linkedin-alt"></i>
 	</a>
 
 	<a href="https://twitter.com/crijosicar" class="home__social-icon" target="_blank">
-		<i class="uil uil-twitter"></i>
+		<i class="uil uil-twitter-alt"></i>
 	</a>
 </div>
 
