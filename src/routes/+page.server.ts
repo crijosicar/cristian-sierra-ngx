@@ -71,6 +71,8 @@ export const actions = {
 
 		if(NODE_ENV === 'development') {
 			// In development, do not sent the email, just return a success message
+			console.log('[create] actions.create - Your message has been sent successfully! (Development mode)');
+
 			return message(form, 'Your message has been sent successfully! (Development mode)');
 		}
 
@@ -81,6 +83,8 @@ export const actions = {
 			{ ...form.data, runDate, requestDate: new Date() },
 			{ delay: runDate - Date.now() }
 		);
+
+		console.log('[create] actions.create - Your message has been sent successfully!');
 
 		// Display a success status message
 		return message(form, 'Your message has been sent successfully!');
