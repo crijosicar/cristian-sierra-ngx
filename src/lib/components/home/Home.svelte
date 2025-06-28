@@ -28,7 +28,7 @@
 	}
 
 	.home__img {
-		background: url(/assets/about.jpg) no-repeat center;
+		background: url(/assets/about.jpeg) no-repeat center;
 		background-size: cover;
 		box-shadow: inset 0 0 0 9px rgb(255 255 255 / 30%);
 		order: 1;
