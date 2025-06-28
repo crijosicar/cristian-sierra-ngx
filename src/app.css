@@ -14,6 +14,7 @@
 	--text-color: hsl(var(--hue), var(--sat), 46%);
 	--body-color: hsl(var(--hue), var(--sat), 98%);
 	--container-color: #fff;
+	--error-color: hsl(var(--hue, 0), 80%, 50%, 0.93);
 
 	/*========== Font and typography ==========*/
 	--body-font: 'Poppins', sans-serif;

@@ -108,7 +108,7 @@
 				<div class="qualification__data">
 					<div>
 						<h3 class="qualification__title">Software Engineer</h3>
-						<span class="qualification__subtitle"> MCAP - Canada </span>
+						<span class="qualification__subtitle">MCAP - Canada</span>
 						<div class="qualification__calender">
 							<i class="uil uil-calendar-alt"></i> 2024 - Present
 						</div>
@@ -130,7 +130,7 @@
 
 					<div>
 						<h3 class="qualification__title">Software Engineer</h3>
-						<span class="qualification__subtitle"> Dualboot Partners - USA </span>
+						<span class="qualification__subtitle">Dualboot Partners - USA</span>
 						<div class="qualification__calender">
 							<i class="uil uil-calendar-alt"></i> 2022 - 2024
 						</div>
@@ -162,7 +162,7 @@
 
 					<div>
 						<h3 class="qualification__title">Software Engineer</h3>
-						<span class="qualification__subtitle"> Banco Davivienda - Colombia </span>
+						<span class="qualification__subtitle">Banco Davivienda - Colombia</span>
 						<div class="qualification__calender">
 							<i class="uil uil-calendar-alt"></i> 2019 - 2019
 						</div>

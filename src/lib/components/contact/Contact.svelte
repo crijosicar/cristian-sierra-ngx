@@ -243,7 +243,7 @@
 	}
 
 	.invalid {
-		color: red;
+		color: var(--error-color);
 		position: absolute;
 		top: 100%;
 		margin-left: 0.5rem;
