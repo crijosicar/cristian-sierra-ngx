@@ -9,3 +9,12 @@ services:
     ports:
       - '6379:6379'
     command: redis-server --appendonly yes --dir /data
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_container
+    volumes:
+      - ~/.mongodb:/data/db
+    ports:
+      - '27017:27017'
+    command: mongod --dbpath /data/db
