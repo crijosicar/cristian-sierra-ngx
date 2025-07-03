@@ -4,7 +4,7 @@ import { createContactValidationSchema } from '$lib/shared/createContactValidati
 import { fail } from '@sveltejs/kit';
 import { mailerQueue } from '$lib/queues/mailerQueue';
 import { CONTACT_EMAIL_QUEUE_NAME } from '$lib/shared/constants';
-import { EMAILJS_QUEUE_SIZE, NODE_ENV } from '$env/static/private';
+import { EMAILJS_QUEUE_SIZE, NODE_ENV, GOOGLE_RECAPTCHA_SECRET_KEY } from '$env/static/private';
 import type { Job } from 'bullmq';
 
 export const prerender = false;
@@ -67,6 +67,27 @@ export const actions = {
 
 		if (!form.valid) {
 			return fail(400, { form });
+		}
+
+		const { recaptchaToken } = form.data;
+
+		const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			body: `secret=${GOOGLE_RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`
+		});
+
+		const data = await res.json();
+
+		if (!data.success || data.score < 0.5) {
+			return fail(400, {
+				form,
+				errors: {
+					project: 'Captcha verification failed. Are you a bot?'
+				}
+			});
 		}
 
 		if(NODE_ENV === 'development') {

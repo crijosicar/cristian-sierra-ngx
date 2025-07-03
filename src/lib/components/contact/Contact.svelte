@@ -1,8 +1,14 @@
+<svelte:head>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</svelte:head>
+
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { superForm } from 'sveltekit-superforms';
 	import { toast } from '@zerodevx/svelte-toast';
 
 	export let data = {};
+	let recaptchaToken = '';
 
 	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
 		validationMethod: 'onblur',
@@ -13,6 +19,10 @@
 				toast.push("Thanks for getting in touch, I'll be contacting you soon!");
 			}
 		}
+	});
+
+	onMount(() => {
+		window.onCaptchaSuccess = (token: string) => (recaptchaToken = token);
 	});
 </script>
 
@@ -59,6 +69,7 @@
 		<div class="contact__content">
 			<h3 class="contact__title">What is your project about?</h3>
 			<form method="POST" action="?/create" class="contact__form" use:enhance>
+				<input type="hidden" name="recaptchaToken" value={recaptchaToken} />
 				<div class="contact__form-div">
 					<label class="contact__form-tag" for="name">Name</label>
 					<input
@@ -99,6 +110,12 @@
 					></textarea>
 					{#if $errors.project}<span class="invalid">{$errors.project}</span>{/if}
 				</div>
+
+				<div class="g-recaptcha" data-sitekey="6LetbHMrAAAAAApEdXzhsjWRzi8nlLwufS8efz-6" data-callback="onCaptchaSuccess"></div>
+
+				{#if $errors.recaptchaToken}
+					<span class="invalid">{$errors.recaptchaToken}</span>
+				{/if}
 
 				<button class="button button--flex" type="submit">
 					Send Message

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+  	import { page } from '$app/stores';
+	import { PUBLIC_APP_URL } from '$env/static/public';
 
 	let toggle = false;
 	let activeNav = '#home';
@@ -32,7 +34,7 @@
 			<ul class="nav__list grid">
 				<li class="nav__item">
 					<a
-						href="#home"
+						href="{PUBLIC_APP_URL}/#home"
 						on:click={() => (activeNav = '#home')}
 						class={activeNav === '#home' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -41,7 +43,7 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="#about"
+						href="{PUBLIC_APP_URL}#about"
 						on:click={() => (activeNav = '#about')}
 						class={activeNav === '#about' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -50,7 +52,7 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="#skills"
+						href="{PUBLIC_APP_URL}#skills"
 						on:click={() => (activeNav = '#skills')}
 						class={activeNav === '#skills' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -59,7 +61,7 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="#services"
+						href="{PUBLIC_APP_URL}#services"
 						on:click={() => (activeNav = '#services')}
 						class={activeNav === '#services' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -68,16 +70,24 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="#projects"
+						href="{PUBLIC_APP_URL}#projects"
 						on:click={() => (activeNav = '#projects')}
 						class={activeNav === '#projects' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-scenery nav__icon"></i> Projects
 					</a>
 				</li>
+						<li class="nav__item">
+					<a
+						href="{PUBLIC_APP_URL}/shelf"
+						class={$page.url.pathname === '/shelf' ? 'nav__link active-link' : 'nav__link'}
+					>
+						<i class="uil uil-message nav__icon"></i> Shelf
+					</a>
+				</li>
 				<li class="nav__item">
 					<a
-						href="#contact"
+						href="{PUBLIC_APP_URL}#contact"
 						on:click={() => (activeNav = '#contact')}
 						class={activeNav === '#contact' ? 'nav__link active-link' : 'nav__link'}
 					>
