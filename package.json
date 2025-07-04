@@ -34,6 +34,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@paddim8/svelte-lexical": "^0.4.1",
 		"bullmq": "^5.12.9",
 		"dotenv": "^16.4.5",
 		"emailjs": "^4.0.3",

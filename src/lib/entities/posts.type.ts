@@ -15,15 +15,16 @@ export interface Post {
 }
 
 export interface Meta {
-  title: string
+  title?: string
+  description?: string
 }
 
 export interface Content {
-  root: Root2
+  root: Root
   content: unknown
 }
 
-export interface Root2 {
+export interface Root {
   children: Children[]
   direction: string
   format: string
@@ -33,7 +34,7 @@ export interface Root2 {
 }
 
 export interface Children {
-  children: Children2[]
+  children: ChildrenDetail[]
   direction: string
   format: string
   indent: number
@@ -44,7 +45,7 @@ export interface Children {
   textStyle?: string
 }
 
-export interface Children2 {
+export interface ChildrenDetail {
   detail: number
   format: number
   mode: string
