@@ -77,14 +77,6 @@
 						<i class="uil uil-scenery nav__icon"></i> Projects
 					</a>
 				</li>
-						<li class="nav__item">
-					<a
-						href="{PUBLIC_APP_URL}/shelf"
-						class={$page.url.pathname === '/shelf' ? 'nav__link active-link' : 'nav__link'}
-					>
-						<i class="uil uil-message nav__icon"></i> Shelf
-					</a>
-				</li>
 				<li class="nav__item">
 					<a
 						href="{PUBLIC_APP_URL}#contact"
