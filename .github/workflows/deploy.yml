@@ -34,6 +34,7 @@ jobs:
           REDIS_HOST: ${{ secrets.REDIS_HOST }}
           REDIS_PORT: ${{ vars.REDIS_PORT }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
+          PUBLIC_APP_URL: ${{ vars.PUBLIC_APP_URL }}
         run: |
           npm run build
 
