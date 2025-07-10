@@ -34,6 +34,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@google-cloud/recaptcha-enterprise": "^6.2.0",
 		"bullmq": "^5.12.9",
 		"dotenv": "^16.4.5",
 		"emailjs": "^4.0.3",

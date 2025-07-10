@@ -36,6 +36,7 @@ jobs:
           API_TOKEN: ${{ secrets.API_TOKEN }}
           PUBLIC_APP_URL: ${{ vars.PUBLIC_APP_URL }}
           GOOGLE_RECAPTCHA_SECRET_KEY: ${{ secrets.GOOGLE_RECAPTCHA_SECRET_KEY }}
+          PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY: ${{ vars.PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY }}
         run: |
           npm run build
 

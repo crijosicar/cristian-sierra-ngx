@@ -1,14 +1,13 @@
 <svelte:head>
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
 </svelte:head>
 
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { superForm } from 'sveltekit-superforms';
 	import { toast } from '@zerodevx/svelte-toast';
+	import { PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY } from '$env/static/public';
 
 	export let data = {};
-	let recaptchaToken = '';
 
 	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
 		validationMethod: 'onblur',
@@ -19,10 +18,6 @@
 				toast.push("Thanks for getting in touch, I'll be contacting you soon!");
 			}
 		}
-	});
-
-	onMount(() => {
-		window.onCaptchaSuccess = (token: string) => (recaptchaToken = token);
 	});
 </script>
 
@@ -49,10 +44,8 @@
 
 				<div class="contact__card">
 					<i class="bx bxl-whatsapp contact__card-icon"></i>
-
 					<h3 class="contact__card-title">Whatsapp</h3>
 					<span class="contact__card-data">+1 548-255-1056</span>
-
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
@@ -69,7 +62,6 @@
 		<div class="contact__content">
 			<h3 class="contact__title">What is your project about?</h3>
 			<form method="POST" action="?/create" class="contact__form" use:enhance>
-				<input type="hidden" name="recaptchaToken" value={recaptchaToken} />
 				<div class="contact__form-div">
 					<label class="contact__form-tag" for="name">Name</label>
 					<input
@@ -111,11 +103,7 @@
 					{#if $errors.project}<span class="invalid">{$errors.project}</span>{/if}
 				</div>
 
-				<div class="g-recaptcha" data-sitekey="6LetbHMrAAAAAApEdXzhsjWRzi8nlLwufS8efz-6" data-callback="onCaptchaSuccess"></div>
-
-				{#if $errors.recaptchaToken}
-					<span class="invalid">{$errors.recaptchaToken}</span>
-				{/if}
+				<div class="g-recaptcha" data-sitekey={PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY} data-action="GET_IN_TOUCH"></div>
 
 				<button class="button button--flex" type="submit">
 					Send Message

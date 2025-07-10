@@ -4,8 +4,12 @@ import { createContactValidationSchema } from '$lib/shared/createContactValidati
 import { fail } from '@sveltejs/kit';
 import { mailerQueue } from '$lib/queues/mailerQueue';
 import { CONTACT_EMAIL_QUEUE_NAME } from '$lib/shared/constants';
-import { EMAILJS_QUEUE_SIZE, NODE_ENV, GOOGLE_RECAPTCHA_SECRET_KEY } from '$env/static/private';
+import { EMAILJS_QUEUE_SIZE, NODE_ENV } from '$env/static/private';
+import { PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY } from '$env/static/public';
+import { RecaptchaEnterpriseServiceClient } from '@google-cloud/recaptcha-enterprise';
 import type { Job } from 'bullmq';
+
+const projectID = "cristian-sierra";
 
 export const prerender = false;
 
@@ -69,31 +73,38 @@ export const actions = {
 			return fail(400, { form });
 		}
 
-		const { recaptchaToken } = form.data;
+		const recaptchaEnterpriseServiceClient = new RecaptchaEnterpriseServiceClient();
+		const projectPath = recaptchaEnterpriseServiceClient.projectPath(projectID);
 
-		const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
+		const assessmentRequest = ({
+			assessment: {
+				event: {
+					token: "token",
+					siteKey: PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY,
+				},
 			},
-			body: `secret=${GOOGLE_RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`
+			parent: projectPath,
 		});
 
-		const data = await res.json();
+		console.log(`[create] actions.create - assessmentRequest: ${JSON.stringify(assessmentRequest)}`);
 
-		if (!data.success || data.score < 0.5) {
-			return fail(400, {
-				form,
-				errors: {
-					project: 'Captcha verification failed. Are you a bot?'
-				}
-			});
+		const [ response ] = await recaptchaEnterpriseServiceClient.createAssessment(assessmentRequest);
+
+		console.log(`[create] actions.create - response: ${JSON.stringify(response)}`);
+
+		if (!response?.tokenProperties?.valid) {
+			console.log(`The CreateAssessment call failed because the token was: ${response?.tokenProperties?.invalidReason}`);
+			return fail(400, { form });
+		}
+
+		if (response?.tokenProperties?.action !== 'GET_IN_TOUCH' || !response?.riskAnalysis?.score || response?.riskAnalysis?.score < 0.5) {
+			console.log(`The reCAPTCHA score is: ${response?.riskAnalysis?.score}`);
+			return fail(400, { form });
 		}
 
 		if(NODE_ENV === 'development') {
 			// In development, do not sent the email, just return a success message
 			console.log('[create] actions.create - Your message has been sent successfully! (Development mode)');
-
 			return message(form, 'Your message has been sent successfully! (Development mode)');
 		}
 
@@ -106,7 +117,6 @@ export const actions = {
 		);
 
 		console.log('[create] actions.create - Your message has been sent successfully!');
-
 		// Display a success status message
 		return message(form, 'Your message has been sent successfully!');
 	}
