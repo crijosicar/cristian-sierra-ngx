@@ -27,6 +27,7 @@
 		"prettier-plugin-svelte": "^3.4.0",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
+		"svelte-turnstile": "^0.11.0",
 		"sveltekit-superforms": "^2.17.0",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
@@ -34,7 +35,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@google-cloud/recaptcha-enterprise": "^6.2.0",
 		"bullmq": "^5.12.9",
 		"dotenv": "^16.4.5",
 		"emailjs": "^4.0.3",

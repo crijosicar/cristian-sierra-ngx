@@ -1,15 +1,12 @@
-import { message, superValidate } from 'sveltekit-superforms';
-import { zod as zodAdapter } from 'sveltekit-superforms/adapters';
+import { message, superValidate, setError } from 'sveltekit-superforms';
+import { zod as zodAdapter,  } from 'sveltekit-superforms/adapters';
 import { createContactValidationSchema } from '$lib/shared/createContactValidationSchema';
 import { fail } from '@sveltejs/kit';
 import { mailerQueue } from '$lib/queues/mailerQueue';
 import { CONTACT_EMAIL_QUEUE_NAME } from '$lib/shared/constants';
-import { EMAILJS_QUEUE_SIZE, NODE_ENV } from '$env/static/private';
-import { PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY } from '$env/static/public';
-import { RecaptchaEnterpriseServiceClient } from '@google-cloud/recaptcha-enterprise';
+import { validateToken } from '$lib/services/turnstile.service';
+import { EMAILJS_QUEUE_SIZE, NODE_ENV, TURNSTILE_SECRET_KEY } from '$env/static/private';
 import type { Job } from 'bullmq';
-
-const projectID = "cristian-sierra";
 
 export const prerender = false;
 
@@ -73,33 +70,12 @@ export const actions = {
 			return fail(400, { form });
 		}
 
-		const recaptchaEnterpriseServiceClient = new RecaptchaEnterpriseServiceClient();
-		const projectPath = recaptchaEnterpriseServiceClient.projectPath(projectID);
+		const {'cf-turnstile-response': token } = form.data;
 
-		const assessmentRequest = ({
-			assessment: {
-				event: {
-					token: "token",
-					siteKey: PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY,
-				},
-			},
-			parent: projectPath,
-		});
+		const { success, error } = await validateToken(token, TURNSTILE_SECRET_KEY);
 
-		console.log(`[create] actions.create - assessmentRequest: ${JSON.stringify(assessmentRequest)}`);
-
-		const [ response ] = await recaptchaEnterpriseServiceClient.createAssessment(assessmentRequest);
-
-		console.log(`[create] actions.create - response: ${JSON.stringify(response)}`);
-
-		if (!response?.tokenProperties?.valid) {
-			console.log(`The CreateAssessment call failed because the token was: ${response?.tokenProperties?.invalidReason}`);
-			return fail(400, { form });
-		}
-
-		if (response?.tokenProperties?.action !== 'GET_IN_TOUCH' || !response?.riskAnalysis?.score || response?.riskAnalysis?.score < 0.5) {
-			console.log(`The reCAPTCHA score is: ${response?.riskAnalysis?.score}`);
-			return fail(400, { form });
+		if (!success) {
+			return setError(form, 'cf-turnstile-response', error || 'Form validation failed');
 		}
 
 		if(NODE_ENV === 'development') {

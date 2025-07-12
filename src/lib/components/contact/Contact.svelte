@@ -1,16 +1,18 @@
-<svelte:head>
-	<script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
-</svelte:head>
-
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
 	import { toast } from '@zerodevx/svelte-toast';
-	import { PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY } from '$env/static/public';
+	import { Turnstile } from 'svelte-turnstile';
+	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
 	export let data = {};
+	let reset: () => void;
 
 	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
 		validationMethod: 'onblur',
+		onUpdated() {
+			console.log($form);
+			reset?.();
+		},
 		onResult({ result }) {
 			const successfulSubmission = result.type === 'success' && result.status === 200;
 
@@ -103,7 +105,9 @@
 					{#if $errors.project}<span class="invalid">{$errors.project}</span>{/if}
 				</div>
 
-				<div class="g-recaptcha" data-sitekey={PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY} data-action="GET_IN_TOUCH"></div>
+				<div class="contact__form-div">
+					<Turnstile siteKey={PUBLIC_TURNSTILE_SITE_KEY} bind:reset />
+				</div>
 
 				<button class="button button--flex" type="submit">
 					Send Message
