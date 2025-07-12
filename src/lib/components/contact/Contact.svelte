@@ -10,7 +10,6 @@
 	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
 		validationMethod: 'onblur',
 		onUpdated() {
-			console.log($form);
 			reset?.();
 		},
 		onResult({ result }) {
