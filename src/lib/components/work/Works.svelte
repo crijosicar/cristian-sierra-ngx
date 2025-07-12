@@ -30,7 +30,6 @@
 	};
 
 	const handleMessage = (e: CustomEvent) => {
-		console.log(e.detail);
 		currentProject = e.detail as Project;
 		showDetails = true;
 	};
