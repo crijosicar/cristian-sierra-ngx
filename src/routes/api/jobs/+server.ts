@@ -45,5 +45,5 @@ export async function DELETE({ url }) {
 // This handler will respond to PUT, PATCH, DELETE, etc.
 /** @type {import('./$types').RequestHandler} */
 export async function fallback({ request }) {
-	return text(`I caught your ${request.method} request!`);
+	return text(`Method ${request.method} not allowed!`, { status: 405 });
 }
