@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-  	import { page } from '$app/stores';
 	import { PUBLIC_APP_URL } from '$env/static/public';
 
 	let toggle = false;
@@ -29,7 +28,9 @@
 
 <header class="header">
 	<nav class="nav container">
-		<a href="/" class="nav__logo">Sierra</a>
+		<a href="/" class="nav__logo">
+			{'<CRISTIANS/>'}
+		</a>
 		<div class={toggle ? 'nav__menu show-menu' : 'nav__menu'}>
 			<ul class="nav__list grid">
 				<li class="nav__item">
