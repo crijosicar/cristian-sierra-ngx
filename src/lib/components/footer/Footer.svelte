@@ -6,7 +6,7 @@
 
 <footer class="footer">
 	<div class="footer__container container">
-		<h1 class="footer__title">Sierra</h1>
+		<h1 class="footer__title">{'<CRISTIANS/>'}</h1>
 
 		<ul class="footer__list">
 			<li>
