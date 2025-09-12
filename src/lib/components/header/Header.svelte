@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { PUBLIC_APP_URL } from '$env/static/public';
+	import { page } from '$app/stores';
 
 	let toggle = false;
 	let activeNav = '#home';
@@ -85,6 +86,16 @@
 						class={activeNav === '#contact' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-message nav__icon"></i> Contact
+					</a>
+				</li>
+				<li class="nav__item">
+					<a
+						href="{PUBLIC_APP_URL}/shelf"
+						class={$page.url.pathname === `${PUBLIC_APP_URL}/shelf`
+							? 'nav__link active-link'
+							: 'nav__link'}
+					>
+						<i class="uil uil-file-alt nav__icon"></i> Shelf
 					</a>
 				</li>
 			</ul>
