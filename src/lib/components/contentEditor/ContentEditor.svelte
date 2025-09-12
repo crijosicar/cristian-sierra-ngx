@@ -51,8 +51,6 @@
 	const editorOptions = { data: content, converters: htmlConverters };
 
 	let htmlContent = convertLexicalToHTML(editorOptions);
-
-	console.log(content);
 </script>
 
 <div>

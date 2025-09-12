@@ -19,11 +19,10 @@
 <main class="main">
 	<section class="services section" id="shelf">
 		<h2 class="section__title">{data.post.title ?? data.post.meta?.title}</h2>
-		<span class="section__subtitle">{data.post.meta?.description ?? ''}</span>
-		<div class="grid">
-			<p class="author">{data.post.populatedAuthors?.[0]?.name}</p>
-			<span>{new Date(data.post.createdAt).toLocaleDateString()}</span>
-		</div>
+		<p class="section__subtitle">
+			{data.post.meta?.description ?? ''} <br />
+			{`${data.post.populatedAuthors?.[0]?.name} - ${data.post.formattedDate}`}
+		</p>
 		<div class="container">
 			<ContentEditor content={data.post.content} />
 		</div>

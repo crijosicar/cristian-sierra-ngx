@@ -3,12 +3,23 @@ import { loadPostBySlug } from '$lib/services/post.service';
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async ({ params }): Promise<{ post: Post }> => {
+export const load: PageServerLoad = async ({
+	params
+}): Promise<{ post: Post & { formattedDate: string } }> => {
 	const post = await loadPostBySlug(params.slug);
 
 	if (!post) {
 		throw error(404, { message: 'Not found', code: 'NOT_FOUND', id: 'not_found' });
 	}
 
-	return { post };
+	return {
+		post: {
+			...post,
+			formattedDate: new Date(post.createdAt).toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			})
+		}
+	};
 };
