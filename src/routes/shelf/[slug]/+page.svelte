@@ -19,7 +19,7 @@
 <main class="main">
 	<section class="services section" id="shelf">
 		<h2 class="section__title">{data.post.title ?? data.post.meta?.title}</h2>
-		<p class="section__subtitle">
+		<p class="section__subtitle container">
 			{data.post.meta?.description ?? ''} <br />
 			{`${data.post.populatedAuthors?.[0]?.name} - ${data.post.formattedDate}`}
 		</p>
