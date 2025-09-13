@@ -70,5 +70,5 @@ jobs:
               echo "Restarted existing process"
             else
               echo "Starting new process"
-              pm2 start build/index.js --name cristian-sierra-ngx --node-args="--port=5173"
+              PORT=5173 pm2 start build/index.js --name cristian-sierra-ngx
             fi
