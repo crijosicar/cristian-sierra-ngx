@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { SvelteToast } from '@zerodevx/svelte-toast';
 	import '../app.css';
+	import { SvelteToast } from '@zerodevx/svelte-toast';
 
 	const options = {
 		duration: 4000, // duration of progress bar tween to the `next` value

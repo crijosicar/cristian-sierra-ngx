@@ -37,13 +37,13 @@
 				});
 				const inferedStyles: Record<BannerStyle, string> = {
 					info: 'tw-border-border tw-bg-card',
-					error: 'tw-border-error tw-bg-error/30',
-					success: 'tw-border-success tw-bg-success/30',
-					warning: 'tw-border-warning tw-bg-warning/30'
+					error: 'tw-border-error tw-bg-error',
+					success: 'tw-border-success tw-bg-success',
+					warning: 'tw-border-warning tw-bg-warning'
 				};
 				const currentStyle = inferedStyles[style];
 
-				return `<div class='tw-mx-auto tw-my-8 tw-w-full tw-col-start-2 tw-mb-4'><div class='tw-border tw-py-3 tw-px-6 tw-flex tw-items-center tw-rounded ${currentStyle}'>${htmlContent}</div></div>`;
+				return `<div class='tw-mx-auto tw-my-8 tw-w-full tw-col-start-2 tw-mb-4'><div class='tw-border tw-py-3 tw-px-6 tw-flex tw-items-center tw-rounded ${currentStyle} tw-text-white'>${htmlContent}</div></div>`;
 			}
 		}
 	});
