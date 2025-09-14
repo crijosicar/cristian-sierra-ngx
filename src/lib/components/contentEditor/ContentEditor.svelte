@@ -36,7 +36,7 @@
 					converters: defaultConverters
 				});
 				const inferedStyles: Record<BannerStyle, string> = {
-					info: 'tw-border-border tw-bg-card',
+					info: 'tw-border-border tw-bg-info',
 					error: 'tw-border-error tw-bg-error',
 					success: 'tw-border-success tw-bg-success',
 					warning: 'tw-border-warning tw-bg-warning'
