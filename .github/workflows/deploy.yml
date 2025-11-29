@@ -14,37 +14,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build app
-        env:
-          EMAILJS_URL_API: ${{ vars.EMAILJS_URL_API }}
-          EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
-          EMAILJS_PRIVATE_KEY: ${{ secrets.EMAILJS_PRIVATE_KEY }}
-          EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
-          EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
-          EMAILJS_QUEUE_SIZE: ${{ vars.EMAILJS_QUEUE_SIZE }}
-          REDIS_HOST: ${{ secrets.REDIS_HOST }}
-          REDIS_PORT: ${{ vars.REDIS_PORT }}
-          API_TOKEN: ${{ secrets.API_TOKEN }}
-          API_URL: ${{ vars.API_URL }}
-          PUBLIC_APP_URL: ${{ vars.PUBLIC_APP_URL }}
-          PUBLIC_TURNSTILE_SITE_KEY: ${{ secrets.PUBLIC_TURNSTILE_SITE_KEY }}
-          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+      - name: Create deployment archive
         run: |
-          npm run build
+          tar czf deploy.tar.gz \
+            --exclude=node_modules \
+            --exclude=.git \
+            --exclude=.svelte-kit \
+            --exclude=build \
+            .
 
-      - name: Create archive for deployment
-        run: tar czf deploy.tar.gz build package.json package-lock.json
-
-      - name: Upload Artifacts
+      - name: Upload artifacts to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
@@ -53,22 +32,56 @@ jobs:
           source: deploy.tar.gz
           target: /home/ubuntu/cristian-sierra-ngx
 
-      - name: Unzip and Deploy App
+      - name: Deploy with Docker
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           script: |
-            source ~/.nvm/nvm.sh
             cd /home/ubuntu/cristian-sierra-ngx
+
+            # Extract deployment files
             tar xzf deploy.tar.gz
             rm deploy.tar.gz
-            npm ci --omit=dev
 
-            if pm2 restart cristian-sierra-ngx; then
-              echo "Restarted existing process"
-            else
-              echo "Starting new process"
-              PORT=5173 pm2 start build/index.js --name cristian-sierra-ngx
-            fi
+            # Create .env file from GitHub secrets
+            cat > .env << EOF
+            NODE_ENV=production
+            PORT=3000
+            REDIS_HOST=redis
+            REDIS_PORT=6379
+            EMAILJS_URL_API=${{ vars.EMAILJS_URL_API }}
+            EMAILJS_PUBLIC_KEY=${{ secrets.EMAILJS_PUBLIC_KEY }}
+            EMAILJS_PRIVATE_KEY=${{ secrets.EMAILJS_PRIVATE_KEY }}
+            EMAILJS_SERVICE_ID=${{ secrets.EMAILJS_SERVICE_ID }}
+            EMAILJS_TEMPLATE_ID=${{ secrets.EMAILJS_TEMPLATE_ID }}
+            EMAILJS_QUEUE_SIZE=${{ vars.EMAILJS_QUEUE_SIZE }}
+            API_TOKEN=${{ secrets.API_TOKEN }}
+            API_URL=${{ vars.API_URL }}
+            PUBLIC_APP_URL=${{ vars.PUBLIC_APP_URL }}
+            PUBLIC_TURNSTILE_SITE_KEY=${{ secrets.PUBLIC_TURNSTILE_SITE_KEY }}
+            TURNSTILE_SECRET_KEY=${{ secrets.TURNSTILE_SECRET_KEY }}
+            EOF
+
+            # Create Nginx Proxy Manager network if it doesn't exist
+            docker network create nginxproxymanager-network 2>/dev/null || true
+
+            # Deploy with docker-compose
+            docker-compose up -d --build
+
+            # Wait for health checks
+            echo "Waiting for application to be healthy..."
+            sleep 10
+
+            # Check container status
+            docker-compose ps
+
+            # Show recent logs
+            echo "Recent application logs:"
+            docker-compose logs --tail=50 app
+
+            # Cleanup old images
+            docker image prune -f
+
+            echo "Deployment complete!"
