@@ -1,20 +1,60 @@
-version: '3.8'
-
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cristian-sierra-app
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=${PORT:-3000}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - '${PORT:-3000}:${PORT:-3000}'
+    depends_on:
+      - redis
+    networks:
+      - nginxproxymanager-network
+      - default
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "require('http').get('http://localhost:3000', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
   redis:
     image: redis:latest
     container_name: cristian-sierra-redis
     volumes:
-      - ~/.redis:/data
+      - redis_data:/data
     ports:
       - '6379:6379'
     command: redis-server --appendonly yes --dir /data
+    networks:
+      - default
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
-  mongodb:
-    image: mongo:latest
-    container_name: cristian-sierra-mongodb
-    volumes:
-      - ~/.mongodb:/data/db
-    ports:
-      - '27017:27017'
-    command: mongod --dbpath /data/db
+networks:
+  nginxproxymanager-network:
+    external: true
+  default:
+    driver: bridge
+
+volumes:
+  redis_data:
+    driver: local
