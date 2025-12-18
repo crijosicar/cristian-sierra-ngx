@@ -1,13 +1,15 @@
 import { type Job, Worker } from 'bullmq';
 import { redisConnection } from '$lib/database';
 import { CONTACT_EMAIL_QUEUE_NAME } from '$lib/shared/constants';
-import {
+import { env } from '$env/dynamic/private';
+
+const {
 	EMAILJS_PUBLIC_KEY,
 	EMAILJS_PRIVATE_KEY,
 	EMAILJS_SERVICE_ID,
 	EMAILJS_TEMPLATE_ID,
 	EMAILJS_URL_API
-} from '$env/static/private';
+} = env;
 
 export const contactWorker = new Worker(
 	CONTACT_EMAIL_QUEUE_NAME,

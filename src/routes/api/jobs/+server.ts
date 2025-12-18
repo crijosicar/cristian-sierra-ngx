@@ -1,6 +1,6 @@
-import { API_TOKEN } from '$env/static/private';
-import { mailerQueue } from '$lib/queues/mailerQueue';
+import { env } from '$env/dynamic/private';
 import { json, text } from '@sveltejs/kit';
+import { mailerQueue } from '$lib/queues/mailerQueue';
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url }) {
@@ -8,7 +8,7 @@ export async function GET({ url }) {
 	const start = url.searchParams.get('start');
 	const end = url.searchParams.get('end');
 
-	if (!token || token !== API_TOKEN) {
+	if (!token || token !== env.API_TOKEN) {
 		return text('Not found', { status: 404 });
 	}
 
@@ -33,7 +33,7 @@ export async function GET({ url }) {
 export async function DELETE({ url }) {
 	const token = url.searchParams.get('token');
 
-	if (!token || token !== API_TOKEN) {
+	if (!token || token !== env.API_TOKEN) {
 		return text('Not found', { status: 404 });
 	}
 

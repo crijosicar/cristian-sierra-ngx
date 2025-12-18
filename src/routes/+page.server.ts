@@ -1,13 +1,14 @@
 import { message, superValidate, setError } from 'sveltekit-superforms';
-import { zod as zodAdapter,  } from 'sveltekit-superforms/adapters';
+import { zod as zodAdapter } from 'sveltekit-superforms/adapters';
 import { createContactValidationSchema } from '$lib/shared/createContactValidationSchema';
 import { fail } from '@sveltejs/kit';
 import { mailerQueue } from '$lib/queues/mailerQueue';
 import { CONTACT_EMAIL_QUEUE_NAME } from '$lib/shared/constants';
 import { validateToken } from '$lib/services/turnstile.service';
-import { EMAILJS_QUEUE_SIZE, NODE_ENV, TURNSTILE_SECRET_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { Job } from 'bullmq';
 
+const { EMAILJS_QUEUE_SIZE, NODE_ENV, TURNSTILE_SECRET_KEY } = env;
 export const prerender = false;
 
 export const load = async () => {
@@ -70,7 +71,7 @@ export const actions = {
 			return fail(400, { form });
 		}
 
-		const {'cf-turnstile-response': token } = form.data;
+		const { 'cf-turnstile-response': token } = form.data;
 
 		const { success, error } = await validateToken(token, TURNSTILE_SECRET_KEY);
 
@@ -78,9 +79,11 @@ export const actions = {
 			return setError(form, 'cf-turnstile-response', error || 'Form validation failed');
 		}
 
-		if(NODE_ENV === 'development') {
+		if (NODE_ENV === 'development') {
 			// In development, do not sent the email, just return a success message
-			console.log('[create] actions.create - Your message has been sent successfully! (Development mode)');
+			console.log(
+				'[create] actions.create - Your message has been sent successfully! (Development mode)'
+			);
 			return message(form, 'Your message has been sent successfully! (Development mode)');
 		}
 
