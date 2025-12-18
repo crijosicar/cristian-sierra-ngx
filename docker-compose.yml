@@ -17,7 +17,6 @@ services:
       - redis
     networks:
       - nginxproxymanager-network
-      - default
     restart: unless-stopped
     healthcheck:
       test:
@@ -41,7 +40,7 @@ services:
       - '6379:6379'
     command: redis-server --appendonly yes --dir /data
     networks:
-      - default
+      - nginxproxymanager-network
     restart: unless-stopped
     healthcheck:
       test: ['CMD', 'redis-cli', 'ping']
@@ -52,8 +51,6 @@ services:
 networks:
   nginxproxymanager-network:
     external: true
-  default:
-    driver: bridge
 
 volumes:
   redis_data:
