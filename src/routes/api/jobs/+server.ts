@@ -1,5 +1,5 @@
-import { env } from '$env/dynamic/private';
 import { json, text } from '@sveltejs/kit';
+import { env } from '$env/dynamic/private';
 import { mailerQueue } from '$lib/queues/mailerQueue';
 
 /** @type {import('./$types').RequestHandler} */
