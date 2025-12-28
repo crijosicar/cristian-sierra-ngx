@@ -2,9 +2,7 @@
 	import Header from '$lib/components/header/Header.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import type { PageData } from './$types';
-	import { env } from '$env/dynamic/private';
-
-	const { PUBLIC_APP_URL } = env;
+	import { PUBLIC_APP_URL } from '$env/static/public';
 
 	export let data: PageData;
 	const { docs } = data;

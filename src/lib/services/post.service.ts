@@ -1,8 +1,6 @@
-import { env } from '$env/dynamic/private';
+import { API_URL } from '$env/static/private';
 import type { Post } from '$lib/entities/posts.type';
 import type { APIPaginationResponse } from '$lib/entities/APIResponse.type';
-
-const { API_URL } = env;
 
 export const loadPosts = async (): Promise<APIPaginationResponse<Post>> => {
 	const response = await fetch(`${API_URL}/posts?depth=2&draft=false`);

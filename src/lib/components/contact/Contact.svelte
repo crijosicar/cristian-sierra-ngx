@@ -4,7 +4,7 @@
 	import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
-	export let data = {};
+	export let data: any = {};
 	let reset: () => void;
 
 	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
