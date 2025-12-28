@@ -23,8 +23,8 @@
 				: projectsData.filter(({ category }) => category.toLowerCase() === item.name);
 	};
 
-	const handleClick = (e: unknown, index: number) => {
-		item = { name: e?.target?.innerHTML.trim().toLowerCase() };
+	const handleClick = (e: MouseEvent, index: number) => {
+		item = { name: (e.target as HTMLElement)?.innerHTML.trim().toLowerCase() as ProjectsNav };
 		active = index;
 		updateProjects();
 	};
