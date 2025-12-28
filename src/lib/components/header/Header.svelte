@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { PUBLIC_APP_URL } from '$env/static/public';
 	import { page } from '$app/stores';
 
 	let toggle = false;
@@ -36,7 +35,7 @@
 			<ul class="nav__list grid">
 				<li class="nav__item">
 					<a
-						href="{PUBLIC_APP_URL}/#home"
+						href="/#home"
 						on:click={() => (activeNav = '#home')}
 						class={activeNav === '#home' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -45,7 +44,7 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="{PUBLIC_APP_URL}#about"
+						href="/#about"
 						on:click={() => (activeNav = '#about')}
 						class={activeNav === '#about' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -54,7 +53,7 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="{PUBLIC_APP_URL}#skills"
+						href="/#skills"
 						on:click={() => (activeNav = '#skills')}
 						class={activeNav === '#skills' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -63,7 +62,7 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="{PUBLIC_APP_URL}#services"
+						href="/#services"
 						on:click={() => (activeNav = '#services')}
 						class={activeNav === '#services' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -72,7 +71,7 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="{PUBLIC_APP_URL}#projects"
+						href="/#projects"
 						on:click={() => (activeNav = '#projects')}
 						class={activeNav === '#projects' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -81,7 +80,7 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="{PUBLIC_APP_URL}#contact"
+						href="/#contact"
 						on:click={() => (activeNav = '#contact')}
 						class={activeNav === '#contact' ? 'nav__link active-link' : 'nav__link'}
 					>
@@ -90,10 +89,8 @@
 				</li>
 				<li class="nav__item">
 					<a
-						href="{PUBLIC_APP_URL}/shelf"
-						class={$page.url.pathname === `${PUBLIC_APP_URL}/shelf`
-							? 'nav__link active-link'
-							: 'nav__link'}
+						href="/shelf"
+						class={$page.url.pathname === '/shelf' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-file-alt nav__icon"></i> Shelf
 					</a>
