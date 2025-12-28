@@ -2,7 +2,6 @@
 	import Header from '$lib/components/header/Header.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import type { PageData } from './$types';
-	import { PUBLIC_APP_URL } from '$env/static/public';
 
 	export let data: PageData;
 	const { docs } = data;
@@ -32,7 +31,7 @@
 						<p class="services__description">{meta?.description?.substring(0, 60)}</p>
 					</div>
 					<span class="services__button">
-						<a data-sveltekit-preload-data="tap" href="{PUBLIC_APP_URL}/shelf/{slug}/">
+						<a data-sveltekit-preload-data="tap" href="/shelf/{slug}/">
 							View More
 							<i class="uil uil-arrow-right services__button-icon"></i>
 						</a>

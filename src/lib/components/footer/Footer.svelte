@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { PUBLIC_APP_URL } from '$env/static/public';
-
 	const currentYear = new Date().getFullYear();
 </script>
 
@@ -10,15 +8,15 @@
 
 		<ul class="footer__list">
 			<li>
-				<a href="{PUBLIC_APP_URL}#about" class="footer__link"> About </a>
+				<a href="/#about" class="footer__link"> About </a>
 			</li>
 
 			<li>
-				<a href="{PUBLIC_APP_URL}#projects" class="footer__link"> Projects </a>
+				<a href="/#projects" class="footer__link"> Projects </a>
 			</li>
 
 			<li>
-				<a href="{PUBLIC_APP_URL}#testimonials" class="footer__link"> Testimonials </a>
+				<a href="/#testimonials" class="footer__link"> Testimonials </a>
 			</li>
 		</ul>
 
