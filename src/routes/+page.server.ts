@@ -1,5 +1,5 @@
 import { message, superValidate, setError } from 'sveltekit-superforms';
-import { zod as zodAdapter } from 'sveltekit-superforms/adapters';
+import { zod4 as zodAdapter } from 'sveltekit-superforms/adapters';
 import { createContactValidationSchema } from '$lib/shared/createContactValidationSchema';
 import { fail } from '@sveltejs/kit';
 import { mailerQueue } from '$lib/queues/mailerQueue';
@@ -71,7 +71,7 @@ export const actions = {
 			return fail(400, { form });
 		}
 
-		const { 'cf-turnstile-response': token } = form.data;
+		const { 'cf-turnstile-response': token } = form.data as { 'cf-turnstile-response': string };
 
 		const { success, error } = await validateToken(token, TURNSTILE_SECRET_KEY);
 

@@ -15,14 +15,3 @@
 <slot />
 
 <SvelteToast {options} />
-
-<style>
-	:root {
-		--toastBackground: var(--title-color);
-		--toastMsgPadding: 1.25rem 2rem;
-		--toastBorderRadius: 1rem;
-		--toastFontWeight: var(--font-medium);
-		--toastFontSize: var(--normal-font-size);
-		--toastWidth: 400px;
-	}
-</style>
