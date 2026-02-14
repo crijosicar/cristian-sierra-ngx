@@ -2,6 +2,8 @@ services:
   app:
     build:
       context: .
+      args:
+        - PUBLIC_TURNSTILE_SITE_KEY
       dockerfile: Dockerfile
     container_name: cristian-sierra-app
     env_file:

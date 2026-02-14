@@ -12,6 +12,11 @@ RUN npm ci
 # Copy source code
 COPY . .
 
+# Define the argument that Docker expects during the build
+ARG PUBLIC_TURNSTILE_SITE_KEY
+# Expose it to the environment so Vite/SvelteKit can read it
+ENV PUBLIC_TURNSTILE_SITE_KEY=$PUBLIC_TURNSTILE_SITE_KEY
+
 # Build the application
 RUN npm run build
 

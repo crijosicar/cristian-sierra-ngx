@@ -133,5 +133,3 @@ Key variables:
 
 - `PORT` - Application port (default: 3000)
 - `NODE_ENV` - Environment mode (production/development)
-- `REDIS_HOST` - Redis hostname (redis for Docker, localhost for local)
-- `PUBLIC_APP_URL` - Public-facing application URL
