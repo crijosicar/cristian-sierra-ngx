@@ -8,6 +8,7 @@ services:
         - N8N_API_USER
         - N8N_API_PASSWORD
         - ADMIN_TOKEN
+        - ORIGIN
       dockerfile: Dockerfile
     container_name: cristian-sierra-app
     env_file:
@@ -15,6 +16,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=${PORT:-3300}
+      - ORIGIN=${ORIGIN:-https://cristiansierra.dev}
     ports:
       - '${PORT:-3300}:${PORT:-3300}'
     networks:
