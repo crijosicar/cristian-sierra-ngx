@@ -11,6 +11,7 @@ A modern SvelteKit portfolio application with Docker support and Nginx Proxy Man
 ## Environment Setup
 
 1. Copy the environment sample file:
+
    ```bash
    cp .env.sample .env
    ```
@@ -25,11 +26,13 @@ A modern SvelteKit portfolio application with Docker support and Nginx Proxy Man
 ## Local Development
 
 Install dependencies:
+
 ```bash
 npm install
 ```
 
 Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -43,11 +46,13 @@ The app will be available at `http://localhost:5173`
 1. Ensure you have a `.env` file configured (see Environment Setup above)
 
 2. Make sure the Nginx Proxy Manager network exists:
+
    ```bash
    docker network create nginxproxymanager-network
    ```
 
 3. Start all services:
+
    ```bash
    docker-compose up -d
    ```
@@ -107,6 +112,7 @@ npm run build
 ```
 
 Preview the production build:
+
 ```bash
 npm run preview
 ```
@@ -124,8 +130,8 @@ npm run preview
 All configuration is managed through environment variables. See `.env.sample` for available options.
 
 Key variables:
+
 - `PORT` - Application port (default: 3000)
 - `NODE_ENV` - Environment mode (production/development)
 - `REDIS_HOST` - Redis hostname (redis for Docker, localhost for local)
 - `PUBLIC_APP_URL` - Public-facing application URL
-

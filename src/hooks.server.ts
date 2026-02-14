@@ -1,8 +1,8 @@
-import { contactWorker } from '$lib/workers/contactWorker';
+import type { ServerInit } from "@sveltejs/kit";
 
-process.on('sveltekit:shutdown', async (reason) => {
-	console.log(
-		`Exiting process... with reason ${JSON.stringify(reason, Object.getOwnPropertyNames(reason))}`
-	);
-	contactWorker.close();
-});
+export const init: ServerInit = async () => {
+  console.info("Server created, registering shutdown hooks");
+  process.on('sveltekit:shutdown', async (reason) => {
+    console.info("SvelteKit has shutdown because of", reason);
+  });
+};
