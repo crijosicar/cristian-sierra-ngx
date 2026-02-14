@@ -49,19 +49,14 @@ jobs:
             cat > .env << EOF
             NODE_ENV=production
             PORT=3000
-            REDIS_HOST=redis
-            REDIS_PORT=6379
-            EMAILJS_URL_API=${{ vars.EMAILJS_URL_API }}
-            EMAILJS_PUBLIC_KEY=${{ secrets.EMAILJS_PUBLIC_KEY }}
-            EMAILJS_PRIVATE_KEY=${{ secrets.EMAILJS_PRIVATE_KEY }}
-            EMAILJS_SERVICE_ID=${{ secrets.EMAILJS_SERVICE_ID }}
-            EMAILJS_TEMPLATE_ID=${{ secrets.EMAILJS_TEMPLATE_ID }}
-            EMAILJS_QUEUE_SIZE=${{ vars.EMAILJS_QUEUE_SIZE }}
             API_TOKEN=${{ secrets.API_TOKEN }}
             API_URL=${{ vars.API_URL }}
             PUBLIC_APP_URL=${{ vars.PUBLIC_APP_URL }}
             PUBLIC_TURNSTILE_SITE_KEY=${{ secrets.PUBLIC_TURNSTILE_SITE_KEY }}
             TURNSTILE_SECRET_KEY=${{ secrets.TURNSTILE_SECRET_KEY }}
+            N8N_API_URL=${{ vars.N8N_API_URL }}
+            N8N_API_USER=${{ secrets.N8N_API_USER }}
+            N8N_API_PASSWORD=${{ secrets.N8N_API_PASSWORD }}
             EOF
 
             # Create Nginx Proxy Manager network if it doesn't exist
