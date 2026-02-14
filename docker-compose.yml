@@ -16,9 +16,9 @@ services:
       - .env
     environment:
       - NODE_ENV=production
-      - PORT=${PORT:-3000}
+      - PORT=${PORT:-3300}
     ports:
-      - '${PORT:-3000}:${PORT:-3000}'
+      - '${PORT:-3300}:${PORT:-3300}'
     networks:
       - nginxproxymanager-network
     restart: unless-stopped
