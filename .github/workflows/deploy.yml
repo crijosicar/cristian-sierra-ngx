@@ -21,6 +21,10 @@ jobs:
             --exclude=.git \
             --exclude=.svelte-kit \
             --exclude=build \
+            --exclude=.env \
+            --exclude=.env.local \
+            --exclude=*.log \
+            --warning=no-file-changed \
             .
 
       - name: Upload artifacts to server
