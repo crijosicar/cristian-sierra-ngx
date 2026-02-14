@@ -1,25 +1,25 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
 	import { toast } from '@zerodevx/svelte-toast';
-	import { Turnstile } from 'svelte-turnstile';
+    import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
-	let { data = {} }: { data?: any } = $props();
-	let reset: (() => void) | undefined = $state(undefined);
+    let {data} = $props();
+    let showCaptcha = $state(true);
 
-	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
+	const form = superForm(data?.form || {}, {
 		validationMethod: 'onblur',
-		onUpdated() {
-			reset?.();
-		},
 		onResult({ result }) {
 			const successfulSubmission = result.type === 'success' && result.status === 200;
-
 			if (successfulSubmission) {
-				toast.push("Thanks for getting in touch, I'll be contacting you soon!");
+				toast.push("Thank you for your message, we'll be in touch asap!");
+			} else if(result.status !== 400) {
+				form.reset();
+				toast.push("Something went wrong, please try again in a few minutes.");
 			}
 		}
 	});
+	const { form: formState, errors, constraints, enhance, submitting } = form;
 </script>
 
 <section class="contact section" id="contact">
@@ -71,7 +71,7 @@
 						name="name"
 						class="contact__form-input"
 						placeholder="Insert your name"
-						bind:value={$form.name}
+						bind:value={$formState.name}
 						{...$constraints.name}
 					/>
 					{#if $errors.name}<span class="invalid">{$errors.name}</span>{/if}
@@ -85,7 +85,7 @@
 						name="email"
 						class="contact__form-input"
 						placeholder="Insert your email"
-						bind:value={$form.email}
+						bind:value={$formState.email}
 					/>
 					{#if $errors.email}<span class="invalid">{$errors.email}</span>{/if}
 				</div>
@@ -99,16 +99,19 @@
 						rows="10"
 						class="contact__form-input"
 						placeholder="Write your project"
-						bind:value={$form.project}
+						bind:value={$formState.project}
 					></textarea>
 					{#if $errors.project}<span class="invalid">{$errors.project}</span>{/if}
 				</div>
 
-				<div class="contact__form-div">
-					<Turnstile siteKey={PUBLIC_TURNSTILE_SITE_KEY} bind:reset />
-				</div>
+				{#if showCaptcha}
+					<div class="contact__form-div">
+						<Turnstile siteKey={PUBLIC_TURNSTILE_SITE_KEY} name="cf-turnstile-response" />
+						{#if $errors['cf-turnstile-response']}<span class="invalid">{$errors['cf-turnstile-response']}</span>{/if}
+					</div>
+				{/if}
 
-				<button class="button button--flex" type="submit">
+				<button class="button button--flex" type="submit" disabled={$submitting}>
 					Send Message
 					<svg
 						class="button__icon"
