@@ -33,7 +33,7 @@
 <header class="header">
 	<nav class="nav container">
 		<a href="/" class="nav__logo">
-			{'<CHRISTIANS/>'}
+			{'<CRISTIANS/>'}
 		</a>
 		<div class={toggle ? 'nav__menu show-menu' : 'nav__menu'}>
 			<ul class="nav__list grid">
