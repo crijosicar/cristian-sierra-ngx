@@ -4,6 +4,12 @@ services:
       context: .
       args:
         - PUBLIC_TURNSTILE_SITE_KEY
+        - N8N_API_URL
+        - N8N_API_USER
+        - N8N_API_PASSWORD
+        - API_URL
+        - API_TOKEN
+        - TURNSTILE_SECRET_KEY
       dockerfile: Dockerfile
     container_name: cristian-sierra-app
     env_file:
