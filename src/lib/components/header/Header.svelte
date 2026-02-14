@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
+	import { browser } from '$app/environment';
+	import { FeatureFlag } from 'svelte-feature-flag';
+	import flags from '$lib/flags.json';
 
+	const url = $derived(page.url);
 	let toggle = false;
 	let activeNav = '#home';
 
@@ -87,14 +91,18 @@
 						<i class="uil uil-message nav__icon"></i> Contact
 					</a>
 				</li>
-				<li class="nav__item">
-					<a
-						href="/shelf"
-						class={$page.url.pathname === '/shelf' ? 'nav__link active-link' : 'nav__link'}
-					>
-						<i class="uil uil-file-alt nav__icon"></i> Shelf
-					</a>
-				</li>
+				{#if browser}
+					<FeatureFlag on="shelf" {flags}>
+						<li class="nav__item">
+							<a
+								href="/shelf"
+								class={url.pathname === '/shelf' ? 'nav__link active-link' : 'nav__link'}
+							>
+								<i class="uil uil-file-alt nav__icon"></i> Shelf
+							</a>
+						</li>
+					</FeatureFlag>
+				{/if}
 			</ul>
 			<i class="uil uil-times nav__close" on:click={showMenu}></i>
 		</div>
