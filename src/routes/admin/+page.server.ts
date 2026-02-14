@@ -2,6 +2,8 @@ import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { ADMIN_TOKEN } from '$env/static/private';
 
+export const prerender = false;
+
 export const load: PageServerLoad = async ({ url, cookies }) => {
 	const authToken = url.searchParams.get('token');
 	const cookieAdminToken = cookies.get('admin_token');
