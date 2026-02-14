@@ -4,7 +4,7 @@ import { createContactValidationSchema } from '$lib/shared/createContactValidati
 import { fail } from '@sveltejs/kit';
 import { validateToken } from '$lib/services/turnstile.service';
 import { TURNSTILE_SECRET_KEY } from '$env/static/private';
-import { dev } from '$app/environment';
+import { postContactForm } from '$lib/services/contactform.service';
 
 export const prerender = false;
 
@@ -13,7 +13,6 @@ export const load = async () => {
 
 	return { form };
 };
-
 
 export const actions = {
 	create: async ({ request }) => {
@@ -31,15 +30,9 @@ export const actions = {
 			return setError(form, 'cf-turnstile-response', error || 'Form validation failed');
 		}
 
-		if (dev) {
-			// In development, do not sent the email, just return a success message
-			console.log(
-				'[create] actions.create - Your message has been sent successfully! (Development mode)'
-			);
-			return message(form, 'Your message has been sent successfully! (Development mode)');
-		}
+		const { name, email, project } = form.data ?? {};
 
-		console.log(form.data);
+		await postContactForm(name, email, project);
 
 		console.log('[create] actions.create - Your message has been sent successfully!');
 
