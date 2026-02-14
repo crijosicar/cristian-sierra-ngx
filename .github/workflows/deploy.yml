@@ -26,7 +26,7 @@ jobs:
             # Create .env file from GitHub secrets
             cat > .env << EOF
             NODE_ENV=production
-            PORT=3000
+            PORT=3300
             API_TOKEN=${{ secrets.API_TOKEN }}
             API_URL=${{ vars.API_URL }}
             PUBLIC_TURNSTILE_SITE_KEY=${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
