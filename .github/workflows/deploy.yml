@@ -30,15 +30,12 @@ jobs:
             API_TOKEN=${{ secrets.API_TOKEN }}
             API_URL=${{ vars.API_URL }}
             PUBLIC_APP_URL=${{ vars.PUBLIC_APP_URL }}
-            PUBLIC_TURNSTILE_SITE_KEY=${{ secrets.PUBLIC_TURNSTILE_SITE_KEY }}
+            PUBLIC_TURNSTILE_SITE_KEY=${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
             TURNSTILE_SECRET_KEY=${{ secrets.TURNSTILE_SECRET_KEY }}
             N8N_API_URL=${{ vars.N8N_API_URL }}
             N8N_API_USER=${{ secrets.N8N_API_USER }}
             N8N_API_PASSWORD=${{ secrets.N8N_API_PASSWORD }}
             EOF
-
-            # Create Nginx Proxy Manager network if it doesn't exist
-            docker network create nginxproxymanager-network 2>/dev/null || true
 
             # Deploy with docker-compose
             docker compose up -d --build
