@@ -6,7 +6,7 @@
 </script>
 
 <div class="work__card">
-	<img src={project.image} alt="" class="work__img" />
+	<img src={project.image} alt={project.title} class="work__img" />
 	<h3 class="work__title">{project.title}</h3>
 	<a href="javascript:void(0)" class="work__button" onclick={() => onmessage(project)}>
 		View More
