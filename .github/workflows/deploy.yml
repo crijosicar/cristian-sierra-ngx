@@ -41,20 +41,6 @@ jobs:
             docker network create nginxproxymanager-network 2>/dev/null || true
 
             # Deploy with docker-compose
-            docker-compose up -d --build
-
-            # Wait for health checks
-            echo "Waiting for application to be healthy..."
-            sleep 10
-
-            # Check container status
-            docker-compose ps
-
-            # Show recent logs
-            echo "Recent application logs:"
-            docker-compose logs --tail=50 app
-
-            # Cleanup old images
-            docker image prune -f
+            docker compose up -d --build
 
             echo "Deployment complete!"
