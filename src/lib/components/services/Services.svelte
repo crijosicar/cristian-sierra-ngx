@@ -1,5 +1,5 @@
 <script lang="ts">
-	let activeTab = 0;
+	let activeTab = $state(0);
 </script>
 
 <section class="services section" id="services">
@@ -15,14 +15,26 @@
 				</h3>
 			</div>
 
-			<span class="services__button" on:click={() => (activeTab = 1)}>
+			<span
+				class="services__button"
+				onclick={() => (activeTab = 1)}
+				role="button"
+				tabindex="0"
+				onkeydown={(e) => e.key === 'Enter' && (activeTab = 1)}
+			>
 				View More
 				<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
 			<div class={activeTab === 1 ? 'services__modal active-modal' : 'services__modal'}>
 				<div class="services__modal-content">
-					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
+					<i
+						onclick={() => (activeTab = 0)}
+						class="uil uil-times services__modal-close"
+						role="button"
+						tabindex="0"
+						onkeydown={(e) => e.key === 'Enter' && (activeTab = 0)}
+					></i>
 
 					<h3 class="services__modal-title">Software Engineering</h3>
 					<p class="services__modal-description">
@@ -78,14 +90,26 @@
 				</h3>
 			</div>
 
-			<span on:click={() => (activeTab = 2)} class="services__button">
+			<span
+				onclick={() => (activeTab = 2)}
+				class="services__button"
+				role="button"
+				tabindex="0"
+				onkeydown={(e) => e.key === 'Enter' && (activeTab = 2)}
+			>
 				View More
 				<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
 			<div class={activeTab === 2 ? 'services__modal active-modal' : 'services__modal'}>
 				<div class="services__modal-content">
-					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
+					<i
+						onclick={() => (activeTab = 0)}
+						class="uil uil-times services__modal-close"
+						role="button"
+						tabindex="0"
+						onkeydown={(e) => e.key === 'Enter' && (activeTab = 0)}
+					></i>
 
 					<h3 class="services__modal-title">Web Development</h3>
 					<p class="services__modal-description">
@@ -142,14 +166,26 @@
 				</h3>
 			</div>
 
-			<span on:click={() => (activeTab = 3)} class="services__button">
+			<span
+				onclick={() => (activeTab = 3)}
+				class="services__button"
+				role="button"
+				tabindex="0"
+				onkeydown={(e) => e.key === 'Enter' && (activeTab = 3)}
+			>
 				View More
 				<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
 			<div class={activeTab === 3 ? 'services__modal active-modal' : 'services__modal'}>
 				<div class="services__modal-content">
-					<i on:click={() => (activeTab = 0)} class="uil uil-times services__modal-close"></i>
+					<i
+						onclick={() => (activeTab = 0)}
+						class="uil uil-times services__modal-close"
+						role="button"
+						tabindex="0"
+						onkeydown={(e) => e.key === 'Enter' && (activeTab = 0)}
+					></i>
 
 					<h3 class="services__modal-title">Wordpress Development</h3>
 					<p class="services__modal-description">

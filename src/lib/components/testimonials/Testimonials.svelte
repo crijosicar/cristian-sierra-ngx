@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	// Import Swiper Svelte components
 	import { Swiper, SwiperSlide } from 'swiper/svelte';
 	import { Pagination } from 'swiper';
@@ -66,10 +66,6 @@
 	/*=============== BREAKPOINTS ===============*/
 	/* For large devices */
 	@media screen and (max-width: 992px) {
-		.testimonial__container {
-			width: initial;
-		}
-
 		.testimonial__card {
 			padding: 1.25rem 1.5rem;
 		}

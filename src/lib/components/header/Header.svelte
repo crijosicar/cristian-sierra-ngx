@@ -6,8 +6,8 @@
 	import flags from '$lib/flags.json';
 
 	const url = $derived(page.url);
-	let toggle = false;
-	let activeNav = '#home';
+	let toggle = $state(false);
+	let activeNav = $state('#home');
 
 	onMount(() => {
 		const handleScroll = () => {
@@ -40,7 +40,7 @@
 				<li class="nav__item">
 					<a
 						href="/#home"
-						on:click={() => (activeNav = '#home')}
+						onclick={() => (activeNav = '#home')}
 						class={activeNav === '#home' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-estate nav__icon"></i> Home
@@ -49,7 +49,7 @@
 				<li class="nav__item">
 					<a
 						href="/#about"
-						on:click={() => (activeNav = '#about')}
+						onclick={() => (activeNav = '#about')}
 						class={activeNav === '#about' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-user nav__icon"></i> About
@@ -58,7 +58,7 @@
 				<li class="nav__item">
 					<a
 						href="/#skills"
-						on:click={() => (activeNav = '#skills')}
+						onclick={() => (activeNav = '#skills')}
 						class={activeNav === '#skills' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-file-alt nav__icon"></i> Skills
@@ -67,7 +67,7 @@
 				<li class="nav__item">
 					<a
 						href="/#services"
-						on:click={() => (activeNav = '#services')}
+						onclick={() => (activeNav = '#services')}
 						class={activeNav === '#services' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-briefcase-alt nav__icon"></i> Services
@@ -76,7 +76,7 @@
 				<li class="nav__item">
 					<a
 						href="/#projects"
-						on:click={() => (activeNav = '#projects')}
+						onclick={() => (activeNav = '#projects')}
 						class={activeNav === '#projects' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-scenery nav__icon"></i> Projects
@@ -85,7 +85,7 @@
 				<li class="nav__item">
 					<a
 						href="/#contact"
-						on:click={() => (activeNav = '#contact')}
+						onclick={() => (activeNav = '#contact')}
 						class={activeNav === '#contact' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-message nav__icon"></i> Contact
@@ -104,9 +104,15 @@
 					</FeatureFlag>
 				{/if}
 			</ul>
-			<i class="uil uil-times nav__close" on:click={showMenu}></i>
+			<i class="uil uil-times nav__close" onclick={showMenu}></i>
 		</div>
-		<div class="nav__toggle" on:click={showMenu}>
+		<div
+			class="nav__toggle"
+			onclick={showMenu}
+			role="button"
+			tabindex="0"
+			onkeydown={(e) => e.key === 'Enter' && showMenu()}
+		>
 			<i class="uil uil-apps"></i>
 		</div>
 	</nav>

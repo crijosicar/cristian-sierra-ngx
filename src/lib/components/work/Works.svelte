@@ -6,11 +6,11 @@
 
 	const navItems = Object.values(ProjectsNav);
 
-	let item = { name: ProjectsNav.ALL };
-	let projects: Project[] = [];
-	let active = 0;
-	let showDetails = false;
-	let currentProject: Project;
+	let item = $state({ name: ProjectsNav.ALL });
+	let projects: Project[] = $state([]);
+	let active = $state(0);
+	let showDetails = $state(false);
+	let currentProject: Project | undefined = $state(undefined);
 
 	onMount(() => {
 		updateProjects();
@@ -29,8 +29,8 @@
 		updateProjects();
 	};
 
-	const handleMessage = (e: CustomEvent) => {
-		currentProject = e.detail as Project;
+	const handleMessage = (project: Project) => {
+		currentProject = project;
 		showDetails = true;
 	};
 </script>
@@ -39,9 +39,12 @@
 	<div class="work__filters">
 		{#each navItems as navItem, index}
 			<span
-				on:click={(e) => handleClick(e, index)}
+				onclick={(e) => handleClick(e, index)}
 				class:active-work={active === index}
 				class="work__item"
+				role="button"
+				tabindex="0"
+				onkeydown={(e) => e.key === 'Enter' && handleClick(e as unknown as MouseEvent, index)}
 			>
 				{navItem}
 			</span>
@@ -50,14 +53,20 @@
 
 	<div class="work__container container grid">
 		{#each projects as project (project.id)}
-			<WorkItems {project} on:message={handleMessage} />
+			<WorkItems {project} onmessage={handleMessage} />
 		{/each}
 	</div>
 
 	{#if currentProject}
 		<div class={showDetails ? 'projects__modal active-modal' : 'projects__modal'}>
 			<div class="projects__modal-content">
-				<i on:click={() => (showDetails = false)} class="uil uil-times projects__modal-close"></i>
+				<i
+					onclick={() => (showDetails = false)}
+					class="uil uil-times projects__modal-close"
+					role="button"
+					tabindex="0"
+					onkeydown={(e) => e.key === 'Enter' && (showDetails = false)}
+				></i>
 				<h3 class="projects__modal-title">{currentProject.title}</h3>
 				<p class="projects__modal-description">
 					{currentProject.description}

@@ -13,7 +13,7 @@
 
 	type NodeTypes = DefaultNodeTypes | SerializedBlockNode<any>;
 
-	export let content: SerializedEditorState;
+	let { content }: { content: SerializedEditorState } = $props();
 
 	const htmlConverters: HTMLConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
 		...defaultConverters,

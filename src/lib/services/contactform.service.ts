@@ -4,7 +4,7 @@ export const postContactForm = async (
 	name: string,
 	email: string,
 	project: string
-): Promise<any> => {
+): Promise<Record<string, unknown>> => {
 	const response = await fetch(N8N_API_URL, {
 		method: 'POST',
 		headers: {
