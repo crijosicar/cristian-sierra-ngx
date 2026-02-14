@@ -156,7 +156,7 @@
 
 	.contact__card {
 		background-color: var(--container-color);
-		border: 1px solid rgba(0, 0, 0, 0.1);
+		border: 1px solid var(--border-color);
 		padding: 1rem;
 		border-radius: 0.75rem;
 		text-align: center;
@@ -216,7 +216,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		border: 2px solid rgba(0, 0, 0, 0.3);
+		border: 2px solid var(--border-color);
 		background-color: var(--container-color);
 		color: var(--text-color);
 		outline: none;

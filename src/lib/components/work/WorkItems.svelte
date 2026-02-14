@@ -17,7 +17,7 @@
 <style>
 	.work__card {
 		background-color: var(--container-color);
-		border: 1px solid rgba(0, 0, 0, 0.1);
+		border: 1px solid var(--border-color);
 		padding: 1.25rem;
 		border-radius: 1rem;
 	}

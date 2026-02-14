@@ -31,7 +31,7 @@
 	.home__img {
 		background: url(/assets/about.jpeg) no-repeat center;
 		background-size: cover;
-		box-shadow: inset 0 0 0 9px rgb(255 255 255 / 30%);
+		box-shadow: inset 0 0 0 9px var(--img-shadow-color);
 		order: 1;
 		justify-self: center;
 		width: 300px;
@@ -64,7 +64,7 @@
 		.home__img {
 			width: 250px;
 			height: 250px;
-			box-shadow: inset 0 0 0 8px rgb(255 255 255 / 30%);
+			box-shadow: inset 0 0 0 8px var(--img-shadow-color);
 		}
 	}
 
@@ -82,7 +82,7 @@
 		.home__img {
 			order: 0;
 			justify-self: center;
-			box-shadow: inset 0 0 0 6px rgb(255 255 255 / 30%);
+			box-shadow: inset 0 0 0 6px var(--img-shadow-color);
 			width: 200px;
 			height: 200px;
 		}

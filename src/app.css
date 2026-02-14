@@ -20,6 +20,11 @@
 	--body-color: hsl(var(--hue), var(--sat), 98%);
 	--container-color: #fff;
 	--error-color: hsl(var(--hue, 0), 80%, 50%, 0.93);
+	--border-color: rgba(0, 0, 0, 0.1);
+	--shadow-color: rgba(0, 0, 0, 0.15);
+	--overlay-color: rgba(0, 0, 0, 0.5);
+	--img-shadow-color: rgb(255 255 255 / 30%);
+	--scroll-header-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
 
 	/*========== Font and typography ==========*/
 	--body-font: 'Poppins', sans-serif;
@@ -82,6 +87,23 @@
 	}
 }
 
+/*=============== DARK THEME ===============*/
+html.dark-theme {
+	--title-color: hsl(var(--hue), var(--sat), 95%);
+	--title-color-dark: hsl(var(--hue), var(--sat), 100%);
+	--text-color: hsl(var(--hue), var(--sat), 70%);
+	--body-color: #1a1a2e;
+	--container-color: #16213e;
+	--error-color: hsl(0, 80%, 60%, 0.93);
+	--border-color: rgba(255, 255, 255, 0.1);
+	--shadow-color: rgba(0, 0, 0, 0.3);
+	--overlay-color: rgba(0, 0, 0, 0.7);
+	--img-shadow-color: rgb(255 255 255 / 15%);
+	--scroll-header-shadow: 0 -1px 4px rgba(0, 0, 0, 0.4);
+
+	--toastBackground: var(--container-color);
+}
+
 /*=============== BASE ===============*/
 * {
 	margin: 0;
@@ -104,6 +126,9 @@ textarea {
 body {
 	background-color: var(--body-color);
 	color: var(--text-color);
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
 }
 
 h1,

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
 	prefix: 'tw-',
+	darkMode: ['class', '.dark-theme'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {

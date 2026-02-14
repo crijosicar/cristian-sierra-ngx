@@ -41,7 +41,7 @@
 <style>
 	.testimonial__card {
 		background-color: var(--container-color);
-		border: 1px solid rgba(0, 0, 0, 0.1);
+		border: 1px solid var(--border-color);
 		padding: 1.5rem 2rem;
 		border-radius: 1.5rem;
 		margin-bottom: var(--mb-3);
