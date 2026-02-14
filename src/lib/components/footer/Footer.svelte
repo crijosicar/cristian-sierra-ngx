@@ -41,7 +41,8 @@
 <style>
 	.footer {
 		background-color: var(--container-color);
-		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		border-top: 1px solid var(--border-color);
+		transition: background-color 0.3s ease;
 	}
 
 	.footer__container {

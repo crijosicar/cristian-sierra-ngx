@@ -4,6 +4,7 @@
 	import { browser } from '$app/environment';
 	import { FeatureFlag } from 'svelte-feature-flag';
 	import flags from '$lib/flags.json';
+	import { theme } from '$lib/stores/theme.svelte';
 
 	const url = $derived(page.url);
 	let toggle = $state(false);
@@ -106,14 +107,24 @@
 			</ul>
 			<i class="uil uil-times nav__close" onclick={showMenu}></i>
 		</div>
-		<div
-			class="nav__toggle"
-			onclick={showMenu}
-			role="button"
-			tabindex="0"
-			onkeydown={(e) => e.key === 'Enter' && showMenu()}
-		>
-			<i class="uil uil-apps"></i>
+		<div class="nav__actions">
+			<button
+				class="nav__theme-toggle"
+				onclick={() => theme.toggle()}
+				aria-label={theme.isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+				title={theme.isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+			>
+				<i class={theme.isDark ? 'uil uil-sun' : 'uil uil-moon'}></i>
+			</button>
+			<div
+				class="nav__toggle"
+				onclick={showMenu}
+				role="button"
+				tabindex="0"
+				onkeydown={(e) => e.key === 'Enter' && showMenu()}
+			>
+				<i class="uil uil-apps"></i>
+			</div>
 		</div>
 	</nav>
 </header>
@@ -126,6 +137,7 @@
 		left: 0;
 		z-index: var(--z-fixed);
 		background-color: var(--body-color);
+		transition: background-color 0.3s ease;
 	}
 
 	.nav {
@@ -163,6 +175,33 @@
 		display: none;
 	}
 
+	.nav__actions {
+		display: flex;
+		align-items: center;
+		column-gap: 1rem;
+	}
+
+	.nav__theme-toggle {
+		background: none;
+		border: none;
+		color: var(--title-color);
+		font-size: 1.25rem;
+		cursor: pointer;
+		padding: 0.25rem;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition:
+			color 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	.nav__theme-toggle:hover {
+		color: var(--title-color-dark);
+		transform: rotate(30deg);
+	}
+
 	/* Active link */
 	.active-link,
 	.nav__link:hover {
@@ -171,7 +210,7 @@
 
 	/* Change background header */
 	.scroll-header {
-		box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+		box-shadow: var(--scroll-header-shadow);
 	}
 
 	/*=============== BREAKPOINTS ===============*/
@@ -193,9 +232,11 @@
 			width: 100%;
 			background-color: var(--body-color);
 			padding: 2rem 1.5rem 4rem;
-			box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+			box-shadow: var(--scroll-header-shadow);
 			border-radius: 1.5rem 1.5rem 0 0;
-			transition: 0.3s;
+			transition:
+				bottom 0.3s,
+				background-color 0.3s ease;
 		}
 
 		/* Show Menu */

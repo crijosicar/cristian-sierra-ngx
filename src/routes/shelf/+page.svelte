@@ -53,7 +53,7 @@
 
 	.services__content {
 		position: relative;
-		border: 1px solid rgba(0, 0, 0, 0.1);
+		border: 1px solid var(--border-color);
 		background-color: var(--container-color);
 		padding: 2rem;
 	}
