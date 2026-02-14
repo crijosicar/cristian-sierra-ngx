@@ -11,31 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Create deployment archive
-        run: |
-          tar czf deploy.tar.gz \
-            --exclude=node_modules \
-            --exclude=.git \
-            --exclude=.svelte-kit \
-            --exclude=build \
-            --exclude=.env \
-            --exclude=.env.local \
-            --exclude=*.log \
-            --warning=no-file-changed \
-            .
-
-      - name: Upload artifacts to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSHKEY }}
-          source: deploy.tar.gz
-          target: /home/ubuntu/cristian-sierra-ngx
-
       - name: Deploy with Docker
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -43,11 +18,10 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           script: |
-            cd /home/ubuntu/cristian-sierra-ngx
+            cd /home/ubuntu/projects/cristian-sierra-ngx
 
-            # Extract deployment files
-            tar xzf deploy.tar.gz
-            rm deploy.tar.gz
+            # Pull latest code from repository
+            git pull origin main
 
             # Create .env file from GitHub secrets
             cat > .env << EOF
