@@ -12,7 +12,8 @@ const config = {
 		}),
 		prerender: {
 			entries: ['*']
-		}
+		},
+		runes: true
 	}
 };
 
