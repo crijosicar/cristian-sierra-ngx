@@ -6,21 +6,24 @@ interface TokenValidateResponse {
 }
 
 export const validateToken = async (token: string, secret: string) => {
+	const body = new URLSearchParams({
+		response: token,
+		secret
+	});
+	const headers = {
+		'content-type': 'application/x-www-form-urlencoded'
+	};
+
 	const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
 		method: 'POST',
-		headers: {
-			'content-type': 'application/json'
-		},
-		body: JSON.stringify({
-			response: token,
-			secret: secret
-		})
+		headers,
+		body
 	});
 
-	const data: TokenValidateResponse = await response.json();
+	const { success, 'error-codes': errorCodes }: TokenValidateResponse = await response.json();
 
 	return {
-		success: data.success,
-		error: data['error-codes']?.length ? data['error-codes'][0] : null
+		success,
+		error: errorCodes?.length ? errorCodes[0] : null
 	};
 };

@@ -23,5 +23,6 @@ export const postContactForm = async (
 	}
 
 	const contactform = await response.json();
+
 	return contactform;
 };

@@ -1,6 +1,9 @@
 import { message, superValidate, setError } from 'sveltekit-superforms';
 import { zod4 as zodAdapter } from 'sveltekit-superforms/adapters';
-import { createContactValidationSchema } from '$lib/shared/createContactValidationSchema';
+import {
+	createContactValidationSchema,
+	type CreateContactFormDTO
+} from '$lib/shared/createContactValidationSchema';
 import { fail } from '@sveltejs/kit';
 import { validateToken } from '$lib/services/turnstile.service';
 import { TURNSTILE_SECRET_KEY } from '$env/static/private';
@@ -15,14 +18,23 @@ export const load = async () => {
 };
 
 export const actions = {
-	create: async ({ request }) => {
-		const form = await superValidate(request, zodAdapter(createContactValidationSchema));
+	create: async ({ request }: { request: Request }) => {
+		const formData = await request.formData();
+
+		const form = await superValidate<CreateContactFormDTO>(
+			formData,
+			zodAdapter(createContactValidationSchema)
+		);
+
+		const token = formData.get('cf-turnstile-response')?.toString();
 
 		if (!form.valid) {
 			return fail(400, { form });
 		}
 
-		const { 'cf-turnstile-response': token } = form.data as { 'cf-turnstile-response': string };
+		if (!token) {
+			return setError(form, 'cf-turnstile-response', 'Form validation failed');
+		}
 
 		const { success, error } = await validateToken(token, TURNSTILE_SECRET_KEY);
 
