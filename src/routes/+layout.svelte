@@ -1,6 +1,9 @@
 <script lang="ts">
 	import '../app.css';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
+	import type { Snippet } from 'svelte';
+
+	let { children }: { children: Snippet } = $props();
 
 	const options = {
 		duration: 4000, // duration of progress bar tween to the `next` value
@@ -12,6 +15,6 @@
 	};
 </script>
 
-<slot />
+{@render children()}
 
 <SvelteToast {options} />

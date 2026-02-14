@@ -1,16 +1,14 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import type { Project } from '$lib/shared/constants';
 
-	export let project: Project;
-
-	const dispatch = createEventDispatcher();
+	let { project, onmessage }: { project: Project; onmessage: (project: Project) => void } =
+		$props();
 </script>
 
 <div class="work__card">
 	<img src={project.image} alt="" class="work__img" />
 	<h3 class="work__title">{project.title}</h3>
-	<a href="javascript:void(0)" class="work__button" on:click={() => dispatch('message', project)}>
+	<a href="javascript:void(0)" class="work__button" onclick={() => onmessage(project)}>
 		View More
 		<i class="bx bx-right-arrow-alt work__button-icon"></i>
 	</a>

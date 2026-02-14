@@ -3,7 +3,7 @@
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	let { data }: { data: PageData } = $props();
 	const { docs } = data;
 </script>
 

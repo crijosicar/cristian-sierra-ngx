@@ -1,5 +1,5 @@
 <script lang="ts">
-	let toggleState = 1;
+	let toggleState = $state(1);
 </script>
 
 <section class="qualification section">
@@ -12,7 +12,10 @@
 				class={toggleState === 1
 					? 'qualification__button qualification__active button--flex'
 					: 'qualification__button button--flex'}
-				on:click={() => (toggleState = 1)}
+				onclick={() => (toggleState = 1)}
+				role="button"
+				tabindex="0"
+				onkeydown={(e) => e.key === 'Enter' && (toggleState = 1)}
 			>
 				<i class="uil uil-graduation-cap qualification__icon"></i>
 				Education
@@ -22,7 +25,10 @@
 				class={toggleState === 2
 					? 'qualification__button qualification__active button--flex'
 					: 'qualification__button button--flex'}
-				on:click={() => (toggleState = 2)}
+				onclick={() => (toggleState = 2)}
+				role="button"
+				tabindex="0"
+				onkeydown={(e) => e.key === 'Enter' && (toggleState = 2)}
 			>
 				<i class="uil uil-briefcase-alt qualification__icon"></i>
 				Experience

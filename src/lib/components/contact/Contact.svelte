@@ -4,8 +4,8 @@
 	import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
-	export let data: any = {};
-	let reset: () => void;
+	let { data = {} }: { data?: any } = $props();
+	let reset: (() => void) | undefined = $state(undefined);
 
 	const { form, errors, constraints, enhance } = superForm(data?.form || {}, {
 		validationMethod: 'onblur',
