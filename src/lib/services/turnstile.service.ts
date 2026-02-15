@@ -1,3 +1,5 @@
+import { TURNSTILE_SECRET_KEY } from '$env/static/private';
+
 interface TokenValidateResponse {
 	'error-codes': string[];
 	success: boolean;
@@ -5,13 +7,13 @@ interface TokenValidateResponse {
 	cdata: string;
 }
 
-export const validateToken = async (token: string, secret: string) => {
-	const body = new URLSearchParams({
+export const validateToken = async (token: string) => {
+	const body = JSON.stringify({
 		response: token,
-		secret
+		secret: TURNSTILE_SECRET_KEY
 	});
 	const headers = {
-		'content-type': 'application/x-www-form-urlencoded'
+		'Content-Type': 'application/json'
 	};
 
 	const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {

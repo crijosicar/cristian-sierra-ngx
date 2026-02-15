@@ -6,7 +6,6 @@ import {
 } from '$lib/shared/createContactValidationSchema';
 import { fail } from '@sveltejs/kit';
 import { validateToken } from '$lib/services/turnstile.service';
-import { TURNSTILE_SECRET_KEY } from '$env/static/private';
 import { postContactForm } from '$lib/services/contactform.service';
 
 export const prerender = false;
@@ -36,7 +35,7 @@ export const actions = {
 			return setError(form, 'cf-turnstile-response', 'Form validation failed');
 		}
 
-		const { success, error } = await validateToken(token, TURNSTILE_SECRET_KEY);
+		const { success, error } = await validateToken(token);
 
 		if (!success) {
 			return setError(form, 'cf-turnstile-response', error || 'Form validation failed');
