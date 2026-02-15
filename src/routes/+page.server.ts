@@ -18,26 +18,21 @@ export const load = async () => {
 
 export const actions = {
 	create: async ({ request }: { request: Request }) => {
-		const formData = await request.formData();
+		const form = await superValidate<CreateContactFormDTO>(
+			request,
+			zodAdapter(createContactValidationSchema)
+		);
+
 		const ip =
 			request.headers.get('CF-Connecting-IP') ||
 			request.headers.get('X-Forwarded-For') ||
 			'unknown';
 
-		const form = await superValidate<CreateContactFormDTO>(
-			formData,
-			zodAdapter(createContactValidationSchema)
-		);
-
-		const token = formData.get('cf-turnstile-response')?.toString();
-
 		if (!form.valid) {
 			return fail(400, { form });
 		}
 
-		if (!token) {
-			return setError(form, 'cf-turnstile-response', 'Form validation failed');
-		}
+		const token = form.data['cf-turnstile-response'];
 
 		const { success, error } = await validateToken(token, ip);
 

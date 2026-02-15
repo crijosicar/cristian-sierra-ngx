@@ -12,6 +12,12 @@ const config = {
 		}),
 		prerender: {
 			entries: ['*']
+		},
+		csp: {
+			directives: {
+				'script-src': ['self', 'https://challenges.cloudflare.com'],
+				'frame-src': ['self', 'https://challenges.cloudflare.com']
+			}
 		}
 	}
 };
