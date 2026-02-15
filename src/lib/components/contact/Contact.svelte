@@ -4,13 +4,22 @@
     import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
-    let {data} = $props();
-    let showCaptcha = $state(true);
+    let {data = {form: {}}} = $props();
+	let reset = $state<() => void>();
 
-	const form = superForm(data?.form || {}, {
+
+	const form = superForm(data.form, {
 		validationMethod: 'onblur',
+		multipleSubmits: 'abort',
+		onSubmit: (data) => {
+			console.log('Form submitted', JSON.stringify(data, Object.getOwnPropertyNames(data), 2));
+		},
+		onUpdated() {
+			reset?.();
+		},
 		onResult({ result }) {
 			const successfulSubmission = result.type === 'success' && result.status === 200;
+
 			if (successfulSubmission) {
 				toast.push("Thank you for your message, we'll be in touch asap!");
 			} else if(result.status !== 400) {
@@ -104,12 +113,10 @@
 					{#if $errors.project}<span class="invalid">{$errors.project}</span>{/if}
 				</div>
 
-				{#if showCaptcha}
-					<div class="contact__form-div">
-						<Turnstile siteKey={PUBLIC_TURNSTILE_SITE_KEY} name="cf-turnstile-response" />
-						{#if $errors['cf-turnstile-response']}<span class="invalid">{$errors['cf-turnstile-response']}</span>{/if}
-					</div>
-				{/if}
+				<div class="contact__form-div">
+					<Turnstile siteKey={PUBLIC_TURNSTILE_SITE_KEY} bind:reset/>
+					{#if $errors['cf-turnstile-response']}<span class="invalid">{$errors['cf-turnstile-response']}</span>{/if}
+				</div>
 
 				<button class="button button--flex" type="submit" disabled={$submitting}>
 					Send Message
