@@ -5,8 +5,8 @@ import {
 	type CreateContactFormDTO
 } from '$lib/shared/createContactValidationSchema';
 import { fail } from '@sveltejs/kit';
-import { validateToken } from '$lib/services/turnstile.service';
-import { postContactForm } from '$lib/services/contactform.service';
+import { validateToken } from '$lib/services/turnstile.server';
+import { postContactForm } from '$lib/services/contactform.server';
 
 export const prerender = false;
 
