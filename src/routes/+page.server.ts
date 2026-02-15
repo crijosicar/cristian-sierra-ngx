@@ -19,6 +19,10 @@ export const load = async () => {
 export const actions = {
 	create: async ({ request }: { request: Request }) => {
 		const formData = await request.formData();
+		const ip =
+			request.headers.get('CF-Connecting-IP') ||
+			request.headers.get('X-Forwarded-For') ||
+			'unknown';
 
 		const form = await superValidate<CreateContactFormDTO>(
 			formData,
@@ -35,7 +39,7 @@ export const actions = {
 			return setError(form, 'cf-turnstile-response', 'Form validation failed');
 		}
 
-		const { success, error } = await validateToken(token);
+		const { success, error } = await validateToken(token, ip);
 
 		if (!success) {
 			return setError(form, 'cf-turnstile-response', error || 'Form validation failed');
@@ -47,7 +51,6 @@ export const actions = {
 
 		console.log('[create] actions.create - Your message has been sent successfully!');
 
-		// Display a success status message
 		return message(form, 'Your message has been sent successfully!');
 	}
 };
