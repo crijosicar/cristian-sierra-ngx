@@ -3,15 +3,17 @@
 	import { toast } from '@zerodevx/svelte-toast';
     import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
-	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { createContactValidationSchema } from '$lib/shared/createContactValidationSchema';
 
-    let {data} = $props();
+    let {data = {form: {}}} = $props();
 	let reset = $state<() => void>();
 
-	const form = superForm(data?.form, {
-		validators: zodClient(createContactValidationSchema),
+
+	const form = superForm(data.form, {
 		validationMethod: 'onblur',
+		multipleSubmits: 'abort',
+		onSubmit: (data) => {
+			console.log('Form submitted', JSON.stringify(data, Object.getOwnPropertyNames(data), 2));
+		},
 		onUpdated() {
 			reset?.();
 		},
