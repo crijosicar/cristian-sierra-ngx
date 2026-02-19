@@ -34,6 +34,8 @@ jobs:
             N8N_API_URL=${{ vars.N8N_API_URL }}
             N8N_API_USER=${{ secrets.N8N_API_USER }}
             N8N_API_PASSWORD=${{ secrets.N8N_API_PASSWORD }}
+            ADMIN_TOKEN=${{ secrets.ADMIN_TOKEN }}
+            ORIGIN=${{ vars.ORIGIN }}
             EOF
 
             # Deploy with docker-compose
