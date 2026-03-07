@@ -243,8 +243,8 @@
 		background-color: var(--active-link-color, var(--title-color-dark));
 	}
 
-	/* Change background header */
-	.scroll-header {
+	/* Change background header — applied dynamically via classList in onMount */
+	:global(.scroll-header) {
 		box-shadow: var(--scroll-header-shadow);
 	}
 

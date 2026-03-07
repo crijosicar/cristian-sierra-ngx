@@ -34,12 +34,6 @@
 		margin-bottom: var(--mb-0-25);
 	}
 
-	.home__hand {
-		width: 38px;
-		height: 38px;
-		margin-left: 0.4rem;
-	}
-
 	.home__subtitle {
 		position: relative;
 		font-size: var(--h3-font-size);
@@ -66,11 +60,6 @@
 	/*=============== BREAKPOINTS ===============*/
 	/* For large devices */
 	@media screen and (max-width: 992px) {
-		.home__hand {
-			width: 26px;
-			height: 26px;
-		}
-
 		.home__subtitle {
 			padding-left: 3.75rem;
 			margin-bottom: var(--mb-1);
@@ -115,11 +104,5 @@
 		}
 	}
 
-	/* For small devices */
-	@media screen and (max-width: 350px) {
-		.home__hand {
-			width: 22px;
-			height: 22px;
-		}
-	}
+
 </style>

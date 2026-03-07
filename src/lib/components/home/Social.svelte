@@ -7,15 +7,15 @@
 </script>
 
 <div class="home__social">
-	<a href="https://github.com/crijosicar" class="home__social-icon" target="_blank" onclick={() => haptic.trigger('medium')}>
+	<a href="https://github.com/crijosicar" class="home__social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" onclick={() => haptic.trigger('medium')}>
 		<i class="uil uil-github-alt"></i>
 	</a>
 
-	<a href="https://www.linkedin.com/in/crijosicar" class="home__social-icon" target="_blank" onclick={() => haptic.trigger('medium')}>
+	<a href="https://www.linkedin.com/in/crijosicar" class="home__social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" onclick={() => haptic.trigger('medium')}>
 		<i class="uil uil-linkedin-alt"></i>
 	</a>
 
-	<a href="https://twitter.com/crijosicar" class="home__social-icon" target="_blank" onclick={() => haptic.trigger('medium')}>
+	<a href="https://twitter.com/crijosicar" class="home__social-icon" target="_blank" rel="noopener noreferrer" aria-label="Twitter profile" onclick={() => haptic.trigger('medium')}>
 		<i class="uil uil-twitter-alt"></i>
 	</a>
 </div>
