@@ -6,6 +6,7 @@ export default defineConfig({
 	server: {
 		hmr: {
 			overlay: false
-		}
+		},
+		allowedHosts: ['localhost', 'cristiansierra.dev']
 	}
 });
