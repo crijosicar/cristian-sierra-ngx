@@ -6,7 +6,6 @@ export default defineConfig({
 	server: {
 		hmr: {
 			overlay: false
-		},
-		allowedHosts: ['localhost', 'hitting-defined-maintenance-hawaiian.trycloudflare.com']
+		}
 	}
 });
