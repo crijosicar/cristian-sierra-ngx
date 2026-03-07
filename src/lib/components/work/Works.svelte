@@ -1,8 +1,12 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
+	import { createWebHaptics } from 'web-haptics/svelte';
 	import WorkItems from './WorkItems.svelte';
 	import { projectsData, ProjectsNav } from '$lib/data/worksData';
 	import type { Project } from '$lib/shared/constants';
+
+	const haptic = createWebHaptics();
+	onDestroy(() => haptic.destroy());
 
 	const navItems = Object.values(ProjectsNav);
 
@@ -27,11 +31,13 @@
 		item = { name: (e.target as HTMLElement)?.innerHTML.trim().toLowerCase() as ProjectsNav };
 		active = index;
 		updateProjects();
+		haptic.trigger('selection');
 	};
 
 	const handleMessage = (project: Project) => {
 		currentProject = project;
 		showDetails = true;
+		haptic.trigger('medium');
 	};
 </script>
 
@@ -53,7 +59,7 @@
 
 	<div class="work__container container grid">
 		{#each projects as project (project.id)}
-			<WorkItems {project} onmessage={handleMessage} />
+			<WorkItems {project} onmessage={handleMessage} {haptic} />
 		{/each}
 	</div>
 
@@ -61,11 +67,11 @@
 		<div class={showDetails ? 'projects__modal active-modal' : 'projects__modal'}>
 			<div class="projects__modal-content">
 				<i
-					onclick={() => (showDetails = false)}
+					onclick={() => { showDetails = false; haptic.trigger('light'); }}
 					class="uil uil-times projects__modal-close"
 					role="button"
 					tabindex="0"
-					onkeydown={(e) => e.key === 'Enter' && (showDetails = false)}
+					onkeydown={(e) => { if (e.key === 'Enter') { showDetails = false; haptic.trigger('light'); } }}
 				></i>
 				<h3 class="projects__modal-title">{currentProject.title}</h3>
 				<p class="projects__modal-description">
