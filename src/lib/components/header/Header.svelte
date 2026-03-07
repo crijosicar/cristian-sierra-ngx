@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { FeatureFlag } from 'svelte-feature-flag';
 	import flags from '$lib/flags.json';
 	import { theme } from '$lib/stores/theme.svelte';
+	import { createWebHaptics } from 'web-haptics/svelte';
+
+	const haptic = createWebHaptics();
 
 	const url = $derived(page.url);
 	let toggle = $state(false);
@@ -26,14 +29,28 @@
 		};
 	});
 
+	onDestroy(() => haptic.destroy());
+
 	const showMenu = () => {
 		toggle = !toggle;
+		haptic.trigger('light');
+	};
+
+	let closeTimer: ReturnType<typeof setTimeout>;
+
+	const selectNav = (section: string) => {
+		activeNav = section;
+		haptic.trigger('selection');
+		clearTimeout(closeTimer);
+		closeTimer = setTimeout(() => {
+			toggle = false;
+		}, 400);
 	};
 </script>
 
 <header class="header">
 	<nav class="nav container">
-		<a href="/" class="nav__logo">
+		<a href="/" class="nav__logo" onclick={() => haptic.trigger('medium')}>
 			{'<CRISTIANS/>'}
 		</a>
 		<div class={toggle ? 'nav__menu show-menu' : 'nav__menu'}>
@@ -41,7 +58,7 @@
 				<li class="nav__item">
 					<a
 						href="/#home"
-						onclick={() => (activeNav = '#home')}
+						onclick={() => selectNav('#home')}
 						class={activeNav === '#home' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-estate nav__icon"></i> Home
@@ -50,7 +67,7 @@
 				<li class="nav__item">
 					<a
 						href="/#about"
-						onclick={() => (activeNav = '#about')}
+						onclick={() => selectNav('#about')}
 						class={activeNav === '#about' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-user nav__icon"></i> About
@@ -59,7 +76,7 @@
 				<li class="nav__item">
 					<a
 						href="/#skills"
-						onclick={() => (activeNav = '#skills')}
+						onclick={() => selectNav('#skills')}
 						class={activeNav === '#skills' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-file-alt nav__icon"></i> Skills
@@ -68,7 +85,7 @@
 				<li class="nav__item">
 					<a
 						href="/#services"
-						onclick={() => (activeNav = '#services')}
+						onclick={() => selectNav('#services')}
 						class={activeNav === '#services' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-briefcase-alt nav__icon"></i> Services
@@ -77,7 +94,7 @@
 				<li class="nav__item">
 					<a
 						href="/#projects"
-						onclick={() => (activeNav = '#projects')}
+						onclick={() => selectNav('#projects')}
 						class={activeNav === '#projects' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-scenery nav__icon"></i> Projects
@@ -86,7 +103,7 @@
 				<li class="nav__item">
 					<a
 						href="/#contact"
-						onclick={() => (activeNav = '#contact')}
+						onclick={() => selectNav('#contact')}
 						class={activeNav === '#contact' ? 'nav__link active-link' : 'nav__link'}
 					>
 						<i class="uil uil-message nav__icon"></i> Contact
@@ -105,12 +122,14 @@
 					</FeatureFlag>
 				{/if}
 			</ul>
-			<i class="uil uil-times nav__close" onclick={showMenu}></i>
+			<button class="nav__close" onclick={showMenu} aria-label="Close menu">
+				<i class="uil uil-times"></i>
+			</button>
 		</div>
 		<div class="nav__actions">
 			<button
 				class="nav__theme-toggle"
-				onclick={() => theme.toggle()}
+				onclick={() => { theme.toggle(); haptic.trigger('light'); }}
 				aria-label={theme.isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 				title={theme.isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 			>
@@ -205,7 +224,23 @@
 	/* Active link */
 	.active-link,
 	.nav__link:hover {
-		color: var(--title-color-dark);
+		color: var(--active-link-color, var(--title-color-dark));
+	}
+
+	.active-link {
+		position: relative;
+	}
+
+	.active-link::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background-color: var(--active-link-color, var(--title-color-dark));
 	}
 
 	/* Change background header */
@@ -235,7 +270,7 @@
 			box-shadow: var(--scroll-header-shadow);
 			border-radius: 1.5rem 1.5rem 0 0;
 			transition:
-				bottom 0.3s,
+				bottom 0.6s cubic-bezier(0.4, 0, 1, 1),
 				background-color 0.3s ease;
 		}
 
@@ -261,6 +296,12 @@
 			font-size: 1.5rem;
 			cursor: pointer;
 			color: var(--title-color);
+			background: none;
+			border: none;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
 		.nav__close:hover {

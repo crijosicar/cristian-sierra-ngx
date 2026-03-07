@@ -1,14 +1,18 @@
 <script lang="ts">
 	import type { Project } from '$lib/shared/constants';
+	import type { WebHapticsInstance } from 'web-haptics/svelte';
 
-	let { project, onmessage }: { project: Project; onmessage: (project: Project) => void } =
-		$props();
+	let { project, onmessage, haptic }: {
+		project: Project;
+		onmessage: (project: Project) => void;
+		haptic: WebHapticsInstance;
+	} = $props();
 </script>
 
 <div class="work__card">
 	<img src={project.image} alt={project.title} class="work__img" />
 	<h3 class="work__title">{project.title}</h3>
-	<a href="javascript:void(0)" class="work__button" onclick={() => onmessage(project)}>
+	<a href="javascript:void(0)" class="work__button" onclick={() => { onmessage(project); haptic.trigger('medium'); }}>
 		View More
 		<i class="bx bx-right-arrow-alt work__button-icon"></i>
 	</a>

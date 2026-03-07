@@ -1,8 +1,13 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
 	import { superForm } from 'sveltekit-superforms';
 	import { toast } from '@zerodevx/svelte-toast';
     import { Turnstile } from 'svelte-turnstile';
+	import { createWebHaptics } from 'web-haptics/svelte';
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
+
+	const haptic = createWebHaptics();
+	onDestroy(() => haptic.destroy());
 
     let {data = {form: {}}} = $props();
 	let reset = $state<() => void>();
@@ -21,8 +26,10 @@
 			const successfulSubmission = result.type === 'success' && result.status === 200;
 
 			if (successfulSubmission) {
+				haptic.trigger('success');
 				toast.push("Thank you for your message, we'll be in touch asap!");
 			} else if(result.status !== 400) {
+				haptic.trigger('error');
 				form.reset();
 				toast.push("Something went wrong, please try again in a few minutes.");
 			}
@@ -46,7 +53,7 @@
 					<h3 class="contact__card-title">Email</h3>
 					<span class="contact__card-data">hello@cristiansierra.dev</span>
 
-					<a href="mailto:hello@cristiansierra.dev" class="contact__button">
+					<a href="mailto:hello@cristiansierra.dev" class="contact__button" onclick={() => haptic.trigger('medium')}>
 						Email me{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
 					</a>
@@ -61,6 +68,7 @@
 						rel="noopener noreferrer"
 						href="https://api.whatsapp.com/send?phone=+15482551056&text=Hello, I want to know more about your services!"
 						class="contact__button"
+						onclick={() => haptic.trigger('medium')}
 					>
 						Text me{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
@@ -118,7 +126,7 @@
 					{#if $errors['cf-turnstile-response']}<span class="invalid">{$errors['cf-turnstile-response']}</span>{/if}
 				</div>
 
-				<button class="button button--flex" type="submit" disabled={$submitting}>
+				<button class="button button--flex" type="submit" disabled={$submitting} onclick={() => haptic.trigger('medium')}>
 					Send Message
 					<svg
 						class="button__icon"

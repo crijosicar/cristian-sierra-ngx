@@ -1,4 +1,10 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
+	import { createWebHaptics } from 'web-haptics/svelte';
+
+	const haptic = createWebHaptics();
+	onDestroy(() => haptic.destroy());
+
 	let toggleState = $state(1);
 </script>
 
@@ -12,10 +18,10 @@
 				class={toggleState === 1
 					? 'qualification__button qualification__active button--flex'
 					: 'qualification__button button--flex'}
-				onclick={() => (toggleState = 1)}
+				onclick={() => { toggleState = 1; haptic.trigger('selection'); }}
 				role="button"
 				tabindex="0"
-				onkeydown={(e) => e.key === 'Enter' && (toggleState = 1)}
+				onkeydown={(e) => { if (e.key === 'Enter') { toggleState = 1; haptic.trigger('selection'); } }}
 			>
 				<i class="uil uil-graduation-cap qualification__icon"></i>
 				Education
@@ -25,10 +31,10 @@
 				class={toggleState === 2
 					? 'qualification__button qualification__active button--flex'
 					: 'qualification__button button--flex'}
-				onclick={() => (toggleState = 2)}
+				onclick={() => { toggleState = 2; haptic.trigger('selection'); }}
 				role="button"
 				tabindex="0"
-				onkeydown={(e) => e.key === 'Enter' && (toggleState = 2)}
+				onkeydown={(e) => { if (e.key === 'Enter') { toggleState = 2; haptic.trigger('selection'); } }}
 			>
 				<i class="uil uil-briefcase-alt qualification__icon"></i>
 				Experience

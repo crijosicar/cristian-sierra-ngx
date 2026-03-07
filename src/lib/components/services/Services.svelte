@@ -1,4 +1,10 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
+	import { createWebHaptics } from 'web-haptics/svelte';
+
+	const haptic = createWebHaptics();
+	onDestroy(() => haptic.destroy());
+
 	let activeTab = $state(0);
 </script>
 
@@ -17,10 +23,10 @@
 
 			<span
 				class="services__button"
-				onclick={() => (activeTab = 1)}
+				onclick={() => { activeTab = 1; haptic.trigger('medium'); }}
 				role="button"
 				tabindex="0"
-				onkeydown={(e) => e.key === 'Enter' && (activeTab = 1)}
+				onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 1; haptic.trigger('medium'); } }}
 			>
 				View More
 				<i class="uil uil-arrow-right services__button-icon"></i>
@@ -29,11 +35,11 @@
 			<div class={activeTab === 1 ? 'services__modal active-modal' : 'services__modal'}>
 				<div class="services__modal-content">
 					<i
-						onclick={() => (activeTab = 0)}
+						onclick={() => { activeTab = 0; haptic.trigger('light'); }}
 						class="uil uil-times services__modal-close"
 						role="button"
 						tabindex="0"
-						onkeydown={(e) => e.key === 'Enter' && (activeTab = 0)}
+						onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 0; haptic.trigger('light'); } }}
 					></i>
 
 					<h3 class="services__modal-title">Software Engineering</h3>
@@ -91,11 +97,11 @@
 			</div>
 
 			<span
-				onclick={() => (activeTab = 2)}
+				onclick={() => { activeTab = 2; haptic.trigger('medium'); }}
 				class="services__button"
 				role="button"
 				tabindex="0"
-				onkeydown={(e) => e.key === 'Enter' && (activeTab = 2)}
+				onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 2; haptic.trigger('medium'); } }}
 			>
 				View More
 				<i class="uil uil-arrow-right services__button-icon"></i>
@@ -104,11 +110,11 @@
 			<div class={activeTab === 2 ? 'services__modal active-modal' : 'services__modal'}>
 				<div class="services__modal-content">
 					<i
-						onclick={() => (activeTab = 0)}
+						onclick={() => { activeTab = 0; haptic.trigger('light'); }}
 						class="uil uil-times services__modal-close"
 						role="button"
 						tabindex="0"
-						onkeydown={(e) => e.key === 'Enter' && (activeTab = 0)}
+						onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 0; haptic.trigger('light'); } }}
 					></i>
 
 					<h3 class="services__modal-title">Web Development</h3>
@@ -167,11 +173,11 @@
 			</div>
 
 			<span
-				onclick={() => (activeTab = 3)}
+				onclick={() => { activeTab = 3; haptic.trigger('medium'); }}
 				class="services__button"
 				role="button"
 				tabindex="0"
-				onkeydown={(e) => e.key === 'Enter' && (activeTab = 3)}
+				onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 3; haptic.trigger('medium'); } }}
 			>
 				View More
 				<i class="uil uil-arrow-right services__button-icon"></i>
@@ -180,11 +186,11 @@
 			<div class={activeTab === 3 ? 'services__modal active-modal' : 'services__modal'}>
 				<div class="services__modal-content">
 					<i
-						onclick={() => (activeTab = 0)}
+						onclick={() => { activeTab = 0; haptic.trigger('light'); }}
 						class="uil uil-times services__modal-close"
 						role="button"
 						tabindex="0"
-						onkeydown={(e) => e.key === 'Enter' && (activeTab = 0)}
+						onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 0; haptic.trigger('light'); } }}
 					></i>
 
 					<h3 class="services__modal-title">Wordpress Development</h3>

@@ -1,5 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
+	import { createWebHaptics } from 'web-haptics/svelte';
+
+	const haptic = createWebHaptics();
+	onDestroy(() => haptic.destroy());
+
 
 	onMount(() => {
 		const handleScroll = () => {
@@ -20,7 +25,7 @@
 	});
 </script>
 
-<a href="#home" class="scrollup">
+<a href="#home" class="scrollup" onclick={() => haptic.trigger('light')}>
 	<i class="uil uil-arrow-up scrollup__icon"></i>
 </a>
 

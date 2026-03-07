@@ -1,16 +1,25 @@
+<script lang="ts">
+	import { onDestroy } from 'svelte';
+	import { createWebHaptics } from 'web-haptics/svelte';
+
+	const haptic = createWebHaptics();
+	onDestroy(() => haptic.destroy());
+</script>
+
 <div class="home__social">
-	<a href="https://github.com/crijosicar" class="home__social-icon" target="_blank">
+	<a href="https://github.com/crijosicar" class="home__social-icon" target="_blank" onclick={() => haptic.trigger('medium')}>
 		<i class="uil uil-github-alt"></i>
 	</a>
 
-	<a href="https://www.linkedin.com/in/crijosicar" class="home__social-icon" target="_blank">
+	<a href="https://www.linkedin.com/in/crijosicar" class="home__social-icon" target="_blank" onclick={() => haptic.trigger('medium')}>
 		<i class="uil uil-linkedin-alt"></i>
 	</a>
 
-	<a href="https://twitter.com/crijosicar" class="home__social-icon" target="_blank">
+	<a href="https://twitter.com/crijosicar" class="home__social-icon" target="_blank" onclick={() => haptic.trigger('medium')}>
 		<i class="uil uil-twitter-alt"></i>
 	</a>
 </div>
+
 
 <style>
 	.home__social {
