@@ -7,6 +7,6 @@ export default defineConfig({
 		hmr: {
 			overlay: false
 		},
-		allowedHosts: ['localhost', 'hitting-defined-maintenance-hawaiian.trycloudflare.com']
+		allowedHosts: ['localhost', ...(process.env.VITE_ALLOWED_HOST ? [process.env.VITE_ALLOWED_HOST] : [])]
 	}
 });
