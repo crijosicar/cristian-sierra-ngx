@@ -25,7 +25,7 @@
 	});
 </script>
 
-<a href="#home" class="scrollup" onclick={() => haptic.trigger('light')}>
+<a href="#home" class="scrollup" aria-label="Scroll to top" onclick={() => haptic.trigger('light')}>
 	<i class="uil uil-arrow-up scrollup__icon"></i>
 </a>
 
@@ -51,8 +51,8 @@
 		background-color: var(--title-color-dark);
 	}
 
-	/* Show Scroll */
-	.show-scroll {
+	/* Show Scroll — applied dynamically via classList in onMount */
+	:global(.show-scroll) {
 		bottom: 3rem;
 	}
 
@@ -71,7 +71,7 @@
 
 	/* For medium devices */
 	@media screen and (max-width: 768px) {
-		.show-scroll {
+		:global(.show-scroll) {
 			bottom: 4rem;
 		}
 	}

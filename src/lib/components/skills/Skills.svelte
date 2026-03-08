@@ -20,7 +20,7 @@
 		justify-content: center;
 	}
 
-	.skills .bx-badge-check {
+	:global(.skills .bx-badge-check) {
 		font-size: 1rem;
 		color: var(--title-color);
 	}

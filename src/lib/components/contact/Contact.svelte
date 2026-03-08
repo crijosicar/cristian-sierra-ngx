@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
+	import { onDestroy, untrack } from 'svelte';
 	import { superForm } from 'sveltekit-superforms';
 	import { toast } from '@zerodevx/svelte-toast';
     import { Turnstile } from 'svelte-turnstile';
@@ -9,11 +9,10 @@
 	const haptic = createWebHaptics();
 	onDestroy(() => haptic.destroy());
 
-    let {data = {form: {}}} = $props();
+	let {data = {form: {}}} = $props();
 	let reset = $state<() => void>();
 
-
-	const form = superForm(data.form, {
+	const form = superForm(untrack(() => data.form), {
 		validationMethod: 'onblur',
 		multipleSubmits: 'abort',
 		onSubmit: (data) => {

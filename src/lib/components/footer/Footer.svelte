@@ -21,15 +21,15 @@
 		</ul>
 
 		<div class="footer__social">
-			<a href="https://github.com/crijosicar" class="footer__social-link" target="_blank">
+			<a href="https://github.com/crijosicar" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
 				<i class="bx bxl-github"></i>
 			</a>
 
-			<a href="https://www.linkedin.com/in/crijosicar" class="footer__social-link" target="_blank">
+			<a href="https://www.linkedin.com/in/crijosicar" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
 				<i class="bx bxl-linkedin"></i>
 			</a>
 
-			<a href="https://x.com/crijosicar" class="footer__social-link" target="_blank">
+			<a href="https://x.com/crijosicar" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter) profile">
 				<i class="bx bxl-twitter"></i>
 			</a>
 		</div>

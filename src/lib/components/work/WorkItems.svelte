@@ -12,10 +12,10 @@
 <div class="work__card">
 	<img src={project.image} alt={project.title} class="work__img" />
 	<h3 class="work__title">{project.title}</h3>
-	<a href="javascript:void(0)" class="work__button" onclick={() => { onmessage(project); haptic.trigger('medium'); }}>
+	<button type="button" class="work__button" onclick={() => { onmessage(project); haptic.trigger('medium'); }}>
 		View More
 		<i class="bx bx-right-arrow-alt work__button-icon"></i>
-	</a>
+	</button>
 </div>
 
 <style>
@@ -45,6 +45,11 @@
 		display: flex;
 		align-items: center;
 		column-gap: 0.25rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		font-family: inherit;
 	}
 
 	.work__button-icon {
