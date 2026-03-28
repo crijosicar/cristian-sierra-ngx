@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages';
 	const currentYear = new Date().getFullYear();
 </script>
 
@@ -8,15 +9,15 @@
 
 		<ul class="footer__list">
 			<li>
-				<a href="/#about" class="footer__link"> About </a>
+				<a href="/#about" class="footer__link">{m.footer_about()}</a>
 			</li>
 
 			<li>
-				<a href="/#projects" class="footer__link"> Projects </a>
+				<a href="/#projects" class="footer__link">{m.footer_projects()}</a>
 			</li>
 
 			<li>
-				<a href="/#testimonials" class="footer__link"> Testimonials </a>
+				<a href="/#testimonials" class="footer__link">{m.footer_testimonials()}</a>
 			</li>
 		</ul>
 
@@ -34,7 +35,7 @@
 			</a>
 		</div>
 
-		<span class="footer__copy">&copy; {currentYear} Cristian Sierra. All rights reserved</span>
+		<span class="footer__copy">&copy; {currentYear} Cristian Sierra. {m.footer_copy()}</span>
 	</div>
 </footer>
 

@@ -1,3 +1,7 @@
+<script lang="ts">
+	import * as m from '$lib/paraglide/messages';
+</script>
+
 <div class="skills__content">
 	<h3 class="skills__title">Backend/API</h3>
 	<div class="skills__box">
@@ -7,7 +11,7 @@
 
 				<div>
 					<h3 class="skills__name">Node.js</h3>
-					<span class="skills__level">Advanced</span>
+					<span class="skills__level">{m.skills_level_advanced()}</span>
 				</div>
 			</div>
 
@@ -16,7 +20,7 @@
 
 				<div>
 					<h3 class="skills__name">PHP</h3>
-					<span class="skills__level">Advanced</span>
+					<span class="skills__level">{m.skills_level_advanced()}</span>
 				</div>
 			</div>
 
@@ -25,7 +29,7 @@
 
 				<div>
 					<h3 class="skills__name">Golang</h3>
-					<span class="skills__level">Basic</span>
+					<span class="skills__level">{m.skills_level_basic()}</span>
 				</div>
 			</div>
 		</div>
@@ -36,7 +40,7 @@
 
 				<div>
 					<h3 class="skills__name">MySQL</h3>
-					<span class="skills__level">Advanced</span>
+					<span class="skills__level">{m.skills_level_advanced()}</span>
 				</div>
 			</div>
 
@@ -45,7 +49,7 @@
 
 				<div>
 					<h3 class="skills__name">WordPress</h3>
-					<span class="skills__level">Advanced</span>
+					<span class="skills__level">{m.skills_level_advanced()}</span>
 				</div>
 			</div>
 
@@ -54,7 +58,7 @@
 
 				<div>
 					<h3 class="skills__name">SQL</h3>
-					<span class="skills__level">Advanced</span>
+					<span class="skills__level">{m.skills_level_advanced()}</span>
 				</div>
 			</div>
 		</div>

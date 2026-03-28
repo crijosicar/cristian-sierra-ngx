@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Frontend from './Frontend.svelte';
 	import Backend from './Backend.svelte';
+	import * as m from '$lib/paraglide/messages';
 </script>
 
 <section class="skills section" id="skills">
-	<h2 class="section__title">Skills</h2>
-	<span class="section__subtitle">My expertise</span>
+	<h2 class="section__title">{m.skills_title()}</h2>
+	<span class="section__subtitle">{m.skills_subtitle()}</span>
 
 	<div class="skills__container container grid">
 		<Frontend />
