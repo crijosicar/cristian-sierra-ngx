@@ -6,6 +6,8 @@
 	import flags from '$lib/flags.json';
 	import { theme } from '$lib/stores/theme.svelte';
 	import { createWebHaptics } from 'web-haptics/svelte';
+	import LanguageSwitcher from './LanguageSwitcher.svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	const haptic = createWebHaptics();
 
@@ -16,12 +18,14 @@
 	onMount(() => {
 		const handleScroll = () => {
 			const header = document.querySelector('.header');
+
 			if (window.scrollY >= 80) {
 				header?.classList.add('scroll-header');
 			} else {
 				header?.classList.remove('scroll-header');
 			}
 		};
+
 		window.addEventListener('scroll', handleScroll);
 
 		return () => {
@@ -61,7 +65,7 @@
 						onclick={() => selectNav('#home')}
 						class={activeNav === '#home' ? 'nav__link active-link' : 'nav__link'}
 					>
-						<i class="uil uil-estate nav__icon"></i> Home
+						<i class="uil uil-estate nav__icon"></i> {m.nav_home()}
 					</a>
 				</li>
 				<li class="nav__item">
@@ -70,7 +74,7 @@
 						onclick={() => selectNav('#about')}
 						class={activeNav === '#about' ? 'nav__link active-link' : 'nav__link'}
 					>
-						<i class="uil uil-user nav__icon"></i> About
+						<i class="uil uil-user nav__icon"></i> {m.nav_about()}
 					</a>
 				</li>
 				<li class="nav__item">
@@ -79,7 +83,7 @@
 						onclick={() => selectNav('#skills')}
 						class={activeNav === '#skills' ? 'nav__link active-link' : 'nav__link'}
 					>
-						<i class="uil uil-file-alt nav__icon"></i> Skills
+						<i class="uil uil-file-alt nav__icon"></i> {m.nav_skills()}
 					</a>
 				</li>
 				<li class="nav__item">
@@ -88,7 +92,7 @@
 						onclick={() => selectNav('#services')}
 						class={activeNav === '#services' ? 'nav__link active-link' : 'nav__link'}
 					>
-						<i class="uil uil-briefcase-alt nav__icon"></i> Services
+						<i class="uil uil-briefcase-alt nav__icon"></i> {m.nav_services()}
 					</a>
 				</li>
 				<li class="nav__item">
@@ -97,7 +101,7 @@
 						onclick={() => selectNav('#projects')}
 						class={activeNav === '#projects' ? 'nav__link active-link' : 'nav__link'}
 					>
-						<i class="uil uil-scenery nav__icon"></i> Projects
+						<i class="uil uil-scenery nav__icon"></i> {m.nav_projects()}
 					</a>
 				</li>
 				<li class="nav__item">
@@ -106,7 +110,7 @@
 						onclick={() => selectNav('#contact')}
 						class={activeNav === '#contact' ? 'nav__link active-link' : 'nav__link'}
 					>
-						<i class="uil uil-message nav__icon"></i> Contact
+						<i class="uil uil-message nav__icon"></i> {m.nav_contact()}
 					</a>
 				</li>
 				{#if browser}
@@ -127,6 +131,7 @@
 			</button>
 		</div>
 		<div class="nav__actions">
+			<LanguageSwitcher />
 			<button
 				class="nav__theme-toggle"
 				onclick={() => { theme.toggle(); haptic.trigger('light'); }}

@@ -1,23 +1,27 @@
+<script lang="ts">
+	import * as m from '$lib/paraglide/messages';
+</script>
+
 <div class="about__info grid">
 	<div class="about__box">
 		<i class="bx bx-award about__icon"></i>
 
-		<h3 class="about__title">Experience</h3>
-		<span class="about__subtitle">8+ Years</span>
+		<h3 class="about__title">{m.about_info_exp_title()}</h3>
+		<span class="about__subtitle">{m.about_info_exp_subtitle()}</span>
 	</div>
 
 	<div class="about__box">
 		<i class="bx bx-briefcase-alt about__icon"></i>
 
-		<h3 class="about__title">Completed</h3>
-		<span class="about__subtitle">3+ Projects</span>
+		<h3 class="about__title">{m.about_info_completed_title()}</h3>
+		<span class="about__subtitle">{m.about_info_completed_subtitle()}</span>
 	</div>
 
 	<div class="about__box">
 		<i class="bx bx-support about__icon"></i>
 
-		<h3 class="about__title">Available</h3>
-		<span class="about__subtitle">Ready to talk</span>
+		<h3 class="about__title">{m.about_info_avail_title()}</h3>
+		<span class="about__subtitle">{m.about_info_avail_subtitle()}</span>
 	</div>
 </div>
 
@@ -45,10 +49,14 @@
 	.about__title {
 		font-size: var(--small-font-size);
 		font-weight: var(--font-medium);
+		word-break: break-word;
+		overflow-wrap: break-word;
 	}
 
 	.about__subtitle {
 		font-size: var(--tiny-font-size);
+		word-break: break-word;
+		overflow-wrap: break-word;
 	}
 
 	/*=============== BREAKPOINTS ===============*/

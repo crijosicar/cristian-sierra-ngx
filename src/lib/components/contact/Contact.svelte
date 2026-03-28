@@ -5,6 +5,7 @@
     import { Turnstile } from 'svelte-turnstile';
 	import { createWebHaptics } from 'web-haptics/svelte';
 	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
+	import * as m from '$lib/paraglide/messages';
 
 	const haptic = createWebHaptics();
 	onDestroy(() => haptic.destroy());
@@ -26,11 +27,11 @@
 
 			if (successfulSubmission) {
 				haptic.trigger('success');
-				toast.push("Thank you for your message, we'll be in touch asap!");
+				toast.push(m.contact_toast_success());
 			} else if(result.status !== 400) {
 				haptic.trigger('error');
 				form.reset();
-				toast.push("Something went wrong, please try again in a few minutes.");
+				toast.push(m.contact_toast_error());
 			}
 		}
 	});
@@ -38,29 +39,29 @@
 </script>
 
 <section class="contact section" id="contact">
-	<h2 class="section__title">Get in touch</h2>
-	<span class="section__subtitle">Contact Me</span>
+	<h2 class="section__title">{m.contact_title()}</h2>
+	<span class="section__subtitle">{m.contact_subtitle()}</span>
 
 	<div class="contact__container container grid">
 		<div class="contact__content">
-			<h3 class="contact__title">Say Hello!</h3>
+			<h3 class="contact__title">{m.contact_say_hello_title()}</h3>
 
 			<div class="contact__info">
 				<div class="contact__card">
 					<i class="bx bx-mail-send contact__card-icon"></i>
 
-					<h3 class="contact__card-title">Email</h3>
+					<h3 class="contact__card-title">{m.contact_email_title()}</h3>
 					<span class="contact__card-data">hello@cristiansierra.dev</span>
 
 					<a href="mailto:hello@cristiansierra.dev" class="contact__button" onclick={() => haptic.trigger('medium')}>
-						Email me{' '}
+						{m.contact_email_btn()}{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
 					</a>
 				</div>
 
 				<div class="contact__card">
 					<i class="bx bxl-whatsapp contact__card-icon"></i>
-					<h3 class="contact__card-title">Whatsapp</h3>
+					<h3 class="contact__card-title">{m.contact_whatsapp_title()}</h3>
 					<span class="contact__card-data">+1 548-255-1056</span>
 					<a
 						target="_blank"
@@ -69,7 +70,7 @@
 						class="contact__button"
 						onclick={() => haptic.trigger('medium')}
 					>
-						Text me{' '}
+						{m.contact_whatsapp_btn()}{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>
 					</a>
 				</div>
@@ -77,16 +78,16 @@
 		</div>
 
 		<div class="contact__content">
-			<h3 class="contact__title">What is your project about?</h3>
+			<h3 class="contact__title">{m.contact_project_title()}</h3>
 			<form method="POST" action="?/create" class="contact__form" use:enhance>
 				<div class="contact__form-div">
-					<label class="contact__form-tag" for="name">Name</label>
+					<label class="contact__form-tag" for="name">{m.contact_form_name_label()}</label>
 					<input
 						id="name"
 						type="text"
 						name="name"
 						class="contact__form-input"
-						placeholder="Insert your name"
+						placeholder={m.contact_form_name_placeholder()}
 						bind:value={$formState.name}
 						{...$constraints.name}
 					/>
@@ -94,27 +95,27 @@
 				</div>
 
 				<div class="contact__form-div">
-					<label class="contact__form-tag" for="email">Email</label>
+					<label class="contact__form-tag" for="email">{m.contact_form_email_label()}</label>
 					<input
 						id="email"
 						type="text"
 						name="email"
 						class="contact__form-input"
-						placeholder="Insert your email"
+						placeholder={m.contact_form_email_placeholder()}
 						bind:value={$formState.email}
 					/>
 					{#if $errors.email}<span class="invalid">{$errors.email}</span>{/if}
 				</div>
 
 				<div class="contact__form-div contact__form-area">
-					<label class="contact__form-tag" for="project">Project</label>
+					<label class="contact__form-tag" for="project">{m.contact_form_project_label()}</label>
 					<textarea
 						id="project"
 						name="project"
 						cols="30"
 						rows="10"
 						class="contact__form-input"
-						placeholder="Write your project"
+						placeholder={m.contact_form_project_placeholder()}
 						bind:value={$formState.project}
 					></textarea>
 					{#if $errors.project}<span class="invalid">{$errors.project}</span>{/if}
@@ -126,7 +127,7 @@
 				</div>
 
 				<button class="button button--flex" type="submit" disabled={$submitting} onclick={() => haptic.trigger('medium')}>
-					Send Message
+					{m.contact_form_send()}
 					<svg
 						class="button__icon"
 						xmlns="http://www.w3.org/2000/svg"

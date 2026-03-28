@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
 	import { createWebHaptics } from 'web-haptics/svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	const haptic = createWebHaptics();
 	onDestroy(() => haptic.destroy());
@@ -9,15 +10,16 @@
 </script>
 
 <section class="services section" id="services">
-	<h2 class="section__title">Services</h2>
-	<span class="section__subtitle">I can help with</span>
+	<h2 class="section__title">{m.services_title()}</h2>
+	<span class="section__subtitle">{m.services_subtitle()}</span>
 
 	<div class="services__container container grid">
+		<!-- Software Engineering -->
 		<div class="services__content">
 			<div>
 				<i class="uil uil-web-grid services__icon"></i>
 				<h3 class="services__title">
-					Software <br /> Engineering
+					{m.services_soft_eng_title()}
 				</h3>
 			</div>
 
@@ -28,7 +30,7 @@
 				tabindex="0"
 				onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 1; haptic.trigger('medium'); } }}
 			>
-				View More
+				{m.services_view_more()}
 				<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
@@ -42,57 +44,43 @@
 						onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 0; haptic.trigger('light'); } }}
 					></i>
 
-					<h3 class="services__modal-title">Software Engineering</h3>
+					<h3 class="services__modal-title">{m.services_soft_eng_title()}</h3>
 					<p class="services__modal-description">
-						Delivering scalable and maintainable solutions with over 3 years of hands-on experience
-						in fullstack development.
+						{m.services_soft_eng_desc()}
 					</p>
 
 					<ul class="services__modal-services grid">
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								Design and implementation of RESTful APIs and GraphQL endpoints
-							</p>
+							<p class="services__modal-info">{m.services_soft_eng_item1()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								Microservices architecture using Node.js, Express, or NestJS
-							</p>
+							<p class="services__modal-info">{m.services_soft_eng_item2()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								Authentication & Authorization (OAuth2, JWT, Role-based access control)
-							</p>
+							<p class="services__modal-info">{m.services_soft_eng_item3()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								Integration with SQL and NoSQL databases (PostgreSQL, MongoDB, Redis)
-							</p>
+							<p class="services__modal-info">{m.services_soft_eng_item4()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								Message queues and event-driven systems with BullMQ, RabbitMQ, or Kafka .
-							</p>
+							<p class="services__modal-info">{m.services_soft_eng_item5()}</p>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
+		<!-- Web Development -->
 		<div class="services__content">
 			<div>
 				<i class="uil uil-arrow services__icon"></i>
 				<h3 class="services__title">
-					Web <br /> Development
+					{m.services_web_dev_title()}
 				</h3>
 			</div>
 
@@ -103,7 +91,7 @@
 				tabindex="0"
 				onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 2; haptic.trigger('medium'); } }}
 			>
-				View More
+				{m.services_view_more()}
 				<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
@@ -117,58 +105,47 @@
 						onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 0; haptic.trigger('light'); } }}
 					></i>
 
-					<h3 class="services__modal-title">Web Development</h3>
+					<h3 class="services__modal-title">{m.services_web_dev_title()}</h3>
 					<p class="services__modal-description">
-						Crafting fast, accessible, and scalable websites that elevate your brand and drive
-						results.
+						{m.services_web_dev_desc()}
 					</p>
 
 					<ul class="services__modal-services grid">
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								Building responsive UIs with HTML5, CSS3, and JavaScript (ES6+)
-							</p>
+							<p class="services__modal-info">{m.services_web_dev_item1()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Modern frameworks: React, SvelteKit, Vue.js</p>
+							<p class="services__modal-info">{m.services_web_dev_item2()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Styling with Tailwind CSS, SCSS, and CSS Modules</p>
+							<p class="services__modal-info">{m.services_web_dev_item3()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								SEO-friendly development with proper meta tags and accessibility
-							</p>
+							<p class="services__modal-info">{m.services_web_dev_item4()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								Dynamic, data-driven SPAs and SSR apps using Next.js or SvelteKit
-							</p>
+							<p class="services__modal-info">{m.services_web_dev_item5()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Admin panels, dashboards, and internal tools</p>
+							<p class="services__modal-info">{m.services_web_dev_item6()}</p>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
+		<!-- WordPress Development -->
 		<div class="services__content">
 			<div>
 				<i class="uil uil-edit services__icon"></i>
 				<h3 class="services__title">
-					Wordpress <br /> Development
+					{m.services_wp_dev_title()}
 				</h3>
 			</div>
 
@@ -179,7 +156,7 @@
 				tabindex="0"
 				onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 3; haptic.trigger('medium'); } }}
 			>
-				View More
+				{m.services_view_more()}
 				<i class="uil uil-arrow-right services__button-icon"></i>
 			</span>
 
@@ -193,37 +170,31 @@
 						onkeydown={(e) => { if (e.key === 'Enter') { activeTab = 0; haptic.trigger('light'); } }}
 					></i>
 
-					<h3 class="services__modal-title">Wordpress Development</h3>
+					<h3 class="services__modal-title">{m.services_wp_dev_title()}</h3>
 					<p class="services__modal-description">
-						Custom, fast, and scalable WordPress solutions tailored to grow your online presence.
+						{m.services_wp_dev_desc()}
 					</p>
 
 					<ul class="services__modal-services grid">
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Custom Theme Development</p>
+							<p class="services__modal-info">{m.services_wp_dev_item1()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Plugin Development & Customization.</p>
+							<p class="services__modal-info">{m.services_wp_dev_item2()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">
-								Page speed optimization using caching, image compression, and lazy loading .
-							</p>
+							<p class="services__modal-info">{m.services_wp_dev_item3()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">WooCommerce Development.</p>
+							<p class="services__modal-info">{m.services_wp_dev_item4()}</p>
 						</li>
-
 						<li class="services__modal-service">
 							<i class="uil uil-check-circle services__modal-icon"></i>
-							<p class="services__modal-info">Multilingual & SEO Ready.</p>
+							<p class="services__modal-info">{m.services_wp_dev_item5()}</p>
 						</li>
 					</ul>
 				</div>
@@ -244,6 +215,9 @@
 		border: 1px solid var(--border-color);
 		background-color: var(--container-color);
 		padding: 6rem 0 2rem 2.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	.services__icon {
@@ -257,7 +231,12 @@
 		font-size: var(--h3-font-size);
 		margin-bottom: var(--mb-1);
 		font-weight: var(--font-medium);
+		word-break: break-word;
+		overflow-wrap: break-word;
+		hyphens: auto;
+		padding-right: 1rem;
 	}
+
 
 	.services__button {
 		color: var(--title-color);
