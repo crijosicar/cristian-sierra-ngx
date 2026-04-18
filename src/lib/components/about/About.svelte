@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Info from './Info.svelte';
+	import * as m from '$lib/paraglide/messages';
 </script>
 
 <section class="about section" id="about">
-	<h2 class="section__title">About Me</h2>
-	<span class="section__subtitle">My introduction</span>
+	<h2 class="section__title">{m.about_title()}</h2>
+	<span class="section__subtitle">{m.about_subtitle()}</span>
 
 	<div class="about__container container grid">
 		<img src={'/assets/TorontoCNTower.jpg'} alt="CN Tower, Toronto" class="about__img" />

@@ -1,13 +1,16 @@
+<script lang="ts">
+	import * as m from '$lib/paraglide/messages';
+</script>
+
 <div class="home__data">
 	<h1 class="home__title">Cristian S.</h1>
-	<h3 class="home__subtitle">Software Engineer</h3>
+	<h3 class="home__subtitle">{m.home_subtitle()}</h3>
 	<p class="home__description">
-		I'm a fullstack developer with 8+ years of experience, passionate about building scalable web
-		applications.
+		{m.home_description()}
 	</p>
 
 	<a href="#contact" class="button button--flex">
-		Say Hello
+		{m.home_say_hello()}
 		<svg
 			class="button__icon"
 			xmlns="http://www.w3.org/2000/svg"
@@ -95,14 +98,12 @@
 		.home__subtitle::before {
 			content: '';
 			position: absolute;
-			width: 40px; /* Adjust as needed */
+			width: 40px;
 			height: 1px;
 			background-color: var(--text-color);
 			top: 50%;
 			transform: translateY(-50%);
-			left: -16px; /* Adjust based on desired spacing */
+			left: -16px;
 		}
 	}
-
-
 </style>
