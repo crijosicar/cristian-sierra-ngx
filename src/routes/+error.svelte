@@ -52,6 +52,7 @@
 		min-height: calc(100vh - 6rem);
 		display: flex;
 		align-items: center;
+		justify-content: center; /* Horizontally centers content on small screens */
 	}
 
 	.error__container {
