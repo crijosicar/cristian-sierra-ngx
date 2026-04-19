@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import { invalidateAll } from '$app/navigation';
 	import { getLocale, setLocale, locales } from '$lib/paraglide/runtime';
 	import { createWebHaptics } from 'web-haptics/svelte';
 
@@ -15,7 +16,6 @@
 		fr: '🇨🇦 FR'
 	};
 
-	// getLocale() is not a reactive signal, so we track it with state
 	let currentLocale = $state(getLocale());
 
 	async function switchLocale(locale: 'en' | 'es' | 'fr') {
@@ -23,26 +23,30 @@
 			open = false;
 			return;
 		}
-		haptic.trigger('selection');
+		try { haptic.trigger('selection'); } catch (_) {}
 		open = false;
-		// setLocale writes the PARAGLIDE_LOCALE cookie client-side
 		setLocale(locale);
 		currentLocale = locale;
-		// Full reload so SvelteKit's SSR middleware picks up the new cookie
-		window.location.reload();
+		// Re-run load functions to pick up the new locale cookie without a hard reload
+		await invalidateAll();
 	}
 
-	// Use document-level listener for Safari compatibility (Safari doesn't fire
-	// click events on non-interactive elements like divs/body)
-	function handleOutsideClick(e: MouseEvent) {
-		if (open && containerEl && !containerEl.contains(e.target as Node)) {
-			open = false;
-		}
+	function toggleOpen() {
+		open = !open;
+		try { haptic.trigger('light'); } catch (_) {}
+	}
+
+	// Use mousedown (not click) — Safari fires mousedown reliably on all elements.
+	// Using capture:false so it runs AFTER Svelte's delegated events settle.
+	function handleOutsideMousedown(e: MouseEvent) {
+		if (!open) return;
+		if (containerEl && containerEl.contains(e.target as Node)) return;
+		open = false;
 	}
 
 	onMount(() => {
-		document.addEventListener('click', handleOutsideClick, true);
-		return () => document.removeEventListener('click', handleOutsideClick, true);
+		document.addEventListener('mousedown', handleOutsideMousedown);
+		return () => document.removeEventListener('mousedown', handleOutsideMousedown);
 	});
 </script>
 
@@ -50,13 +54,13 @@
 	<button
 		id="lang-switcher-btn"
 		class="lang-switcher__trigger"
-		onclick={(e) => { e.stopPropagation(); open = !open; haptic.trigger('light'); }}
+		onclick={toggleOpen}
 		aria-haspopup="listbox"
 		aria-expanded={open}
 		aria-label="Select language"
 		type="button"
 	>
-		{localeLabels[currentLocale] ?? currentLocale.toUpperCase()}
+		{localeLabels[currentLocale] ?? currentLocale?.toUpperCase() ?? 'EN'}
 		<i class="uil uil-angle-down lang-switcher__arrow"></i>
 	</button>
 
@@ -81,9 +85,12 @@
 <style>
 	.lang-switcher {
 		position: relative;
+		z-index: 100;
 	}
 
 	.lang-switcher__trigger {
+		-webkit-appearance: none;
+		appearance: none;
 		background: none;
 		border: 1px solid var(--border-color);
 		color: var(--title-color);
@@ -106,6 +113,7 @@
 	.lang-switcher__arrow {
 		font-size: 1rem;
 		transition: transform 0.3s ease;
+		pointer-events: none;
 	}
 
 	.lang-switcher.open .lang-switcher__arrow {
@@ -121,18 +129,14 @@
 		border-radius: 0.5rem;
 		padding: 0.3rem;
 		min-width: 6rem;
-		z-index: var(--z-fixed);
+		z-index: 200;
 		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 		list-style: none;
-		animation: dropdown-in 0.2s ease;
-	}
-
-	@keyframes dropdown-in {
-		from { opacity: 0; transform: translateY(-6px); }
-		to { opacity: 1; transform: translateY(0); }
 	}
 
 	.lang-switcher__option {
+		-webkit-appearance: none;
+		appearance: none;
 		display: block;
 		width: 100%;
 		text-align: left;
@@ -156,5 +160,14 @@
 	.lang-switcher__option.active {
 		color: var(--title-color-dark);
 		font-weight: var(--font-semi-bold);
+	}
+
+	/* Mobile: header is at the bottom, so dropdown opens upward */
+	@media screen and (max-width: 768px) {
+		.lang-switcher__dropdown {
+			top: auto;
+			bottom: 100%;
+			margin-bottom: 0.5rem;
+		}
 	}
 </style>
