@@ -16,9 +16,6 @@
 	const form = superForm(untrack(() => data.form), {
 		validationMethod: 'onblur',
 		multipleSubmits: 'abort',
-		onSubmit: (data) => {
-			console.log('Form submitted', JSON.stringify(data, Object.getOwnPropertyNames(data), 2));
-		},
 		onUpdated() {
 			reset?.();
 		},

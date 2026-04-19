@@ -1,21 +1,36 @@
 {
+	"compounds": [
+		{
+			"name": "SvelteKit: Debug",
+			"configurations": ["[internal] Server (Node)"],
+			"stopAll": true
+		}
+	],
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch with inspect",
+			"name": "[internal] Server (Node)",
 			"type": "node",
 			"request": "launch",
 			"runtimeExecutable": "npm",
-			"runtimeArgs": ["run", "dev"],
+			"runtimeArgs": ["run", "dev:debug"],
 			"console": "integratedTerminal",
-			"skipFiles": ["<node_internals>/**"]
-		},
-		{
-			"name": "Attach to running process",
-			"type": "node",
-			"request": "attach",
-			"restart": true,
-			"timeout": 10000
+			"skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+			"sourceMaps": true,
+			"outFiles": ["${workspaceFolder}/.svelte-kit/**/*.js"],
+			"resolveSourceMapLocations": [
+				"${workspaceFolder}/**",
+				"!**/node_modules/**"
+			],
+			"serverReadyAction": {
+				"pattern": "Local:.*http://localhost:([0-9]+)",
+				"uriFormat": "http://localhost:%s",
+				"action": "debugWithChrome",
+				"webRoot": "${workspaceFolder}/src",
+				"sourceMapPathOverrides": {
+					"/_app/immutable/*": "${workspaceFolder}/.svelte-kit/output/client/*"
+				}
+			}
 		}
 	]
 }
