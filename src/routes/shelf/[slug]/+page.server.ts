@@ -14,14 +14,16 @@ export const load: PageServerLoad = async ({
 		throw error(404, { message: 'Not found', code: 'NOT_FOUND', id: 'not_found' });
 	}
 
+	const formattedDate = new Date(post.createdAt).toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric'
+	});
+
 	return {
 		post: {
 			...post,
-			formattedDate: new Date(post.createdAt).toLocaleDateString('en-US', {
-				year: 'numeric',
-				month: 'long',
-				day: 'numeric'
-			})
+			formattedDate
 		}
 	};
 };

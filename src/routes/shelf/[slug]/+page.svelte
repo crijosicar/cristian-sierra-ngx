@@ -4,7 +4,7 @@
 	import ContentEditor from '$lib/components/contentEditor/ContentEditor.svelte';
 	import type { PageData } from './$types';
 
-	let { data }: { data: PageData } = $props();
+	const { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
