@@ -21,7 +21,7 @@ jobs:
             cd /home/ubuntu/projects/cristian-sierra-ngx
 
             # Pull latest code from repository
-            git pull origin main
+            GIT_SSH_COMMAND="ssh -i /home/ubuntu/.ssh/cristian-sierra-ngx" git pull origin main
 
             # Create .env file from GitHub secrets
             cat > .env << EOF
