@@ -5,4 +5,5 @@ import type { PageServerLoad } from './$types';
 
 export const prerender = false;
 
-export const load: PageServerLoad = async (): Promise<APIPaginationResponse<Post>> => loadPosts();
+export const load: PageServerLoad = async ({ fetch }): Promise<APIPaginationResponse<Post>> =>
+	loadPosts(fetch);

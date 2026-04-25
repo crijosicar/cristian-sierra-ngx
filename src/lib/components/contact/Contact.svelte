@@ -16,9 +16,6 @@
 	const form = superForm(untrack(() => data.form), {
 		validationMethod: 'onblur',
 		multipleSubmits: 'abort',
-		onSubmit: (data) => {
-			console.log('Form submitted', JSON.stringify(data, Object.getOwnPropertyNames(data), 2));
-		},
 		onUpdated() {
 			reset?.();
 		},
@@ -49,10 +46,8 @@
 			<div class="contact__info">
 				<div class="contact__card">
 					<i class="bx bx-mail-send contact__card-icon"></i>
-
 					<h3 class="contact__card-title">{m.contact_email_title()}</h3>
 					<span class="contact__card-data">hello@cristiansierra.dev</span>
-
 					<a href="mailto:hello@cristiansierra.dev" class="contact__button" onclick={() => haptic.trigger('medium')}>
 						{m.contact_email_btn()}{' '}
 						<i class="bx bx-right-arrow-alt contact__button-icon"></i>

@@ -23,7 +23,7 @@
 			open = false;
 			return;
 		}
-		try { haptic.trigger('selection'); } catch (_) {}
+		try { haptic.trigger('selection'); } catch (_) { console.log(_) }
 		open = false;
 		setLocale(locale);
 		currentLocale = locale;
@@ -33,7 +33,7 @@
 
 	function toggleOpen() {
 		open = !open;
-		try { haptic.trigger('light'); } catch (_) {}
+		try { haptic.trigger('light'); } catch (_) { console.log(_) }
 	}
 
 	// Use mousedown (not click) — Safari fires mousedown reliably on all elements.

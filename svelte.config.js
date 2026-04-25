@@ -15,7 +15,7 @@ const config = {
 		},
 		csp: {
 			directives: {
-				'script-src': ['self', 'https://challenges.cloudflare.com'],
+				'script-src': ['self', 'https://challenges.cloudflare.com', 'unsafe-inline'],
 				'frame-src': ['self', 'https://challenges.cloudflare.com']
 			}
 		}
